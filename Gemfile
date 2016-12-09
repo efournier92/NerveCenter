@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.5'
+ruby '2.2.6'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
