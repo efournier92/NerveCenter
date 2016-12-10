@@ -12,6 +12,8 @@ gem 'devise'
 gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
+gem 'bower-rails'
+gem 'angular-rails-templates'
 
 group :development, :test do
   gem 'byebug'
