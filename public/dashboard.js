@@ -1,7 +1,6 @@
-var tabClear = angular.module('tabClear', ['ngRoute']);
+var tabClear = angular.module('tabClear', ['ngRoute', 'gridster']);
 
 tabClear.controller('dashboardController', ['$scope', function($scope) {
-  $scope.example = "IT FINALLY WORKS"
   $scope.standardItems = [
     { sizeX: 1, sizeY: 1, row: 0, col: 0 },
     { sizeX: 1, sizeY: 1, row: 0, col: 1 },

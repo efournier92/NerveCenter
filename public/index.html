@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Tab</title>
 
+    <link rel="stylesheet" href="js/angular-gridster/dist/angular-gridster.min.css"/>
+    <script src="js/angular-gridster/src/angular-gridster.js"></script>
     <script src="js/angular/angular.min.js"></script>
     <script src="js/angular-route/angular-route.min.js"></script>
-    <script src="js/angular-gridster/angular-gridster.js"></script>
+    <script src="js/angular-gridster/dist/angular-gridster.min.js"></script>
     <script src="dashboard.js"></script>
 
 </head>
 <body ng-controller="dashboardController">
-  {{example}} 
+ <div gridster>
+  <ul>
+    <li gridster-item="item" ng-repeat="item in standardItems">
+      <a href="http://www.cnn.com"> 
+      <img src="img/CNN.png" alt="widget" style="width:100%;height:100%">
+    </li>
+  </ul>
+</div>
 </body>
 </html>

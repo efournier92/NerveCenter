@@ -23,6 +23,7 @@
     "morgan"           : "^1.1.1",
     "angular"          : "1.6.0",
     "angular-route"    : "1.6.0",
-    "angular-gridster" : "^0.13.14"
+    "angular-gridster" : "^0.13.14",
+    "javascript-detect-element-resize" : "^0.5.3"
   }
 }
