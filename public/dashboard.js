@@ -15,12 +15,12 @@ tabClear.controller('dashboardController', ['$scope', function($scope) {
   ];
 
   $scope.gridsterOpts = {
-    columns: 6,
+    columns: 5,
     pushing: true,
     floating: true,
     swapping: true,
-    width: 1, // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
-    colWidth: 1, // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
+    width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
+    colWidth: 'auto', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
     rowHeight: 'match', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
     margins: [10, 10], // the pixel distance between each widget
     outerMargin: true, // whether margins apply to outer edges of the grid
@@ -38,7 +38,7 @@ tabClear.controller('dashboardController', ['$scope', function($scope) {
     minSizeY: 1, // minumum row height of an item
     maxSizeY: null, // maximum row height of an item
     resizable: {
-      enabled: false,
+      enabled: true,
       handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
       start: function(event, $element, widget) {}, // optional callback fired when resize is started,
       resize: function(event, $element, widget) {}, // optional callback fired when item is resized,
