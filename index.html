@@ -18,8 +18,8 @@
  <div gridster="gridOptions">
   <ul>
     <li gridster-item="item" ng-repeat="widget in widgets">
-      <!-- <a href="http://www.cnn.com"> --> 
-      <img src="icons/CNN.png" alt="widget" style="width:100%;height:100%">
+      <a href={{widget.url}}> 
+        <img src={{widget.icon}} alt="widget" style="width:100%;height:100%">
     </li>
   </ul>
 </div>

@@ -4,9 +4,15 @@ tabClear.controller('dashboardController', ['$scope', function($scope) {
 
   const addWidgets = function addWidgets() {
     $scope.widgets = [];
-    for (i = 0; i < 1; i++) {
+    for (i = 0; i < 4; i++) {
       for (j = 0; j < 5; j++) {
-        newWidget = { sizeX: 1, sizeY: 1, row: i, col: j };
+        newWidget = { sizeX: 1,
+                      sizeY: 1,
+                      row: i,
+                      col: j,
+                      url: "http://www.cnn.com",
+                      icon: "icons/CNN.png"
+                    };
         $scope.widgets.push(newWidget);
       }
     }
@@ -38,14 +44,14 @@ tabClear.controller('dashboardController', ['$scope', function($scope) {
     minSizeY: 1,
     maxSizeY: null,
     resizable: {
-      enabled: true,
+      enabled: false,
       handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
       start: function(event, $element, widget) {},
       resize: function(event, $element, widget) {},
       stop: function(event, $element, widget) {}
     },
     draggable: {
-      enabled: true,
+      enabled: false,
       handle: '.my-class',
       start: function(event, $element, widget) {},
       drag: function(event, $element, widget) {},
