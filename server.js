@@ -17,14 +17,17 @@ app.use('/assets', express.static(__dirname + '/bower_components'));
 app.listen(8080);
 console.log("App listening on port 8080");
 
-// var mongodb = require('mongodb');
-// var MongoClient = mongodb.MongoClient;
-// var url = 'mongodb://localhost:27019/my_database_name';
-// MongoClient.connect(url, function (err, db) {
-//   if (err) {
-//     console.log('Unable to connect to the mongoDB server. Error:', err);
-//   } else {
-//     console.log('Connection established to', url);
-//     db.close();
-//   }
-// });
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
+// Connection URL
+  var url = 'mongodb://localhost:27017';
+
+  // Use connect method to connect to the server
+  MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log("MongoDB Affirmative");
+
+    db.close();
+  });
+
