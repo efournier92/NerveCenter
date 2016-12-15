@@ -33,7 +33,7 @@ var MongoClient = require('mongodb').MongoClient
 
  var insertDocuments = function(db, callback) {
   // Get the documents collection
-  var collection = db.collection('documents');
+  var collection = db.collection('users');
   // Insert some documents
   collection.insertMany([
     {a : 1}, {a : 2}, {a : 3}
@@ -87,4 +87,18 @@ MongoClient.connect(url, function(err, db) {
       db.close();
     });
   });
+
+var userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  hash: String,
+  salt: String
+});
 });
