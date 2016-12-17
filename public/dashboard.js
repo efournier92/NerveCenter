@@ -3,14 +3,7 @@ var tabClear = angular.module('tabClear', ['ngRoute', 'gridster', 'pr.longpress'
 tabClear.controller('dashboardController', ['$scope', function($scope) {
             $scope.onLongPress = function () {
                console.log("Long press");
-           };
-module.exports.register = function(req, res) {
-  console.log("Registering user: " + req.body.email);
-  res.status(200);
-  res.json({
-    "message" : "User registered: " + req.body.email
-  });
-};
+            };
     $scope.widgets = [
         { sizeX: 1,
           sizeY: 1,
