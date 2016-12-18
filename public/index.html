@@ -17,7 +17,7 @@
     <script src="dashboard.js"></script>
 </head>
 <body ng-controller="dashboardController">
-  <button on-long-press="onLongPress(console.log('DO IT!'))" on-touch-end="onTouchEnd()" prevent-click="true"></button>
+  <button on-long-press="onLongPress()" prevent-click="true"></button>
   <div gridster="gridOptions">
     <ul>
       <li gridster-item="item" ng-repeat="widget in widgets">
