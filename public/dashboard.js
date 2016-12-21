@@ -5,12 +5,12 @@ tabClear.controller('dashboardController', ['$scope', '$http', function($scope, 
     console.log("DO IT!!");
   };
 
-$http.get('/defaultWidgets.json').then(function(response) {
+  $http.get('/defaultWidgets.json').then(function(response) {
     $scope.widgets = response.data;
-});
+  });
 
-$http.get('/gridsterOptions.json').then(function(response) {
+  $http.get('/gridsterOptions.json').then(function(response) {
     $scope.gridsterOptions = response.data;
-});
+  });
 
 }]);
