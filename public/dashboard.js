@@ -9,4 +9,8 @@ $http.get('/defaultWidgets.json').then(function(response) {
     $scope.widgets = response.data;
 });
 
+$http.get('/gridsterOptions.json').then(function(response) {
+    $scope.gridsterOptions = response.data;
+});
+
 }]);
