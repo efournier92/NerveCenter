@@ -5,20 +5,8 @@ tabClear.controller('dashboardController', ['$scope', '$http', function($scope, 
     console.log("DO IT!!");
   };
 
-  $http({
-    method: 'GET',
-    url: '/gridsterOptions.json'
-  }).then(function successCallback(response) {
-    $scope.gridsterOptions = response;
-  }, function errorCallback(response) {
-  });
+$http.get('/defaultWidgets.json').then(function(response) {
+    $scope.widgets = response.data;
+});
 
-  $http({
-    method: 'GET',
-    url: '/defaults.json'
-  }).then(function successCallback(response) {
-    $scope.widgets = response;
-    console.log($scope.widgets)
-  }, function errorCallback(response) {
-  });
 }]);

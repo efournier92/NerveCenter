@@ -18,7 +18,7 @@
 </head>
 <body ng-controller="dashboardController">
   <button on-long-press="onLongPress()" prevent-click="true"></button>
-  <div gridster="gridOptions">
+  <div gridster="gridsterOptions">
     <ul>
       <li gridster-item="item" ng-repeat="widget in widgets">
         <a href={{widget.url}}> 
