@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 
-app.use('/assets', express.static(__dirname + '/node_modules'));
-app.use('/assets', express.static(__dirname + '/bower_components'));
-app.use(express.static(__dirname + '/public'));
+app.use('/assets', express.static(__dirname + 'server/node_modules'));
+app.use('/assets', express.static(__dirname + 'server/bower_components'));
+app.use(express.static(__dirname + '/client'));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));

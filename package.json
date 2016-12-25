@@ -1,8 +1,8 @@
 {
-  "name": "my_new_tab",
+  "name": "NerveCenter",
   "version": "1.0.0",
   "description": "Metro-style new tab page with advanced customizability.",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
