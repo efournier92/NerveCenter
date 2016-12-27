@@ -11,7 +11,7 @@ app.use('/assets', express.static(__dirname + 'server/node_modules'));
 app.use('/assets', express.static(__dirname + 'server/bower_components'));
 app.use(express.static(__dirname + '/client'));
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
