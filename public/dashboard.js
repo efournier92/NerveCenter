@@ -1,6 +1,6 @@
-var tabClear = angular.module('tabClear', ['ngRoute', 'gridster', 'pr.longpress']);
+var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.longpress']);
 
-tabClear.controller('dashboardController', ['$scope', function($scope) {
+nerveCenter.controller('dashboardController', ['$scope', function($scope) {
             $scope.onLongPress = function () {
                console.log("Long press");
             };
