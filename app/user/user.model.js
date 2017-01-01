@@ -1,5 +1,3 @@
-assert.equal(process.env.FOO, "defaultfoo");
-
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
