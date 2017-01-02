@@ -21,7 +21,7 @@ app.use('/assets', express.static(__dirname + '/bower_components'));
 
 // USER //////////////////////////////////////////////////////////////
 require('./app/user/user.model.js');
-require('./app_api/config/passport');
+require('./app/user/passport.js');
 app.use(passport.initialize());
 app.use('/api', routesApi);
 
