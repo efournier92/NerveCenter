@@ -20,12 +20,23 @@ app.use('/assets', express.static(__dirname + '/bower_components'));
 // MONGO /////////////////////////////////////////////////////////////
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
+var url = 'mongodb://localhost:27017/nerveCenter';
+
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    console.log('Connection established to', url);
+    var collection = db.collection('user');
+    db.close();
+  }
+});
 
 // USER //////////////////////////////////////////////////////////////
-require('./app/user/user.model.js');
-require('./app/user/passport.js');
-app.use(passport.initialize());
-app.use('/api', routesApi);
+// require('./app/user/user.model.js');
+// require('./app/user/passport.js');
+// app.use(passport.initialize());
+// app.use('/api', routesApi);
 
 // WIDGET ////////////////////////////////////////////////////////////
 
