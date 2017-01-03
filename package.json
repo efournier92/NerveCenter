@@ -22,6 +22,7 @@
     "body-parser": "^1.4.3",
     "bootstrap": "^3.3.7",
     "express": "^4.13.4",
+    "express-jwt": "^5.1.0",
     "javascript-detect-element-resize": "^0.5.3",
     "jsonwebtoken": "^7.2.1",
     "method-override": "^2.1.3",
