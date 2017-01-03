@@ -33,10 +33,10 @@ MongoClient.connect(url, function (err, db) {
 });
 
 // USER //////////////////////////////////////////////////////////////
-// require('./app/user/user.model.js');
-// require('./app/user/passport.js');
-// app.use(passport.initialize());
-// app.use('/api', routesApi);
+require('./app/user/user.model.js');
+require('./app/user/passport.js');
+app.use(passport.initialize());
+app.use('/api', routesApi);
 
 // WIDGET ////////////////////////////////////////////////////////////
 
