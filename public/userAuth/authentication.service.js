@@ -1,23 +1,24 @@
 nerveCenter.service('authentication', authentication);
-  authentication.$inject = ['$http', '$window'];
-  function authentication ($http, $window) {
 
-    var saveToken = function (token) {
-      $window.localStorage['mean-token'] = token;
-    };
+authentication.$inject = ['$http', '$window'];
+function authentication ($http, $window) {
 
-    var getToken = function () {
-      return $window.localStorage['mean-token'];
-    };
+  var saveToken = function (token) {
+    $window.localStorage['mean-token'] = token;
+  };
 
-    logout = function() {
-      $window.localStorage.removeItem('mean-token');
-    };
+  var getToken = function () {
+    return $window.localStorage['mean-token'];
+  };
 
-    return {
-      saveToken : saveToken,
-      getToken : getToken,
-      logout : logout
-    };
-  }
-])
+  logout = function() {
+    $window.localStorage.removeItem('mean-token');
+  };
+
+  return {
+    saveToken : saveToken,
+    getToken : getToken,
+    logout : logout
+  };
+
+}
