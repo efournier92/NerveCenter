@@ -36,6 +36,11 @@ var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.long
     });
   }
 
+  angular
+    .module('meanApp')
+    .config(['$routeProvider', '$locationProvider', config])
+    .run(['$rootScope', '$location', 'authentication', run]);
+
 nerveCenter.controller('dashboardController', ['$scope', function($scope) {
             $scope.onLongPress = function () {
                console.log("Long press");
