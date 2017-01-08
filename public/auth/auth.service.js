@@ -1,60 +1,72 @@
-nerveCenter.service('authentication', ['$http', '$window', function($http, $window) {
+(function () {
 
-  var saveToken = function (token) {
-    $window.localStorage['mean-token'] = token;
-  };
+  nerveCenter.service('auth', authentication);
 
-  var getToken = function () {
-    return $window.localStorage['mean-token'];
-  };
+  authentication.$inject = ['$http', '$window'];
+  function authentication ($http, $window) {
 
-  logout = function() {
-    $window.localStorage.removeItem('mean-token');
-  };
+    var saveToken = function (token) {
+      $window.localStorage['mean-token'] = token;
+    };
 
-  return {
-    saveToken : saveToken,
-    getToken : getToken,
-    logout : logout
-  };
+    var getToken = function () {
+      return $window.localStorage['mean-token'];
+    };
 
-var isLoggedIn = function() {
-  var token = getToken();
-  var payload;
+    var isLoggedIn = function() {
+      var token = getToken();
+      var payload;
 
-  if(token){
-    payload = token.split('.')[1];
-    payload = $window.atob(payload);
-    payload = JSON.parse(payload);
+      if(token){
+        payload = token.split('.')[1];
+        payload = $window.atob(payload);
+        payload = JSON.parse(payload);
 
-    return payload.exp > Date.now() / 1000;
-  } else {
-    return false;
-  }
-};
+        return payload.exp > Date.now() / 1000;
+      } else {
+        return false;
+      }
+    };
 
-var currentUser = function() {
-  if(isLoggedIn()){
-    var token = getToken();
-    var payload = token.split('.')[1];
-    payload = $window.atob(payload);
-    payload = JSON.parse(payload);
+    var currentUser = function() {
+      if(isLoggedIn()){
+        var token = getToken();
+        var payload = token.split('.')[1];
+        payload = $window.atob(payload);
+        payload = JSON.parse(payload);
+        return {
+          email : payload.email,
+          name : payload.name
+        };
+      }
+    };
+
+    register = function(user) {
+      return $http.post('/api/register', user).success(function(data){
+        saveToken(data.token);
+      });
+    };
+
+    login = function(user) {
+      return $http.post('/api/login', user).success(function(data) {
+        saveToken(data.token);
+      });
+    };
+
+    logout = function() {
+      $window.localStorage.removeItem('mean-token');
+    };
+
     return {
-      email : payload.email,
-      name : payload.name
+      currentUser : currentUser,
+      saveToken : saveToken,
+      getToken : getToken,
+      isLoggedIn : isLoggedIn,
+      register : register,
+      login : login,
+      logout : logout
     };
   }
-};
 
-register = function(user) {
-  return $http.post('/api/register', user).success(function(data){
-    saveToken(data.token);
-  });
-};
 
-login = function(user) {
-  return $http.post('/api/login', user).success(function(data) {
-    saveToken(data.token);
-  });
-};
-}]);
+})();

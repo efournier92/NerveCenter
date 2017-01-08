@@ -1,4 +1,4 @@
-
+var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.longpress'])
  function config ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
@@ -35,9 +35,11 @@
     });
   }
 
+var auth = require(["auth/auth.service.js"]);
+
 var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.longpress'])
-    .config(['$routeProvider', '$locationProvider', config]);
-    // .run(['$rootScope', '$location', 'authentication', run]);
+    .config(['$routeProvider', '$locationProvider', config])
+    .run(['$rootScope', '$location', 'auth', run]);
 
 nerveCenter.controller('dashboardController', ['$scope', function($scope) {
             $scope.onLongPress = function () {
