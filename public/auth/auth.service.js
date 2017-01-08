@@ -57,5 +57,4 @@ login = function(user) {
     saveToken(data.token);
   });
 };
-
-}
+}]);

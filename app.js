@@ -6,8 +6,8 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 
 // EXPRESS ///////////////////////////////////////////////////////////
-var express  = require('express');
-var app      = express();
+var express = require('express');
+var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -27,7 +27,7 @@ MongoClient.connect(url, function (err, db) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
   } else {
     console.log('Connection established to', url);
-    var collection = db.collection('user');
+    // var collection = db.collection('user');
     db.close();
   }
 });
@@ -36,7 +36,7 @@ MongoClient.connect(url, function (err, db) {
 require('./app/user/user.model.js');
 require('./app/user/passport.js');
 app.use(passport.initialize());
-app.use('/api', routesApi);
+// app.use('/api', routesApi);
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

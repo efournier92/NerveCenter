@@ -5,16 +5,19 @@ var jwt = require('jsonwebtoken');
 var user = new mongoose.Schema({
   email: {
     type: String,
+    default: '[]',
     unique: true,
     required: true
   },
-  name: {
+  widgets: {
     type: String,
     required: true
   },
   hash: String,
   salt: String
 });
+
+var User = mongoose.model('User', user);
 
 user.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
