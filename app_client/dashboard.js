@@ -27,7 +27,9 @@ var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.long
     $locationProvider.html5Mode(true);
   }
 
-  function run($rootScope, $location, authentication) {
+var auth = require(["auth/auth.service.js"]);
+
+  function run($rootScope, $location, auth) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
       if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
         $location.path('/');
@@ -35,7 +37,6 @@ var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.long
     });
   }
 
-var auth = require(["auth/auth.service.js"]);
 
 var nerveCenter = angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.longpress'])
     .config(['$routeProvider', '$locationProvider', config])

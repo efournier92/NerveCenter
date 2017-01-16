@@ -8,7 +8,7 @@ var passport = require('passport');
 // EXPRESS ///////////////////////////////////////////////////////////
 var express = require('express');
 var app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/app_client'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
@@ -33,8 +33,8 @@ MongoClient.connect(url, function (err, db) {
 });
 
 // USER //////////////////////////////////////////////////////////////
-require('./app/user/user.model.js');
-require('./app/user/passport.js');
+require('./app_server/user/user.model.js');
+require('./app_server/user/passport.js');
 app.use(passport.initialize());
 // app.use('/api', routesApi);
 
