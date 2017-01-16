@@ -1,72 +1,68 @@
-(function () {
+nerveCenter.service('auth', authentication);
 
-  nerveCenter.service('auth', authentication);
+authentication.$inject = ['$http', '$window'];
+function authentication ($http, $window) {
 
-  authentication.$inject = ['$http', '$window'];
-  function authentication ($http, $window) {
+  var saveToken = function (token) {
+    $window.localStorage['mean-token'] = token;
+  };
 
-    var saveToken = function (token) {
-      $window.localStorage['mean-token'] = token;
-    };
+  var getToken = function () {
+    return $window.localStorage['mean-token'];
+  };
 
-    var getToken = function () {
-      return $window.localStorage['mean-token'];
-    };
+  var isLoggedIn = function() {
+    var token = getToken();
+    var payload;
 
-    var isLoggedIn = function() {
+    if(token){
+      payload = token.split('.')[1];
+      payload = $window.atob(payload);
+      payload = JSON.parse(payload);
+
+      return payload.exp > Date.now() / 1000;
+    } else {
+      return false;
+    }
+  };
+
+  var currentUser = function() {
+    if(isLoggedIn()){
       var token = getToken();
-      var payload;
+      var payload = token.split('.')[1];
+      payload = $window.atob(payload);
+      payload = JSON.parse(payload);
+      return {
+        email : payload.email,
+        name : payload.name
+      };
+    }
+  };
 
-      if(token){
-        payload = token.split('.')[1];
-        payload = $window.atob(payload);
-        payload = JSON.parse(payload);
+  register = function(user) {
+    return $http.post('/api/register', user).success(function(data){
+      saveToken(data.token);
+    });
+  };
 
-        return payload.exp > Date.now() / 1000;
-      } else {
-        return false;
-      }
-    };
+  login = function(user) {
+    return $http.post('/api/login', user).success(function(data) {
+      saveToken(data.token);
+    });
+  };
 
-    var currentUser = function() {
-      if(isLoggedIn()){
-        var token = getToken();
-        var payload = token.split('.')[1];
-        payload = $window.atob(payload);
-        payload = JSON.parse(payload);
-        return {
-          email : payload.email,
-          name : payload.name
-        };
-      }
-    };
+  logout = function() {
+    $window.localStorage.removeItem('mean-token');
+  };
 
-    register = function(user) {
-      return $http.post('/api/register', user).success(function(data){
-        saveToken(data.token);
-      });
-    };
+  return {
+    currentUser : currentUser,
+    saveToken : saveToken,
+    getToken : getToken,
+    isLoggedIn : isLoggedIn,
+    register : register,
+    login : login,
+    logout : logout
+  };
+}
 
-    login = function(user) {
-      return $http.post('/api/login', user).success(function(data) {
-        saveToken(data.token);
-      });
-    };
-
-    logout = function() {
-      $window.localStorage.removeItem('mean-token');
-    };
-
-    return {
-      currentUser : currentUser,
-      saveToken : saveToken,
-      getToken : getToken,
-      isLoggedIn : isLoggedIn,
-      register : register,
-      login : login,
-      logout : logout
-    };
-  }
-
-
-})();
