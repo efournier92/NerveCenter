@@ -5,6 +5,7 @@
     .controller('homeCtrl', homeCtrl);
 
   function homeCtrl($scope) {
+
     console.log('Home controller is running');
     console.log('Burden of proof.');
       // $scope.onLongPress = function () {
