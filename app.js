@@ -10,8 +10,7 @@ require('./app_api/models/db');
 // add Passport config (after model is defined)
 require('./app_api/config/passport');
 
-
-// [SH] Bring in the routes for the API (delete the default routes)
+// add routes for the API
 var routesApi = require('./app_api/routes/index');
 
 var app = express();
@@ -20,24 +19,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// serve static resources
 app.use(express.static(path.join(__dirname, 'public')));
-// [SH] Set the app_client folder to serve static resources
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-// [SH] Initialise Passport before using the route middleware
+// initialise Passport (before using the route middleware)
 app.use(passport.initialize());
 
-// [SH] Use the API routes when path starts with /api
+// Use the API routes when path starts with /api
 app.use('/api', routesApi);
-
-// [SH] Otherwise render the index.html page for the Angular SPA
-// [SH] This means we don't have to map all of the SPA routes in Express
+// Otherwise render the index.html page for the Angular SPA
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
@@ -52,7 +49,7 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-// [SH] Catch unauthorised errors
+// catch unauthorised errors
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401);
@@ -82,6 +79,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// serve app
 app.listen(9090);
 console.log("App listening on port 9090");
 
