@@ -1,6 +1,6 @@
 (function () {
 
-  angular.module('meanApp', ['ngRoute', 'gridster']);
+  angular.module('meanApp', ['ngRoute']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
