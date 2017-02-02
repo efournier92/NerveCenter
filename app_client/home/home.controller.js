@@ -2,15 +2,16 @@
 
   angular
     .module('meanApp')
-    .controller('homeCtrl', homeCtrl);
+    .controller('homeCtrl', ['$scope']);
 
   function homeCtrl () {
     console.log('Home controller is running');
 
-    $scope.onLongPress = function () {
-      console.log("Long press");
-    };
+    // $scope.onLongPress = function () {
+    //   console.log("Long press");
+    // };
 
+    console.log('schope',$scope);
     $scope.widgets = [
       { sizeX: 1,
         sizeY: 1,
@@ -79,7 +80,7 @@
                             url: "http://www.cnn.com/",
                             icon: "img/CNN.png" },
     ];
-
+console.log('HELLO?');
     // for (i = 0; i < 4; i++) {
     //   for (j = 0; j < 5; j++) {
     //     $scope.widgets.push(newWidget);
