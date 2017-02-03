@@ -1,0 +1,10 @@
+<!-- <button on-long-press="onLongPress(console.log('DO IT!'))" on-touch-end="onTouchEnd()" prevent-click="true"></button> -->
+<div gridster="gridOptions">
+  <ul>
+    <li gridster-item="item" ng-repeat="widget in widgets">
+      <a href={{widget.url}}> 
+        <img src={{widget.icon}} alt="widget" style="width:100%;height:100%">
+    </li>
+  </ul>
+</div>
+
