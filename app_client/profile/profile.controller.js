@@ -1,5 +1,5 @@
 (function() {
-
+  
   angular
     .module('nerveCenter')
     .controller('profileCtrl', profileCtrl);
