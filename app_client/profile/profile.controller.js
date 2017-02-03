@@ -1,7 +1,7 @@
 (function() {
-  
+
   angular
-    .module('meanApp')
+    .module('nerveCenter')
     .controller('profileCtrl', profileCtrl);
 
   profileCtrl.$inject = ['$location', 'meanData'];

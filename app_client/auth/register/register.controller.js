@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('meanApp')
+    .module('nerveCenter')
     .controller('registerCtrl', registerCtrl);
 
   registerCtrl.$inject = ['$location', 'authentication'];

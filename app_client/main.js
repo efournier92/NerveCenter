@@ -1,12 +1,12 @@
 (function () {
 
-  angular.module('meanApp', ['ngRoute', 'gridster']);
+  angular.module('nerveCenter', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'gridster', 'pr.longpress']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'home/home.view.html',
-        controller: 'homeCtrl',
+        templateUrl: 'dashboard/dashboard.view.html',
+        controller: 'dashboardCtrl as $ctrl',
         controllerAs: 'vm'
       })
       .when('/register', {
@@ -39,8 +39,8 @@
   }
   
   angular
-    .module('meanApp')
+    .module('nerveCenter')
     .config(['$routeProvider', '$locationProvider', config])
-    .run(['$rootScope', '$location', 'authentication', run]);
+    .run(['$rootScope', '$location', '$uibModal', 'authentication', run]);
 
 })();

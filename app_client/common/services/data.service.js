@@ -1,7 +1,7 @@
 (function() {
 
   angular
-    .module('meanApp')
+    .module('nerveCenter')
     .service('meanData', meanData);
 
   meanData.$inject = ['$http', 'authentication'];
@@ -12,6 +12,12 @@
         headers: {
           Authorization: 'Bearer '+ authentication.getToken()
         }
+      });
+    };
+
+    register = function(user) {
+      return $http.post('/api/register', user).success(function(data){
+        saveToken(data.token);
       });
     };
 

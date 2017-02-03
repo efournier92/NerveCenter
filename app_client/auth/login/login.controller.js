@@ -1,7 +1,7 @@
 (function () {
 
   angular
-  .module('meanApp')
+  .module('nerveCenter')
   .controller('loginCtrl', loginCtrl);
 
   loginCtrl.$inject = ['$location', 'authentication'];

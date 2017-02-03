@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('meanApp')
+    .module('nerveCenter')
     .directive('navigation', navigation);
 
   function navigation () {

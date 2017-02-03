@@ -12,6 +12,10 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  widgets: {
+    type: String,
+    default: '[ { sizeX: 1, sizeY: 1, row: 0, col: 0, url: "https://www.google.com/", icon: "img/Google.png" } ]'
+  },
   hash: String,
   salt: String
 });
