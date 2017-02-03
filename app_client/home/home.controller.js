@@ -2,9 +2,10 @@
 
   angular
     .module('nerveCenter')
-    .controller('homeCtrl', homeCtrl);
+    .controller('dashboardCtrl', dashboardCtrl);
 
-  function homeCtrl($scope) {
+  dashboardCtrl.$inject = ['$scope'];
+  function dashboardCtrl($scope) {
 
     console.log('Home controller is running');
     console.log('Burden of proof.');

@@ -6,7 +6,7 @@
     $routeProvider
       .when('/', {
         templateUrl: 'home/home.view.html',
-        controller: 'homeCtrl',
+        controller: 'dashboardCtrl',
         controllerAs: 'vm'
       })
       .when('/register', {
