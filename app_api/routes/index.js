@@ -16,4 +16,7 @@ router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
+router.get('/musician', function(req, res) {
+   res.send('{"id": 1,"name":"Matt","band":"BBQ Brawlers"}');
+});
 module.exports = router;
