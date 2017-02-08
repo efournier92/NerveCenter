@@ -16,7 +16,7 @@
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'myModalContent.html',
-        controller: 'ModalInstanceCtrl',
+        controller: 'utilityModalCtrl',
         controllerAs: '$ctrl',
         size: size,
         appendTo: parentElem,
@@ -26,15 +26,9 @@
           }
         }
       });
-
-      modalInstance.result.then(function (selectedItem) {
-        $ctrl.selected = selectedItem;
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
     };
 
-    $scope.onLongPress = function () {
+    $ctrl.onLongPress = function () {
       $ctrl.open();
     };
 
@@ -107,104 +101,6 @@
                             icon: "img/CNN.png" },
     ];
 
-    $scope.gridOptions = {
-      columns: 5,
-      pushing: true,
-      floating: true,
-      swapping: true,
-      width: 'auto',
-      colWidth: 'auto',
-      rowHeight: 'match',
-      margins: [10, 10],
-      outerMargin: true,
-      sparse: false,
-      isMobile: false,
-      mobileBreakPoint: 600,
-      mobileModeEnabled: true,
-      minColumns: 1,
-      minRows: 1,
-      maxRows: 100,
-      defaultSizeX: 1,
-      defaultSizeY: 1,
-      minSizeX: 1,
-      maxSizeX: null,
-      minSizeY: 1,
-      maxSizeY: null,
-      resizable: {
-        enabled: false,
-        handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
-        start: function(event, $element, widget) {},
-        resize: function(event, $element, widget) {},
-        stop: function(event, $element, widget) {}
-      },
-      draggable: {
-        enabled: false,
-        handle: '.my-class',
-        start: function(event, $element, widget) {},
-        drag: function(event, $element, widget) {},
-        stop: function(event, $element, widget) {}
-      }
-    };
+    $scope.gridOptions = gridsterOptions; 
   };
-
-  angular.module('nerveCenter').controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
-    var $ctrl = this;
-    $ctrl.items = items;
-    $ctrl.selected = {
-      item: $ctrl.items[0]
-    };
-
-    $ctrl.ok = function () {
-      $uibModalInstance.close($ctrl.selected.item);
-    };
-
-    $ctrl.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
-    };
-  });
-
-  angular.module('nerveCenter').controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
-    var $ctrl = this;
-    $ctrl.items = items;
-    $ctrl.selected = {
-      item: $ctrl.items[0]
-    };
-
-    $ctrl.ok = function () {
-      $uibModalInstance.close($ctrl.selected.item);
-    };
-
-    $ctrl.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
-    };
-  });
-
-  // Please note that the close and dismiss bindings are from $uibModalInstance.
-
-  angular.module('nerveCenter').component('modalComponent', {
-    templateUrl: 'myModalContent.html',
-    bindings: {
-      resolve: '<',
-      close: '&',
-      dismiss: '&'
-    },
-    controller: function () {
-      var $ctrl = this;
-
-      $ctrl.$onInit = function () {
-        $ctrl.items = $ctrl.resolve.items;
-        $ctrl.selected = {
-          item: $ctrl.items[0]
-        };
-      };
-
-      $ctrl.ok = function () {
-        $ctrl.close({$value: $ctrl.selected.item});
-      };
-
-      $ctrl.cancel = function () {
-        $ctrl.dismiss({$value: 'cancel'});
-      };
-    }
-  });
 })();
