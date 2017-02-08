@@ -6,14 +6,20 @@
   <base href="/">
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/lib/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
   <link rel="stylesheet" href="/lib/angular-gridster/dist/angular-gridster.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body ng-view>
+<body ng-view on-long-press="onLongPress(console.log('DO IT!'))"  long-press-duration="2000" on-touch-end="onTouchEnd()" prevent-click="true">
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-sanitize.min.js"></script>
+  <script src="lib/angular/angular-animate.min.js"></script>
   <script src="lib/angular-gridster/dist/angular-gridster.min.js"></script>
+  <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+  <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+  <script src="lib/angular-long-press/dist/angular-long-press.min.js"></script>
   <script src="app.min.js"></script>
 </body>
 

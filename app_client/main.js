@@ -1,12 +1,12 @@
 (function () {
 
-  angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.longpress']);
+  angular.module('nerveCenter', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'gridster', 'pr.longpress']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'dashboard/dashboard.view.html',
-        controller: 'dashboardCtrl',
+        controller: 'dashboardCtrl as $ctrl',
         controllerAs: 'vm'
       })
       .when('/register', {
@@ -41,6 +41,6 @@
   angular
     .module('nerveCenter')
     .config(['$routeProvider', '$locationProvider', config])
-    .run(['$rootScope', '$location', 'authentication', run]);
+    .run(['$rootScope', '$location', '$uibModal', 'authentication', run]);
 
 })();
