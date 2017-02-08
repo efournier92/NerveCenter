@@ -9,9 +9,9 @@
 
     console.log('Home controller is running');
     console.log('Burden of proof.');
-      // $scope.onLongPress = function () {
-      //   console.log("Long press");
-      // };
+      $scope.onLongPress = function () {
+        console.log("Long press");
+      };
       $scope.widgets = [
         { sizeX: 1,
           sizeY: 1,

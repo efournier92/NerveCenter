@@ -1,6 +1,6 @@
 (function () {
 
-  angular.module('nerveCenter', ['ngRoute', 'gridster']);
+  angular.module('nerveCenter', ['ngRoute', 'gridster', 'pr.longpress']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
