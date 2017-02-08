@@ -10,21 +10,21 @@
         dismiss: '&'
       },
       controller: function () {
-        var $ctrl = this;
+        var $dash = this;
 
-        $ctrl.$onInit = function () {
-          $ctrl.items = $ctrl.resolve.items;
-          $ctrl.selected = {
-            item: $ctrl.items[0]
+        $dash.$onInit = function () {
+          $dash.items = $dash.resolve.items;
+          $dash.selected = {
+            item: $dash.items[0]
           };
         };
 
-        $ctrl.ok = function () {
-          $ctrl.close({$value: $ctrl.selected.item});
+        $dash.ok = function () {
+          $dash.close({$value: $dash.selected.item});
         };
 
-        $ctrl.cancel = function () {
-          $ctrl.dismiss({$value: 'cancel'});
+        $dash.cancel = function () {
+          $dash.dismiss({$value: 'cancel'});
         };
       }
     });

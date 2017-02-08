@@ -4,11 +4,30 @@
     .module('nerveCenter')
     .controller('dashboardCtrl', dashboardCtrl);
 
-  function dashboardCtrl($scope, $uibModal, $log, $document) {
-    var $ctrl = this;
-    $ctrl.items = ['item1', 'item2', 'item3'];
+  function dashboardCtrl($scope, $location, $uibModal, $log, $document, meanData) {
 
-    $ctrl.open = function (size, parentSelector) {
+    function getWidgets() {
+      var vm = this;
+      vm.user = {};
+
+      var widgets2 = {};
+      meanData.getProfile()
+        .success(function(data) {
+          widgets2 = data;
+    console.log(widgets2);
+        })
+        .error(function (e) {
+          console.log(e);
+        });
+        return widgets2;
+    }
+    var widget3 = getWidgets();
+
+    console.log(widget3);
+    var $dash = this;
+    $dash.items = ['item1', 'item2', 'item3'];
+
+    $dash.open = function (size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
@@ -17,19 +36,19 @@
         ariaDescribedBy: 'modal-body',
         templateUrl: 'myModalContent.html',
         controller: 'utilityModalCtrl',
-        controllerAs: '$ctrl',
+        controllerAs: '$dash',
         size: size,
         appendTo: parentElem,
         resolve: {
           items: function () {
-            return $ctrl.items;
+            return $dash.items;
           }
         }
       });
     };
 
-    $ctrl.onLongPress = function () {
-      $ctrl.open();
+    $dash.onLongPress = function () {
+      $dash.open();
     };
 
     $scope.widgets = [
@@ -101,6 +120,15 @@
                             icon: "img/CNN.png" },
     ];
 
-    $scope.gridOptions = gridsterOptions; 
+    var s = JSON.stringify($scope.widgets);
+    var vm = this;
+
+    vm.credentials = {
+      name : "",
+      email : "",
+      widgets : "",
+      password : ""
+    };
   };
+
 })();

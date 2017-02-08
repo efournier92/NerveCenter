@@ -2,17 +2,17 @@
 
   angular
     .module('nerveCenter')
-    .controller('profileCtrl', profileCtrl);
+    .controller('widgetsCtrl', widgetsCtrl);
 
-  profileCtrl.$inject = ['$location', 'meanData'];
-  function profileCtrl($location, meanData) {
+  widgetsCtrl.$inject = ['$location', 'meanData'];
+  function widgetsCtrl($location, meanData) {
     var vm = this;
 
     vm.user = {};
 
     meanData.getProfile()
       .success(function(data) {
-        vm.user = data;
+        vm.user.widgets = data;
       })
       .error(function (e) {
         console.log(e);

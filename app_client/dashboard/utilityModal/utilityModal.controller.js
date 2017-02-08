@@ -5,17 +5,17 @@
     .controller('utilityModalCtrl', utilityModalCtrl);
   
   function utilityModalCtrl($uibModalInstance, items) {
-    var $ctrl = this;
-    $ctrl.items = items;
-    $ctrl.selected = {
-      item: $ctrl.items[0]
+    var $dash = this;
+    $dash.items = items;
+    $dash.selected = {
+      item: $dash.items[0]
     };
 
-    $ctrl.ok = function () {
-      $uibModalInstance.close($ctrl.selected.item);
+    $dash.ok = function () {
+      $uibModalInstance.close($dash.selected.item);
     };
 
-    $ctrl.cancel = function () {
+    $dash.cancel = function () {
       $uibModalInstance.dismiss('cancel');
     };
   };
