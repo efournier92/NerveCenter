@@ -17,6 +17,7 @@
       })
       .finally(function() {
         $scope.widgets = angular.fromJson($dash.widgets);
+        $scope.gridOptions = gridOptions;
       });
 
       $dash.open = function (size, parentSelector) {
