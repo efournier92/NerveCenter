@@ -19,8 +19,6 @@
         $scope.widgets = angular.fromJson($dash.widgets);
       });
 
-      $dash.items = ['item1', 'item2', 'item3'];
-
       $dash.open = function (size, parentSelector) {
         var parentElem = parentSelector ? 
           angular.element($document[0].querySelector('.modal-demo')) : undefined;
@@ -44,6 +42,5 @@
       $dash.onLongPress = function () {
         $dash.open();
       };
-
   };
 })();
