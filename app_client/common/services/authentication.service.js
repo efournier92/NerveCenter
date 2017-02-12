@@ -5,7 +5,7 @@
     .service('authentication', authentication);
 
   authentication.$inject = ['$http', '$window'];
-  function authentication($http, $window) {
+  function authentication ($http, $window) {
 
     var saveToken = function (token) {
       $window.localStorage['mean-token'] = token;
@@ -69,5 +69,6 @@
       logout : logout
     };
   }
+
 
 })();

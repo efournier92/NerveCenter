@@ -1,4 +1,4 @@
-var gridOptions = {
+const gridsterOptions = {
   columns: 5,
   pushing: true,
   floating: true,

@@ -1,15 +1,15 @@
 (function () {
 
   angular
-    .module('nerveCenter')
-    .service('getWidgets', getWidgets);
+  .module('nerveCenter')
+  .service('getWidgets', getWidgets);
 
-  function getWidgets(ngResource, globalsService) {
-    var widgetsResource = ngResource("/api/widget", {},
-      {
-        "put": {"method": "PUT", "params": {"action": "Put"} }
-      });
+function getWidgets(ngResource, globalsService) {
+    var widgetsResource = ngResource("/api/config/:action", {},
+    {
+        "get": {"method": "GET", "params": {"action": "Get"} }
+    });
     return configResource;
-  };
+};
 
 })();

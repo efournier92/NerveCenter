@@ -15,6 +15,12 @@
       });
     };
 
+    register = function(user) {
+      return $http.post('/api/register', user).success(function(data){
+        saveToken(data.token);
+      });
+    };
+
     return {
       getProfile : getProfile
     };
