@@ -5,7 +5,7 @@
     .service('authentication', authentication);
 
   authentication.$inject = ['$http', '$window'];
-  function authentication ($http, $window) {
+  function authentication($http, $window) {
 
     var saveToken = function (token) {
       $window.localStorage['mean-token'] = token;
@@ -37,8 +37,10 @@
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
         return {
+          id : payload._id,
           email : payload.email,
-          name : payload.name
+          name : payload.name,
+          widgets : payload.widgets
         };
       }
     };
@@ -69,6 +71,5 @@
       logout : logout
     };
   }
-
 
 })();
