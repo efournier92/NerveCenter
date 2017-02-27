@@ -63,7 +63,6 @@ app.use(function(req, res, next) {
 
 // [SH] Catch unauthorised errors
 app.use(function (err, req, res, next) {
-  console.log("HIT", err);
   if (err.name === 'UnauthorizedError') {
     res.status(401);
     res.json({"message" : err.name + ": " + err.message});
@@ -72,7 +71,7 @@ app.use(function (err, req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'production') {
+if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {

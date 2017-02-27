@@ -1,7 +1,10 @@
-<button ng-click="saveWidgets()">Click me!</button>
+<h1>
+  {{this.widgetList}}
+</h1>
+
 <div gridster="gridOptions">
   <ul>
-    <li gridster-item="item" ng-repeat="widget in widgets">
+    <li gridster-item="item" ng-repeat="widget in this.widgets">
       <a href={{widget.url}}> 
         <img src={{widget.icon}} alt="widget" style="width:100%;height:100%">
     </li>
@@ -12,13 +15,13 @@
   <div class="modal-header">
     <h3 class="modal-title" id="modal-title">Add a Widget</h3>
   </div>
-  <div class="modal-body">
-<form ng-submit="saveWidget()" ng-controller="dashboardCtrl">
-  URL: <input type="text" ng-model="widgetUrl" name="widgetUrl" /><br />
-  ICN: <input type="text" ng-model="widgetIcon" name="widgetIcon" /><br />
-  ROW: <input type="number" ng-model="widgetRow" name="widgetRow" /><br />
-  COL: <input type="number" ng-model="widgetCol" name="widgetCol" /><br />
-  <input type="submit" id="submit" value="Submit" />
-</form>
+  <div class="modal-body" id="modal-body">
+    Url : <input type="text" ng-model="widgetUrl"><br />
+    Icon Url : <input type="text" ng-model="widgetIcon"><br />
+    Col: <input type="text" ng-model="widgetCol"><br />
+    Row: <input type="text" ng-model="widgetRow">
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$dash.saveWidget()">OK</button>
   </div>
 <script>
