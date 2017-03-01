@@ -6,13 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
-// [SH] Bring in the data model
+// Data Model
 require('./app_api/models/db');
-// [SH] Bring in the Passport config after model is defined
+// Passport Config (after model is defined)
 require('./app_api/config/passport');
-
-
-// [SH] Bring in the routes for the API (delete the default routes)
+// API Routes
 var routesApi = require('./app_api/routes/index');
 
 var app = express();
