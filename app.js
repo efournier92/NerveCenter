@@ -25,8 +25,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Static Resources
 app.use(express.static(path.join(__dirname, 'public')));
-// [SH] Set the app_client folder to serve static resources
 app.use(express.static(path.join(__dirname, 'app_client')));
 
 // [SH] Initialise Passport before using the route middleware
