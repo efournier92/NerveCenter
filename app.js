@@ -1,17 +1,9 @@
-/*
-
-  There are some minor modifications to the default Express setup
-  Each is commented and marked with [SH] to make them easy to find
-
- */
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// [SH] Require Passport
 var passport = require('passport');
 
 // [SH] Bring in the data model
@@ -63,6 +55,7 @@ app.use(function(req, res, next) {
 
 // [SH] Catch unauthorised errors
 app.use(function (err, req, res, next) {
+  console.log("HIT", err);
   if (err.name === 'UnauthorizedError') {
     res.status(401);
     res.json({"message" : err.name + ": " + err.message});
@@ -71,7 +64,7 @@ app.use(function (err, req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if (app.get('env') === 'production') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
