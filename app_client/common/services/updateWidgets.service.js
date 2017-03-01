@@ -5,9 +5,9 @@
   .service('getWidgets', getWidgets);
 
 function getWidgets(ngResource, globalsService) {
-    var widgetsResource = ngResource("/api/config/:action", {},
+    var widgetsResource = ngResource("/api/profile/:action", {},
     {
-        "get": {"method": "GET", "params": {"action": "Get"} }
+        "put": {"method": "PUT", "params": {"action": "Put"} }
     });
     return configResource;
 };
