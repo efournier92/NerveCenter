@@ -7,7 +7,7 @@ module.exports.updateWidgets = function(req, res) {
       "message" : "UnauthorizedError: private profile"
     });
   } else {
-    User.findById(req.payload._id)
+    User.findById(req.payload.email)
     .exec(function(err, user) {
       if (err)
         res.send(err);
