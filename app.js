@@ -10,17 +10,17 @@ var passport = require('passport');
 require('./app_api/models/db');
 // Passport Config (after model is defined)
 require('./app_api/config/passport');
+
 // API Routes
 var routesApi = require('./app_api/routes/index');
-
+// Express
 var app = express();
 
-// view engine setup
+// View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/NerveCenter.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
