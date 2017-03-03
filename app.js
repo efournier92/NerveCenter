@@ -1,4 +1,6 @@
-var express = require('express');
+//////////////////////////////////////////////////////////////////////
+// DEPENDENCIES
+//////////////////////////////////////////////////////////////////////
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -13,7 +15,9 @@ require('./app_api/config/passport');
 
 // API Routes
 var routesApi = require('./app_api/routes/index');
-// Express
+//////////////////////////////////////////////////////////////////////
+// EXPRESS
+//////////////////////////////////////////////////////////////////////
 var app = express();
 
 // View Engine Setup
@@ -30,39 +34,33 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-// [SH] Initialise Passport before using the route middleware
+// Initialise Passport (before using route middleware)
 app.use(passport.initialize());
 
-// [SH] Use the API routes when path starts with /api
+// Use API routes when path starts with /api
 app.use('/api', routesApi);
-
-// [SH] Otherwise render the index.html page for the Angular SPA
-// [SH] This means we don't have to map all of the SPA routes in Express
+// Else, render the index.html page for the Angular SPA
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
-
-
-// catch 404 and forward to error handler
+//////////////////////////////////////////////////////////////////////
+// ERROR HANDLERS
+//////////////////////////////////////////////////////////////////////
+// Forward 404 to Error Handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
-// error handlers
-
-// [SH] Catch unauthorised errors
+// Unauthorised Errors
 app.use(function (err, req, res, next) {
-  console.log("HIT", err);
   if (err.name === 'UnauthorizedError') {
     res.status(401);
     res.json({"message" : err.name + ": " + err.message});
   }
 });
 
-// development error handler
-// will print stacktrace
+// Dev Error Handler
 if (app.get('env') === 'production') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -73,8 +71,7 @@ if (app.get('env') === 'production') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// Prod Error Handler
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
