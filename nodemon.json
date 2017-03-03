@@ -2,3 +2,4 @@
   "verbose": true,
   "ignore": ["public/*", "app_client/*"]
 }
+
