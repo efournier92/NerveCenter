@@ -1,8 +1,8 @@
-(function () {
+(function() {
 
   angular
-  .module('nerveCenter')
-  .controller('loginCtrl', loginCtrl);
+    .module('nerveCenter')
+    .controller('loginCtrl', loginCtrl);
 
   loginCtrl.$inject = ['$location', 'authentication'];
   function loginCtrl($location, authentication) {
@@ -13,7 +13,7 @@
       password : ""
     };
 
-    vm.onSubmit = function () {
+    vm.onSubmit = function() {
       authentication
         .login(vm.credentials)
         .error(function(err){
@@ -23,7 +23,6 @@
           $location.path('profile');
         });
     };
-
   }
-
 })();
+
