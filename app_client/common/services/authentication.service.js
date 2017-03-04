@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
   angular
     .module('nerveCenter')
@@ -7,11 +7,11 @@
   authentication.$inject = ['$http', '$window'];
   function authentication($http, $window) {
 
-    var saveToken = function (token) {
+    var saveToken = function(token) {
       $window.localStorage['mean-token'] = token;
     };
 
-    var getToken = function () {
+    var getToken = function() {
       return $window.localStorage['mean-token'];
     };
 
@@ -73,3 +73,4 @@
   }
 
 })();
+
