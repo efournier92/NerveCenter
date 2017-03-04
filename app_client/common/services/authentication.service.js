@@ -2,9 +2,9 @@
 
   angular
     .module('nerveCenter')
-    .service('authentication', authentication);
+    .service('auth', auth);
 
-  authentication.$inject = ['$http', '$window'];
+  auth.$inject = ['$http', '$window'];
   function authentication($http, $window) {
 
     var saveToken = function(token) {

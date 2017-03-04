@@ -4,13 +4,13 @@
     .module('nerveCenter')
     .service('meanData', meanData);
 
-  meanData.$inject = ['$http', 'authentication'];
-  function meanData($http, authentication) {
+  meanData.$inject = ['$http', 'auth'];
+  function meanData($http, auth) {
 
     var getProfile = function() {
       return $http.get('/api/profile', {
         headers: {
-          Authorization: 'Bearer '+ authentication.getToken()
+          Authorization: 'Bearer '+ auth.getToken()
         }
       });
     };
@@ -18,21 +18,21 @@
     var updateWidgets = function() {
       $http({
         method: 'PUT',
-        url: '/api/profile/58b243dc0c75e6925e981268',
+        url: '/api/profile/' + auth.currentUser().id,
         headers: {
-          Authorization: 'Bearer ' + authentication.getToken()
+          Authorization: 'Bearer ' + auth.getToken()
         },
         data: {'STRING!': 'string'} 
       }).then(function successCallback(response) {
         console.log("OK")
       }, function errorCallback(response) {
-        if(response.status = 401){ // If you have set 401
-          console.log("ohohoh")
+        if(response.status = 401){
+          console.error("UNAUTHORIZED USER")
         }
       });
-      return $http.put('/api/profile/' + authentication.currentUser().id, {
+      return $http.put('/api/profile/' + auth.currentUser().id, {
         headers: {
-          Authorization: 'Bearer '+ authentication.getToken()
+          Authorization: 'Bearer '+ auth.getToken()
         }
       });
     };
@@ -44,3 +44,4 @@
   }
 
 })();
+
