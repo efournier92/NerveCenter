@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
   angular
     .module('nerveCenter')
@@ -13,3 +13,4 @@
   };
 
 })();
+
