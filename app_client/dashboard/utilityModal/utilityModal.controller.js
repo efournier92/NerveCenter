@@ -7,13 +7,14 @@
   function utilityModalCtrl($uibModalInstance, items) {
     var $dash = this;
 
-    $dash.ok = function () {
+    $dash.ok = function() {
       $uibModalInstance.close($dash.selected.item);
     };
 
-    $dash.cancel = function () {
+    $dash.cancel = function() {
       $uibModalInstance.dismiss('cancel');
     };
   };
 
 })();
+

@@ -9,6 +9,7 @@
         close: '&',
         dismiss: '&'
       },
+
       controller: function () {
         var $dash = this;
 
