@@ -1,6 +1,8 @@
 (function () {
 
-  angular.module('nerveCenter', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'gridster', 'pr.longpress']);
+  angular.module('nerveCenter',
+    ['ngRoute', 'ngAnimate', 'ngSanitize',
+     'ui.bootstrap', 'gridster', 'pr.longpress']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
@@ -26,13 +28,13 @@
       })
       .otherwise({redirectTo: '/'});
 
-    // use the HTML5 History API
+    // HTML5 History API
     $locationProvider.html5Mode(true);
   }
 
-  function run($rootScope, $location, $http, authentication) {
+  function run($rootScope, $location, $http, auth) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-      if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
+      if ($location.path() === '/profile' && !auth.isLoggedIn()) {
         $location.path('/');
       }
     });
@@ -41,6 +43,7 @@
   angular
     .module('nerveCenter')
     .config(['$routeProvider', '$locationProvider', config])
-    .run(['$rootScope', '$location', '$uibModal', 'authentication', run]);
+    .run(['$rootScope', '$location', '$uibModal', 'auth', run]);
 
 })();
+
