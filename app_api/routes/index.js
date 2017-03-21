@@ -8,9 +8,9 @@ var auth = jwt({
 });
 
   console.log("HIT",auth);
-var ctrlProfile = require('../controllers/profile');
+var ctrlProfile = require('../controllers/user.model.js');
 // var ctrlWidget = require('../controllers/widget');
-var ctrlAuth = require('../controllers/authentication');
+var ctrlAuth = require('../controllers/auth.controller.js');
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);

@@ -59,7 +59,6 @@ app.use(function (err, req, res, next) {
     res.json({"message" : err.name + ": " + err.message});
   }
 });
-
 // Dev Error Handler
 if (app.get('env') === 'production') {
     app.use(function(err, req, res, next) {
@@ -70,7 +69,6 @@ if (app.get('env') === 'production') {
         });
     });
 }
-
 // Prod Error Handler
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
