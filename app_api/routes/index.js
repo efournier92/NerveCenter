@@ -7,21 +7,17 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-var ctrlProfile = require('../controllers/user.model.js');
+var ctrlUser = require('../controllers/user.controller');
 // var ctrlWidget = require('../controllers/widget');
 var ctrlAuth = require('../controllers/auth.controller.js');
 
-// profile
-router.get('/profile', auth, ctrlProfile.profileRead);
-// widget 
-router.put('/profile/:id', auth, ctrlProfile.updateWidgets);
+// User API
+router.get('/user', auth, ctrlUser.profileRead);
 
-// router.put('/profile/:id', function (req, res) {
-//   // var id = req.payload._id;
-//   console.log("PUT WORKS!");
-// });
+// User Widget API
+router.put('/user/:id', auth, ctrlUser.updateWidgets);
 
-// authentication
+// Auth API 
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
