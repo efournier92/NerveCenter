@@ -9,12 +9,12 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 // Data Model
-require('./app_api/models/db');
+require('./app_api/config/db.js');
 // Passport Config (after model is defined)
-require('./app_api/config/passport');
+require('./app_api/config/passport.js');
 
 // API Routes
-var routesApi = require('./app_api/routes/index');
+var routesApi = require('./app_api/routes/index.js');
 //////////////////////////////////////////////////////////////////////
 // EXPRESS
 //////////////////////////////////////////////////////////////////////

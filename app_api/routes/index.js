@@ -7,7 +7,6 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-  console.log("HIT",auth);
 var ctrlProfile = require('../controllers/user.model.js');
 // var ctrlWidget = require('../controllers/widget');
 var ctrlAuth = require('../controllers/auth.controller.js');
@@ -27,3 +26,4 @@ router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
 module.exports = router;
+
