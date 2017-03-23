@@ -1,8 +1,7 @@
 (function () {
-
   angular.module('nerveCenter',
     ['ngRoute', 'ngAnimate', 'ngSanitize',
-     'ui.bootstrap', 'gridster', 'pr.longpress']);
+      'ui.bootstrap', 'gridster', 'pr.longpress']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
@@ -21,7 +20,7 @@
         controller: 'loginCtrl',
         controllerAs: 'vm'
       })
-      .when('/profile', {
+      .when('/user', {
         templateUrl: '/profile/profile.view.html',
         controller: 'profileCtrl',
         controllerAs: 'vm'
@@ -39,11 +38,10 @@
       }
     });
   }
-  
+
   angular
     .module('nerveCenter')
     .config(['$routeProvider', '$locationProvider', config])
     .run(['$rootScope', '$location', '$uibModal', 'auth', run]);
 
 })();
-

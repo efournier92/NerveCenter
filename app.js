@@ -1,6 +1,7 @@
-//////////////////////////////////////////////////////////////////////
+////////////////////
 // DEPENDENCIES
-//////////////////////////////////////////////////////////////////////
+////////////////////
+var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,22 +10,23 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 // Data Model
-require('./app_api/config/db.js');
+require('./app_api/config/db');
 // Passport Config (after model is defined)
-require('./app_api/config/passport.js');
+require('./app_api/config/passport');
 
 // API Routes
-var routesApi = require('./app_api/routes/index.js');
-//////////////////////////////////////////////////////////////////////
+var routesApi = require('./app_api/routes/index');
+
+////////////////////
 // EXPRESS
-//////////////////////////////////////////////////////////////////////
+////////////////////
 var app = express();
 
 // View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon(__dirname + '/public/NerveCenter.ico'));
+app.use(favicon(__dirname + '/public/logo.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,9 +45,10 @@ app.use('/api', routesApi);
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
-//////////////////////////////////////////////////////////////////////
+
+////////////////////
 // ERROR HANDLERS
-//////////////////////////////////////////////////////////////////////
+////////////////////
 // Forward 404 to Error Handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -77,9 +80,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 app.listen(8080);
 console.log("App listening on port 8080");
 
 module.exports = app;
-

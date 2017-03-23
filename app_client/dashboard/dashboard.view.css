@@ -1,0 +1,59 @@
+#widgetIcon {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#x-delete {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-header {
+  background-color: #231f20;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-header-div {
+  width: 25%;
+  text-align: center;
+}
+
+.modal-body {
+  background-color: #231f20;
+}
+
+.modal-body-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-form-icon-container {
+  padding-bottom: 10px;
+}
+
+.selected-icon-container {
+  text-align: center;
+}
+
+.selected-icon {
+  width: 60%;
+  height: 60%;
+}
+
+.gridster-modal {
+  max-height: 50vh;
+  overflow: scroll;
+}
+
+.gridster-modal-icon {
+  width: 100%;
+  height: 100%;
+}
+
