@@ -8,7 +8,7 @@
   function meanData($http, auth) {
 
     var getProfile = function() {
-      return $http.get('/api/profile', {
+      return $http.get('/api/user', {
         headers: {
           Authorization: 'Bearer '+ auth.getToken()
         }
@@ -18,7 +18,7 @@
     var updateWidgets = function() {
       $http({
         method: 'PUT',
-        url: '/api/profile/' + auth.currentUser().id,
+        url: '/api/user/' + auth.currentUser().id,
         headers: {
           Authorization: 'Bearer ' + auth.getToken()
         },
@@ -30,7 +30,7 @@
           console.error("UNAUTHORIZED USER")
         }
       });
-      return $http.put('/api/profile/' + auth.currentUser().id, {
+      return $http.put('/api/user/' + auth.currentUser().id, {
         headers: {
           Authorization: 'Bearer '+ auth.getToken()
         }

@@ -47,13 +47,13 @@
     $scope.update = function() {
       id = auth.currentUser().id;
       console.log(id);
-      $http.put('/api/profile/' + $scope.contact._id, $scope.contact)
+      $http.put('/api/user/' + $scope.contact._id, $scope.contact)
         .success(function(response) {
         refresh();
       })
     };
 
-    $dash.open = function (size, parentSelector) {
+    $dash.open = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
@@ -66,14 +66,14 @@
         size: size,
         appendTo: parentElem,
         resolve: {
-          items: function () {
+          items: function() {
             return $dash.items;
           }
         }
       });
     };
 
-    $dash.onLongPress = function () {
+    $dash.onLongPress = function() {
       $dash.open();
     };
   };
