@@ -4,8 +4,8 @@
     .module('nerveCenter')
     .controller('registerCtrl', registerCtrl);
 
-  registerCtrl.$inject = ['$location', 'auth'];
-  function registerCtrl($location, auth) {
+  registerCtrl.$inject = ['$location', 'authentication'];
+  function registerCtrl($location, authentication) {
     var vm = this;
 
     vm.credentials = {
@@ -16,7 +16,7 @@
 
     vm.onSubmit = function () {
       console.log('Submitting registration');
-      auth
+      authentication
         .register(vm.credentials)
         .error(function(err){
           alert(err);

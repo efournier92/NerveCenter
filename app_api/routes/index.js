@@ -7,18 +7,18 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-var userCtrl = require('../controllers/user.controller');
-var authCtrl = require('../controllers/auth.controller');
+var ctrlUser = require('../controllers/user.controller');
+var ctrlAuth = require('../controllers/auth.controller.js');
 
 // User API
-router.get('/user', auth, userCtrl.profileRead);
+router.get('/user', auth, ctrlUser.profileRead);
 
 // User Widget API
-router.put('/user', auth, userCtrl.updateWidgets);
+router.put('/user/:id', auth, ctrlUser.updateWidgets);
 
 // Auth API 
-router.post('/register', authCtrl.register);
-router.post('/login', authCtrl.login);
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
 
 module.exports = router;
 

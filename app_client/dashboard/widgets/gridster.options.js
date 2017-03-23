@@ -1,5 +1,5 @@
 var gridOptions = {
-  columns: 7,
+  columns: 5,
   pushing: true,
   floating: true,
   swapping: true,
@@ -11,17 +11,29 @@ var gridOptions = {
   sparse: false,
   isMobile: false,
   mobileBreakPoint: 600,
-  mobileModeEnabled: false,
+  mobileModeEnabled: true,
+  minColumns: 1,
+  minRows: 1,
+  maxRows: 100,
   defaultSizeX: 1,
   defaultSizeY: 1,
+  minSizeX: 1,
+  maxSizeX: null,
+  minSizeY: 1,
+  maxSizeY: null,
   resizable: {
     enabled: false,
+    handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
+    start: function(event, $element, widget) {},
+    resize: function(event, $element, widget) {},
+    stop: function(event, $element, widget) {}
   },
   draggable: {
     enabled: false,
-    stop: function(event, $element, widget) {
-      $scope.saveAfterDrag($element.scope().gridster.grid);
-    }
+    handle: '.my-class',
+    start: function(event, $element, widget) {},
+    drag: function(event, $element, widget) {},
+    stop: function(event, $element, widget) {}
   }
 };
 

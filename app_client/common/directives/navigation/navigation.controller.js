@@ -4,11 +4,11 @@
     .module('nerveCenter')
     .controller('navigationCtrl', navigationCtrl);
 
-  navigationCtrl.$inject = ['$location', 'auth'];
-  function navigationCtrl($location, auth) {
+  navigationCtrl.$inject = ['$location','authentication'];
+  function navigationCtrl($location, authentication) {
     var vm = this;
-    vm.isLoggedIn = auth.isLoggedIn();
-    vm.currentUser = auth.currentUser();
+    vm.isLoggedIn = authentication.isLoggedIn();
+    vm.currentUser = authentication.currentUser();
   }
 
 })();

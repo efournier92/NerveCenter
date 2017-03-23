@@ -4,7 +4,7 @@ var User = mongoose.model('User');
 module.exports.profileRead = function(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
-      "message" : "Unauthorized: Private Profile"
+      "message" : "UNAUTHORIZED: Private Profile"
     });
   } else {
     User.findById(req.payload._id)
@@ -17,14 +17,13 @@ module.exports.profileRead = function(req, res) {
 module.exports.updateWidgets = function(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
-      "message" : "Unauthorized: Private Profile"
+      "message" : "UNAUTHORIZED: Private Profile"
     });
   } else {
     User.findById(req.payload._id, function(err, user) {
       if (err) return handleError(err);
-      widgetString = JSON.stringify(req.body);
-      user.widgets = widgetString;
 
+      user.widgets = req.payload._id;
       user.save(function(err, updatedUser) {
         if (err) return handleError(err);
         res.send(updatedUser);
@@ -32,3 +31,4 @@ module.exports.updateWidgets = function(req, res) {
     });
   };
 };
+

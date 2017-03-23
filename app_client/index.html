@@ -8,12 +8,10 @@
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/lib/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
   <link rel="stylesheet" href="/lib/angular-gridster/dist/angular-gridster.css">
-  <link rel="stylesheet" type="text/css" href="lib/ms-Dropdown/css/msdropdown/dd.css" />
-  <link rel="stylesheet" href="/dashboard/dashboard.view.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body ng-view>
+<body ng-view on-long-press="$ctrl.onLongPress()" long-press-duration="2000">
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular/angular-route.min.js"></script>
   <script src="lib/angular/angular-sanitize.min.js"></script>

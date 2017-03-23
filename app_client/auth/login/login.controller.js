@@ -4,18 +4,18 @@
     .module('nerveCenter')
     .controller('loginCtrl', loginCtrl);
 
-  loginCtrl.$inject = ['$location', 'auth'];
-  function loginCtrl($location, auth) {
-    var $reg = this;
+  loginCtrl.$inject = ['$location', 'authentication'];
+  function loginCtrl($location, authentication) {
+    var vm = this;
 
-    $reg.credentials = {
+    vm.credentials = {
       email : "",
       password : ""
     };
 
-    $reg.onSubmit = function() {
-      auth
-        .login($reg.credentials)
+    vm.onSubmit = function() {
+      authentication
+        .login(vm.credentials)
         .error(function(err){
           alert(err);
         })
@@ -24,6 +24,5 @@
         });
     };
   }
-
 })();
 
