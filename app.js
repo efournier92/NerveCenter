@@ -16,6 +16,7 @@ require('./app_api/config/passport');
 
 // API Routes
 var routesApi = require('./app_api/routes/index');
+
 ////////////////////
 // EXPRESS
 ////////////////////
@@ -25,7 +26,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon(__dirname + '/public/NerveCenter.ico'));
+app.use(favicon(__dirname + '/public/NerveCenter.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,6 +45,7 @@ app.use('/api', routesApi);
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
+
 ////////////////////
 // ERROR HANDLERS
 ////////////////////
