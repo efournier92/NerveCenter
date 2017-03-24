@@ -8,7 +8,7 @@ var auth = jwt({
 });
 
 var ctrlUser = require('../controllers/user.controller');
-var ctrlAuth = require('../controllers/auth.controller.js');
+var ctrlAuth = require('../controllers/auth.controller');
 
 // User API
 router.get('/user', auth, ctrlUser.profileRead);
