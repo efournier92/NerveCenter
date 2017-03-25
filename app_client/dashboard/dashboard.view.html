@@ -1,9 +1,9 @@
-<select name="webmenu" id="webmenu">
-  <!-- <div ng-repeat="icon in icons"> -->
+<!-- <select name="webmenu" id="webmenu"> -->
+<!--   <option ng-repeat="icon in icons" value="{{icon.name}}" title="img/{{icon.img}}.png"></option> -->
+<!-- </select> -->
 
-
-    <option value="calendar" title="http://www.abe.co.nz/edit/image_cache/Hamach_300x60c0.JPG"></option>
-  <!-- </div> -->
+<select ng-model="selectedCar">
+  <option ng-repeat="x in icons">{{x.name}}</option>
 </select>
 
 <button ng-click="saveWidgets()">Click me!</button>

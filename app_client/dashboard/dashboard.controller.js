@@ -12,12 +12,13 @@
       console.log("changed");
     }, true);
     $scope.icons = [
-      {img: "Wiki"},
-      {img: "Wiki"},
-      {img: "Wiki"},
-      {img: "Wiki"},
-      {img: "Wiki"}
+      {name: "wiki", img: "Wiki"},
+      {name: "BNK", img: "Bank"},
+      {name: "GitHub", img: "GitHub"},
+      {name: "Notes", img: "Notes"}
     ];
+
+    // jQuery("body select").msDropDown();
 
     function updateWidgets() {
       meanData.getProfile()
