@@ -1,6 +1,10 @@
-<select ng-model="icons">
-    <option ng-repeat="icon in icons" data-image="img/{{icon.img}}.png"></option>
-<select>
+<select name="webmenu" id="webmenu">
+  <!-- <div ng-repeat="icon in icons"> -->
+
+
+    <option value="calendar" title="http://www.abe.co.nz/edit/image_cache/Hamach_300x60c0.JPG"></option>
+  <!-- </div> -->
+</select>
 
 <button ng-click="saveWidgets()">Click me!</button>
 <div gridster="gridOptions">
@@ -13,7 +17,7 @@
 </div>
 
 <script type="text/ng-template" id="myModalContent.html">
-  <div class="modal-header">
+<div class="modal-header">
     <h3 class="modal-title" id="modal-title">Add a Widget</h3>
   </div>
   <div class="modal-body">

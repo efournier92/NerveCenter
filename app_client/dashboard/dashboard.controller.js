@@ -11,7 +11,6 @@
     $scope.$watch('widgets', function(widgets){
       console.log("changed");
     }, true);
-    
     $scope.icons = [
       {img: "Wiki"},
       {img: "Wiki"},
@@ -57,8 +56,8 @@
       console.log(id);
       $http.put('/api/user/' + $scope.contact._id, $scope.contact)
         .success(function(response) {
-        refresh();
-      })
+          refresh();
+        })
     };
 
     $dash.open = function(size, parentSelector) {
