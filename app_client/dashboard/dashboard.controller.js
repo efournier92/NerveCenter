@@ -11,6 +11,27 @@
     $scope.$watch('widgets', function(widgets){
       console.log("changed");
     }, true);
+
+var myOptionArray = [
+        {
+            text: 'Carl Sagan',
+            image: 'img/Drive.png',
+            value: 0,
+        },
+        {
+            text: 'Stephen Hawking',
+            image: 'img/BNK.png',
+            value: 1,
+        },
+        {
+            text: 'Michio Kaku',
+            image: 'img/Drive.png',
+            value: 2,
+        }
+];
+$scope.logIt = function(url) {
+  console.log("logged: ", url);
+}
     $scope.icons = [
       {name: "wiki", img: "Wiki"},
       {name: "BNK", img: "Bank"},

@@ -11,7 +11,7 @@ var gridOptions = {
   sparse: false,
   isMobile: false,
   mobileBreakPoint: 600,
-  mobileModeEnabled: true,
+  mobileModeEnabled: false,
   minColumns: 1,
   minRows: 1,
   maxRows: 100,
