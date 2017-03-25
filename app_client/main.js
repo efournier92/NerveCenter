@@ -21,7 +21,7 @@
         controller: 'loginCtrl',
         controllerAs: 'vm'
       })
-      .when('/profile', {
+      .when('/user', {
         templateUrl: '/profile/profile.view.html',
         controller: 'profileCtrl',
         controllerAs: 'vm'
@@ -39,11 +39,10 @@
       }
     });
   }
-  
+
   angular
     .module('nerveCenter')
     .config(['$routeProvider', '$locationProvider', config])
     .run(['$rootScope', '$location', '$uibModal', 'auth', run]);
 
 })();
-

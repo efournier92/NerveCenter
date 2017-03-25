@@ -1,3 +1,7 @@
+<select ng-model="icons">
+    <option ng-repeat="icon in icons" data-image="img/{{icon.img}}.png"></option>
+<select>
+
 <button ng-click="saveWidgets()">Click me!</button>
 <div gridster="gridOptions">
   <ul>

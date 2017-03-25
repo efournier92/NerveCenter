@@ -11,6 +11,14 @@
     $scope.$watch('widgets', function(widgets){
       console.log("changed");
     }, true);
+    
+    $scope.icons = [
+      {img: "Wiki"},
+      {img: "Wiki"},
+      {img: "Wiki"},
+      {img: "Wiki"},
+      {img: "Wiki"}
+    ];
 
     function updateWidgets() {
       meanData.getProfile()
