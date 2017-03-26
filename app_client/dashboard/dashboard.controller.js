@@ -15,14 +15,6 @@
 $scope.logIt = function(url) {
   console.log("logged: ", url);
 }
-    $scope.icons = [
-      {name: "wiki", img: "Wiki"},
-      {name: "BNK", img: "Bank"},
-      {name: "GitHub", img: "GitHub"},
-      {name: "Notes", img: "Notes"}
-    ];
-
-    // jQuery("body select").msDropDown();
 
     function updateWidgets() {
       meanData.getProfile()
