@@ -12,9 +12,9 @@
       console.log("changed");
     }, true);
 
-$scope.logIt = function(url) {
-  console.log("logged: ", url);
-}
+    $scope.selectIcon = function(iconUrl) {
+      $scope.selectedIcon = iconUrl;
+    }
 
     function updateWidgets() {
       meanData.getProfile()

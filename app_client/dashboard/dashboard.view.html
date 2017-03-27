@@ -20,11 +20,12 @@
       ROW: <input type="number" ng-model="widgetRow" name="widgetRow" /><br />
       COL: <input type="number" ng-model="widgetCol" name="widgetCol" /><br />
 
+        <img src={{selectedIcon}} alt="widget" style="width:100%;height:100%">
 <div gridster="gridOptions">
   <ul>
-    <li gridster-item="item" ng-repeat="widget in widgets">
-      <ng-click ng-click="logIt(widget.url);"> 
-        <img src={{widget.icon}} alt="widget" style="width:100%;height:100%">
+    <li gridster-item="item" ng-repeat="icon in allIcons">
+      <ng-click ng-click="selectIcon(icon.icon);"> 
+        <img src={{icon.icon}} alt="widget" style="width:100%;height:100%">
         </ng-click>
     </li>
   </ul>
