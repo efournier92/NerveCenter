@@ -31,7 +31,8 @@ $scope.logIt = function(url) {
     }
 
     updateWidgets();
-
+    $scope.allIcons = allIcons;
+    console.log($scope.allIcons);
     $scope.saveWidgets = function() {
       data = "{}";
 
