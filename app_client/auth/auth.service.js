@@ -39,7 +39,6 @@
         return {
           id : payload._id,
           email : payload.email,
-          name : payload.name,
           widgets : payload.widgets
         };
       }
