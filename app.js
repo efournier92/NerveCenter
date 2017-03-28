@@ -1,6 +1,5 @@
-///////////////////////////////////
+////////////////////
 // DEPENDENCIES
-//
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -17,9 +16,8 @@ require('./app_api/config/passport');
 // API Routes
 var routesApi = require('./app_api/routes/index');
 
-///////////////////////////////////
+////////////////////
 // EXPRESS
-//
 var app = express();
 
 // View Engine Setup
@@ -46,16 +44,14 @@ app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 
-///////////////////////////////////
+////////////////////
 // ERROR HANDLERS
-//
 // Forward 404 to Error Handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
 // Unauthorised Errors
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
@@ -63,7 +59,6 @@ app.use(function (err, req, res, next) {
     res.json({"message" : err.name + ": " + err.message});
   }
 });
-
 // Dev Error Handler
 if (app.get('env') === 'production') {
     app.use(function(err, req, res, next) {
@@ -74,7 +69,6 @@ if (app.get('env') === 'production') {
         });
     });
 }
-
 // Prod Error Handler
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -84,10 +78,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
-///////////////////////////////////
-// SERVER
-//
 app.listen(8080);
 console.log("App listening on port 8080");
 
 module.exports = app;
+
