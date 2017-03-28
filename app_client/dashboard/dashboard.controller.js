@@ -11,9 +11,10 @@
     $scope.$watch('widgets', function(widgets){
       console.log("changed");
     }, true);
-    
-
       
+    $scope.allIcons = allIcons;
+    $scope.gridsterModalOptions = gridsterModalOptions;
+
     $scope.selectedIcon = "img/Drive.png";
     $scope.selectIcon = function(iconUrl) {
       $scope.selectedIcon = iconUrl;
@@ -34,8 +35,7 @@
     }
 
     updateWidgets();
-    $scope.allIcons = allIcons;
-    console.log($scope.allIcons);
+
     $scope.saveWidgets = function() {
       data = "{}";
 

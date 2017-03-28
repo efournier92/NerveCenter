@@ -1,21 +1,39 @@
-var allIcons = [
-  { icon:"img/BNK.png" },
-  { icon:"img/CNN.png" },
-  { icon:"img/Drive.png" },
-  { icon:"img/FreePress.png" },
-  { icon:"img/GitHub.png" },
-  { icon:"img/Google.png" },
-  { icon:"img/Image.png" },
-  { icon:"img/Indeed.png" },
-  { icon:"img/Launch.png" },
-  { icon:"img/Linked.png" },
-  { icon:"img/Notes.png" },
-  { icon:"img/ReadLater.png" },
-  { icon:"img/RTorrent.png" },
-  { icon:"img/Slack.png" },
-  { icon:"img/Tape.png" },
-  { icon:"img/Trend.png" },
-  { icon:"img/Tube.png" },
-  { icon:"img/Twitter.png" },
-  { icon:"img/Wiki.png" }
-];
+var gridOptions = {
+  columns: 5,
+  pushing: true,
+  floating: true,
+  swapping: true,
+  width: 'auto',
+  colWidth: 'auto',
+  rowHeight: 'match',
+  margins: [10, 10],
+  outerMargin: true,
+  sparse: false,
+  isMobile: false,
+  mobileBreakPoint: 600,
+  mobileModeEnabled: false,
+  minColumns: 1,
+  minRows: 1,
+  maxRows: 100,
+  defaultSizeX: 1,
+  defaultSizeY: 1,
+  minSizeX: 1,
+  maxSizeX: null,
+  minSizeY: 1,
+  maxSizeY: null,
+  resizable: {
+    enabled: false,
+    handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
+    start: function(event, $element, widget) {},
+    resize: function(event, $element, widget) {},
+    stop: function(event, $element, widget) {}
+  },
+  draggable: {
+    enabled: false,
+    handle: '.my-class',
+    start: function(event, $element, widget) {},
+    drag: function(event, $element, widget) {},
+    stop: function(event, $element, widget) {}
+  }
+};
+
