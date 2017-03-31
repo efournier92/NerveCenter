@@ -82,7 +82,7 @@
         })
     };
 
-    $dash.open = function(size, parentSelector) {
+    $dash.openMainModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
@@ -101,9 +101,29 @@
         }
       });
     };
+    
+    $scope.openLoginModal = function(size, parentSelector) {
+      var parentElem = parentSelector ? 
+        angular.element($document[0].querySelector('.modal-demo')) : undefined;
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'loginModal.html',
+        controller: 'utilityModalCtrl',
+        controllerAs: '$dash',
+        size: size,
+        appendTo: parentElem,
+        resolve: {
+          items: function() {
+            return $dash.items;
+          }
+        }
+      });
+    };
 
     $dash.onLongPress = function() {
-      $dash.open();
+      $dash.openLoginModal();
     };
   };
 

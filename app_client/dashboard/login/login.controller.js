@@ -6,16 +6,16 @@
 
   loginCtrl.$inject = ['$location', 'auth'];
   function loginCtrl($location, auth) {
-    var vm = this;
+    var $reg = this;
 
-    vm.credentials = {
+    $reg.credentials = {
       email : "",
       password : ""
     };
 
-    vm.onSubmit = function() {
+    $reg.onSubmit = function() {
       auth
-        .login(vm.credentials)
+        .login($reg.credentials)
         .error(function(err){
           alert(err);
         })
@@ -24,5 +24,6 @@
         });
     };
   }
+
 })();
 

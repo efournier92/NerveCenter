@@ -1,4 +1,5 @@
 <button ng-click="saveWidgets()">Click me!</button>
+<button ng-click="openLoginModal()">Login Modal</button>
 <div gridster="gridOptions">
   <ul>
     <li gridster-item="item" ng-repeat="widget in widgets">
@@ -17,9 +18,7 @@
       <div style="width:25%;text-align:center;">
         Export 
       </div>
-      <div style="width:25%;text-align:center;">
-        Import
-      </div>
+      <button type="button" class="btn btn-info" ng-click="openLoginModal()">Import</button>
       <div style="width:25%;text-align:center;">
         Sign Out
       </div>
@@ -48,4 +47,25 @@
       </div>
     </form>
   </div>
-<script>
+</script>
+
+
+<script type="text/ng-template" id="loginModal.html">
+    <div class="modal-header" style="background-color:#231f20;color:white;text-align:right;">
+      <button type="button" class="btn btn-info" ng-click="register()">Register</button>
+      </div>
+    </div>
+    <div class="modal-body" style="background-color: #231f20">
+      <form ng-submit="vm.onSubmit()">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign in!</button>
+      </form>
+  </div>
+</script>
