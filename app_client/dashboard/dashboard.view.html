@@ -18,7 +18,7 @@
       <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
       <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
       <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
-      <input type="submit" class="btn btn-info" value="Add Widget" />
+      <input type="submit" class="btn btn-info" value="Add Widget" ng-click="createWidget()" />
     </div>
     <div class="col-xs-6" style="text-align:center;">
         <img src={{selectedIcon}} alt="widget" style="width:60%;height:60%;">

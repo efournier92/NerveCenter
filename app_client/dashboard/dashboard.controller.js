@@ -15,7 +15,7 @@
     $scope.allIcons = allIcons;
     $scope.gridsterModalOptions = gridsterModalOptions;
 
-    $scope.selectedIcon = "img/Drive.png";
+    $scope.selectedIcon = "img/_blank.png";
     $scope.selectIcon = function(iconUrl) {
       $scope.selectedIcon = iconUrl;
     }
@@ -36,6 +36,15 @@
 
     updateWidgets();
 
+    $scope.createWidget = function(){
+      widgetUrl = $scope.widgetUrl;
+      widgetRow = $scope.widgetRow;
+      widgetCol = $scope.widgetCol;
+      if (!widgetUrl || !widgetRow || !widgetCol) {
+        console.log("ERROR");
+        return;
+      }
+    }
     $scope.saveWidgets = function() {
       data = "{}";
 
