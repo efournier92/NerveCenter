@@ -10,23 +10,21 @@
 </div>
 
 <script type="text/ng-template" id="myModalContent.html">
-<div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Add a Widget</h3>
-  </div>
-  <div class="modal-body">
+  <div class="modal-body" style="background-color: #231f20">
     <form ng-submit="saveWidget()" ng-controller="dashboardCtrl">
-    <div class="row">
+    background-color: #231f20;
+    <div class="row" style="padding-bottom:10px;">
     <div class="col-xs-6" style="display:flex;flex-direction:column;justify-content:space-between;">
       <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
       <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
       <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
-      <input type="submit" id="submit" value="Submit" />
+      <input type="submit" class="btn btn-info" value="Add Widget" />
     </div>
-    <div class="col-xs-6" style="text-align:right;">
+    <div class="col-xs-6" style="text-align:center;">
         <img src={{selectedIcon}} alt="widget" style="width:60%;height:60%;">
     </div>
     </div>
-<div gridster="gridsterModalOptions">
+<div gridster="gridsterModalOptions" style="max-height:50vh;overflow:scroll;">
   <ul>
     <li gridster-item="item" ng-repeat="icon in allIcons">
       <ng-click ng-click="selectIcon(icon.icon);"> 
