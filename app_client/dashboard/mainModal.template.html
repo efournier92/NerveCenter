@@ -1,0 +1,25 @@
+
+  <div class="modal-body" style="background-color: #231f20">
+    <form ng-submit="saveWidget()" ng-controller="dashboardCtrl">
+    <div class="row" style="padding-bottom:10px;">
+    <div class="col-xs-6" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
+      <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
+      <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
+      <input type="submit" class="btn btn-info" value="Add Widget" ng-click="createWidget()" />
+    </div>
+    <div class="col-xs-6" style="text-align:center;">
+        <img src={{selectedIcon}} alt="widget" style="width:60%;height:60%;">
+    </div>
+    </div>
+  <div gridster="gridsterModalOptions" style="max-height:50vh;overflow:scroll;">
+    <ul>
+      <li gridster-item="item" ng-repeat="icon in allIcons">
+        <ng-click ng-click="selectIcon(icon.icon);"> 
+          <img src={{icon.icon}} alt="widget" style="width:100%;height:100%">
+          </ng-click>
+      </li>
+    </ul>
+  </div>
+    </form>
+  </div>

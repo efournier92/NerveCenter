@@ -40,10 +40,22 @@
       widgetUrl = $scope.widgetUrl;
       widgetRow = $scope.widgetRow;
       widgetCol = $scope.widgetCol;
+      widgetIcon = $scope.selectedIcon;
       if (!widgetUrl || !widgetRow || !widgetCol) {
         console.log("ERROR");
         return;
       }
+
+      var newWidget = {
+        col: widgetCol,
+        icon: widgetIcon,
+        row: widgetRow,
+        sizeX: 1,
+        sizeY: 1,
+        url: widgetUrl 
+      }
+      $scope.widgets.push(newWidget);
+      console.log($scope.widgets);
     }
     $scope.saveWidgets = function() {
       data = "{}";
@@ -77,7 +89,7 @@
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
-        templateUrl: 'myModalContent.html',
+        templateUrl: 'mainModal.html',
         controller: 'utilityModalCtrl',
         controllerAs: '$dash',
         size: size,

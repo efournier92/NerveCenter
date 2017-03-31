@@ -9,30 +9,43 @@
   </ul>
 </div>
 
-<script type="text/ng-template" id="myModalContent.html">
-  <div class="modal-body" style="background-color: #231f20">
+<script type="text/ng-template" id="mainModal.html">
+    <div class="modal-header" style="background-color:#231f20;color:white;display:flex;flex-direction:row;">
+      <div style="width:25%;text-align:center;">
+        Rearrange 
+      </div>
+      <div style="width:25%;text-align:center;">
+        Export 
+      </div>
+      <div style="width:25%;text-align:center;">
+        Import
+      </div>
+      <div style="width:25%;text-align:center;">
+        Sign Out
+      </div>
+    </div>
+    <div class="modal-body" style="background-color: #231f20">
     <form ng-submit="saveWidget()" ng-controller="dashboardCtrl">
-    background-color: #231f20;
-    <div class="row" style="padding-bottom:10px;">
-    <div class="col-xs-6" style="display:flex;flex-direction:column;justify-content:space-between;">
-      <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
-      <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
-      <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
-      <input type="submit" class="btn btn-info" value="Add Widget" ng-click="createWidget()" />
-    </div>
-    <div class="col-xs-6" style="text-align:center;">
-        <img src={{selectedIcon}} alt="widget" style="width:60%;height:60%;">
-    </div>
-    </div>
-<div gridster="gridsterModalOptions" style="max-height:50vh;overflow:scroll;">
-  <ul>
-    <li gridster-item="item" ng-repeat="icon in allIcons">
-      <ng-click ng-click="selectIcon(icon.icon);"> 
-        <img src={{icon.icon}} alt="widget" style="width:100%;height:100%">
-        </ng-click>
-    </li>
-  </ul>
-</div>
+      <div class="row" style="padding-bottom:10px;">
+      <div class="col-xs-6" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
+        <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
+        <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
+        <input type="submit" class="btn btn-info" value="Add Widget" ng-click="createWidget()" />
+      </div>
+      <div class="col-xs-6" style="text-align:center;">
+          <img src={{selectedIcon}} alt="widget" style="width:60%;height:60%;">
+      </div>
+      </div>
+      <div gridster="gridsterModalOptions" style="max-height:50vh;overflow:scroll;">
+        <ul>
+          <li gridster-item="item" ng-repeat="icon in allIcons">
+            <ng-click ng-click="selectIcon(icon.icon);"> 
+              <img src={{icon.icon}} alt="widget" style="width:100%;height:100%">
+              </ng-click>
+          </li>
+        </ul>
+      </div>
     </form>
   </div>
 <script>
