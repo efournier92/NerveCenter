@@ -21,7 +21,6 @@
     }
 
     function updateWidgets() {
-
       meanData.getProfile()
         .success(function(data) {
           $dash.widgets = data.widgets;
@@ -36,7 +35,7 @@
     }
 
     $scope.saveWidgets = function() {
-      data = angular.toJson($scope.widgets);
+      data = $scope.widgets;
       meanData.updateWidgets(data)
         .success(function(data) {
           console.log("Success!: ", data)
@@ -52,12 +51,13 @@
 
     updateWidgets();
 
-    $scope.createWidget = function(){
-      widgetUrl = $scope.widgetUrl;
-      widgetRow = $scope.widgetRow;
-      widgetCol = $scope.widgetCol;
-      widgetIcon = $scope.selectedIcon;
+    $scope.createWidget = function() {
+      var widgetUrl = $scope.widgetUrl;
+      var widgetRow = $scope.widgetRow;
+      var widgetCol = $scope.widgetCol;
+      var widgetIcon = $scope.selectedIcon;
       if (!widgetUrl || !widgetRow || !widgetCol) {
+        //TODO: handle exception in UI
         console.log("ERROR");
         return;
       }
@@ -70,8 +70,9 @@
         sizeY: 1,
         url: widgetUrl 
       }
+
       $scope.widgets.push(newWidget);
-      console.log($scope.widgets);
+      $scope.saveWidgets();
     }
 
     $scope.update = function() {
