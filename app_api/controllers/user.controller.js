@@ -15,6 +15,7 @@ module.exports.profileRead = function(req, res) {
 };
 
 module.exports.updateWidgets = function(req, res) {
+  debugger;
   if (!req.payload._id) {
     res.status(401).json({
       "message" : "UNAUTHORIZED: Private Profile"

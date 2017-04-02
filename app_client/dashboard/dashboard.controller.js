@@ -21,6 +21,7 @@
     }
 
     function updateWidgets() {
+
       meanData.getProfile()
         .success(function(data) {
           $dash.widgets = data.widgets;
@@ -36,8 +37,7 @@
 
     $scope.saveWidgets = function() {
       data = angular.toJson($scope.widgets);
-      console.log(data);
-      meanData.updateWidgets()
+      meanData.updateWidgets(data)
         .success(function(data) {
           console.log("Success!: ", data)
         })
