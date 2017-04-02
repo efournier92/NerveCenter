@@ -1,5 +1,6 @@
 ////////////////////
 // DEPENDENCIES
+////////////////////
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -18,6 +19,7 @@ var routesApi = require('./app_api/routes/index');
 
 ////////////////////
 // EXPRESS
+////////////////////
 var app = express();
 
 // View Engine Setup
@@ -46,6 +48,7 @@ app.use(function(req, res) {
 
 ////////////////////
 // ERROR HANDLERS
+////////////////////
 // Forward 404 to Error Handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -77,7 +80,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 app.listen(8080);
 console.log("App listening on port 8080");
 

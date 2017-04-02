@@ -26,6 +26,7 @@
           $dash.widgets = data.widgets;
         })
         .error(function(e) {
+          $scope.openLoginModal();
           console.log(e);
         })
         .finally(function() {
