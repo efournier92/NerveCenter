@@ -9,7 +9,7 @@
 
     $dash.widgets = {};
     $scope.$watch('widgets', function(widgets){
-      console.log("changed");
+      console.log("changed:", $scope.widgets);
     }, true);
       
     $scope.allIcons = allIcons;
@@ -25,13 +25,28 @@
         .success(function(data) {
           $dash.widgets = data.widgets;
         })
-        .error(function(e) {
+        .error(function() {
           $scope.openLoginModal();
-          console.log(e);
         })
         .finally(function() {
           $scope.widgets = angular.fromJson($dash.widgets);
           $scope.gridOptions = gridOptions;
+        });
+    }
+
+    $scope.saveWidgets = function() {
+      data = angular.toJson($scope.widgets);
+      console.log(data);
+      meanData.updateWidgets()
+        .success(function(data) {
+          console.log("Success!: ", data)
+        })
+        .error(function(e) {
+          console.log(e);
+        })
+        .finally(function() {
+          // $scope.widgets = angular.fromJson($dash.widgets);
+          // $scope.gridOptions = gridOptions;
         });
     }
 
@@ -58,21 +73,6 @@
       $scope.widgets.push(newWidget);
       console.log($scope.widgets);
     }
-    $scope.saveWidgets = function() {
-      data = "{}";
-
-      meanData.updateWidgets()
-        .success(function(data) {
-          $dash.widgets = data.widgets;
-        })
-        .error(function(e) {
-          console.log(e);
-        })
-        .finally(function() {
-          // $scope.widgets = angular.fromJson($dash.widgets);
-          // $scope.gridOptions = gridOptions;
-        });
-    }
 
     $scope.update = function() {
       id = auth.currentUser().id;
@@ -83,7 +83,7 @@
         })
     };
 
-    $dash.openMainModal = function(size, parentSelector) {
+    $scope.openMainModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
@@ -102,7 +102,7 @@
         }
       });
     };
-    
+
     $scope.openLoginModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
@@ -124,7 +124,7 @@
     };
 
     $dash.onLongPress = function() {
-      $dash.openLoginModal();
+      $scope.openMainModal();
     };
   };
 

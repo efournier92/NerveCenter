@@ -1,5 +1,4 @@
 <button ng-click="saveWidgets()">Click me!</button>
-<button ng-click="openLoginModal()">Login Modal</button>
 <div gridster="gridOptions">
   <ul>
     <li gridster-item="item" ng-repeat="widget in widgets">
@@ -24,7 +23,7 @@
       </div>
     </div>
     <div class="modal-body" style="background-color: #231f20">
-    <form ng-submit="saveWidget()" ng-controller="dashboardCtrl">
+    <form ng-submit="saveWidgets()" ng-controller="dashboardCtrl">
       <div class="row" style="padding-bottom:10px;">
       <div class="col-xs-6" style="display:flex;flex-direction:column;justify-content:space-between;">
         <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
