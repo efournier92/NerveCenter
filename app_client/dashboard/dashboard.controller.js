@@ -7,7 +7,7 @@
   function dashboardCtrl($scope, $http, $location, $uibModal, $log, $document, $filter, meanData, auth) {
     var $dash = this;
 
-    $scope.deleteEnabled = true;
+    $scope.deleteEnabled = false;
 
     $dash.widgets = {};
     $scope.$watch('widgets', function(widgets){
@@ -78,6 +78,8 @@
     }
 
     $scope.deleteWidget = function(widget) {
+      $uibModalInstance.dismiss('cancel');
+      // $scope.deleteEnabled = true; 
       var index = $scope.widgets.indexOf(widget);
       $scope.widgets.splice(index, 1);
       $scope.saveWidgets();
@@ -92,16 +94,20 @@
         })
     };
 
+    $scope.closeModal = function() {
+      this.$close;
+      // $scope.modalInstance.dismiss();
+    };
+
     $scope.openMainModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
-      var modalInstance = $uibModal.open({
+      this.modalInstance = $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'mainModal.html',
-        controller: 'utilityModalCtrl',
-        controllerAs: '$dash',
+        controller: 'dashboardCtrl',
         size: size,
         appendTo: parentElem,
         resolve: {
