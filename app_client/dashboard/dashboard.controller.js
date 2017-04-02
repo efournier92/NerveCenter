@@ -4,10 +4,10 @@
     .module('nerveCenter')
     .controller('dashboardCtrl', dashboardCtrl);
 
-  function dashboardCtrl($scope, $http, $location, $uibModal, $log, $document, meanData, auth) {
+  function dashboardCtrl($scope, $http, $location, $uibModal, $log, $document, $filter, meanData, auth) {
     var $dash = this;
 
-    $scope.deleteEnabled = false;
+    $scope.deleteEnabled = true;
 
     $dash.widgets = {};
     $scope.$watch('widgets', function(widgets){
@@ -77,10 +77,9 @@
       $scope.saveWidgets();
     }
 
-    
-    $scope.deleteWidget = function() {
-
-      $scope.widgets.push(newWidget);
+    $scope.deleteWidget = function(widget) {
+      var index = $scope.widgets.indexOf(widget);
+      $scope.widgets.splice(index, 1);
       $scope.saveWidgets();
     }
 
