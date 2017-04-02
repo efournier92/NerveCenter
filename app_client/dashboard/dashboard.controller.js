@@ -7,6 +7,8 @@
   function dashboardCtrl($scope, $http, $location, $uibModal, $log, $document, meanData, auth) {
     var $dash = this;
 
+    $scope.deleteEnabled = false;
+
     $dash.widgets = {};
     $scope.$watch('widgets', function(widgets){
       console.log("changed:", $scope.widgets);
@@ -70,6 +72,13 @@
         sizeY: 1,
         url: widgetUrl 
       }
+
+      $scope.widgets.push(newWidget);
+      $scope.saveWidgets();
+    }
+
+    
+    $scope.deleteWidget = function() {
 
       $scope.widgets.push(newWidget);
       $scope.saveWidgets();

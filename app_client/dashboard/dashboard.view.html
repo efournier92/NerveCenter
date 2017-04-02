@@ -1,16 +1,31 @@
+<style>
+  #png1 {
+      position:absolute;
+      z-index:0;
+  }
+  
+  #png2 {
+      position:absolute;
+      z-index:1;
+  }
+</style>
+
 <button ng-click="saveWidgets()">Click me!</button>
 <div gridster="gridOptions">
   <ul>
     <li gridster-item="item" ng-repeat="widget in widgets">
       <ng-click ng-click="logIt(widget.url);"> 
-        <img src={{widget.icon}} alt="widget" style="width:100%;height:100%">
-        </ng-click>
+        <img id="png1" src={{widget.icon}} style="width:100%;height:100%;">
+        <img ng-show="deleteEnabled" id="png2" src=img/X_Delete.png style="width:100%;height:100%;">/
+        <!-- <img id="png1" src="http://upload.wikimedia.org/wikipedia/commons/7/7a/Basketball.png" /> -->
+        <!-- <img id="png2" src="http://upload.wikimedia.org/wikipedia/commons/5/5c/Torchlight_help.png" /> -->
+      </ng-click>
     </li>
   </ul>
 </div>
 
-<script type="text/ng-template" id="mainModal.html">
-    <div class="modal-header" style="background-color:#231f20;color:white;display:flex;flex-direction:row;">
+<scriid="png1"pt type="text/ng-template" id="mainModal.html">
+<div class="modal-header" style="background-color:#231f20;color:white;display:flex;flex-direction:row;">
       <div style="width:25%;text-align:center;">
         Rearrange 
       </div>
@@ -50,7 +65,7 @@
 
 
 <script type="text/ng-template" id="loginModal.html">
-    <div class="modal-header" style="background-color:#231f20;color:white;text-align:right;">
+<div class="modal-header" style="background-color:#231f20;color:white;text-align:right;">
       <button type="button" class="btn btn-info" ng-click="register()">Register</button>
       </div>
     </div>
