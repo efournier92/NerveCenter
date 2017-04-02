@@ -17,8 +17,8 @@ router.get('/user', auth, userCtrl.profileRead);
 router.put('/user', auth, userCtrl.updateWidgets);
 
 // Auth API 
-router.post('/register', ctrlAuth.register);
-router.post('/login', ctrlAuth.login);
+router.post('/register', authCtrl.register);
+router.post('/login', authCtrl.login);
 
 module.exports = router;
 
