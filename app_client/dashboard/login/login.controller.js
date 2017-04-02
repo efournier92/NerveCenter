@@ -15,7 +15,7 @@
 
     $reg.onSubmit = function() {
       auth
-        .login(.credentials)
+        .login($reg.credentials)
         .error(function(err){
           alert(err);
         })
@@ -24,5 +24,6 @@
         });
     };
   }
+
 })();
 

@@ -110,8 +110,8 @@
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'loginModal.html',
-        controller: 'utilityModalCtrl',
-        controllerAs: '$dash',
+        controller: 'loginCtrl',
+        controllerAs: '$reg',
         size: size,
         appendTo: parentElem,
         resolve: {
