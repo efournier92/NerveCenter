@@ -1,18 +1,18 @@
 <style>
   #widgetIcon {
-      position: absolute;
-      z-index: 0;
-      height: 100%;
-      width: 100%;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
   }
-  
+
   #x-delete {
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-      width: 100%;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
   }
-  
+
   .modal-header {
     background-color: #231f20;
     color: white;
@@ -20,6 +20,20 @@
     flex-direction: row;
   }
 
+  .modal-header-div {
+    width: 25%;
+    text-align: center;
+  }
+
+  .modal-body {
+    background-color: #231f20;
+  }
+
+  .modal-body-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 </style>
 
 <button ng-click="saveWidgets()">Click me!</button>
@@ -38,22 +52,22 @@
 <script type="text/ng-template" id="mainModal.html">
 <div ng-hide="hideMainModal">
   <div class="modal-header">
-        <div style="width:25%;text-align:center;">
+        <div class="modal-header-div">
           Rearrange 
         </div>
-        <div style="width:25%;text-align:center;">
+        <div class="modal-header-div">
           Export 
         </div>
         <button type="button" class="btn btn-info" ng-click="openLoginModal()">Import</button>
         <button type="button" class="btn btn-info" ng-click="deleteEnabled=true;">delete</button>
-        <div style="width:25%;text-align:center;">
+        <div class="modal-header-div">
           Sign Out
         </div>
       </div>
       <div class="modal-body" style="background-color: #231f20">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
         <div class="row" style="padding-bottom:10px;">
-        <div class="col-xs-6" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div class="col-xs-6 modal-body-form" style="display:flex;flex-direction:column;justify-content:space-between;">
           <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
           <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
           <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
