@@ -1,10 +1,10 @@
 <style>
-  #widgetIcon {
-    position: absolute;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-  }
+#widgetIcon {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
 
   #x-delete {
     position: absolute;
@@ -35,6 +35,10 @@
     justify-content: space-between;
   }
 
+  .modal-form-icon-container {
+    padding-bottom: 10px;
+  }
+
   .selected-icon-container {
     text-align: center;
   }
@@ -49,9 +53,9 @@
     overflow: scroll;
   }
 
-  .gridster-modal {
-    max-height: 50vh;
-    overflow: scroll;
+  .gridster-modal-icon {
+    width: 100%;
+    height: 100%;
   }
 </style>
 
@@ -85,7 +89,7 @@
       </div>
       <div class="modal-body">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
-        <div class="row" style="padding-bottom:10px;">
+        <div class="row modal-form-icon-container" style="padding-bottom:10px;">
         <div class="col-xs-6 modal-body-form">
           <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
           <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
@@ -100,7 +104,7 @@
           <ul>
             <li gridster-item="item" ng-repeat="icon in allIcons">
               <ng-click ng-click="selectIcon(icon.icon);"> 
-                <img src={{icon.icon}} class="gridster-modal-icon" alt="widget" style="width:100%;height:100%">
+                <img src={{icon.icon}} class="gridster-modal-icon" alt="widget"
                 </ng-click>
             </li>
           </ul>
@@ -111,11 +115,11 @@
 </script>
 
 <script type="text/ng-template" id="loginModal.html">
-<div class="modal-header" style="background-color:#231f20;color:white;text-align:right;">
+<div class="modal-header"
       <button type="button" class="btn btn-info" ng-click="register()">Register</button>
       </div>
     </div>
-    <div class="modal-body" style="background-color: #231f20">
+    <div class="modal-body">
       <form ng-submit="$reg.onSubmit()">
         <div class="form-group">
           <label for="email">Email address</label>
