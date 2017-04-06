@@ -1,135 +1,175 @@
-<style>
-#widgetIcon {
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-}
+<div style="height:21px;width:100%;">
+    <ng-click ng-click="toggleDelete()"> 
+      <img id="deleteIcon" src="img/_x.png"
+                           height="20px"
+                           width="20px"
+                           style="margin-top:5px;">
+      <img id="deleteIconRed" src="img/_xRed.png"
+                              height="20px"
+                              width="20px"
+                              ng-show="deleteEnabled"
+                              style="margin-top:5px;">
+    </ng-click>
 
-  #x-delete {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-  }
+    <ng-click ng-click="toggleDraggable()">
+      <img id="lockIcon" src="img/_locked.png"
+                         height="20px"
+                         width="20px"
+                         style="margin-right:10px;margin-top:5px;">
+      <img id="lockIconRed" src="img/_lockedRed.png"
+                            height="20px" width="20px"
+                                          ng-show="gridOptions.draggable.enabled"
+                                          style="margin-right:10px;margin-top:5px;">
+    </ng-click>
 
-  .modal-header {
-    background-color: #231f20;
-    color: white;
-    display: flex;
-    flex-direction: row;
-  }
+    <ng-click ng-click="openMainModal()"> 
+      <img id="openMainModal" src="img/_options.png"
+                              height="20px" width="20px"
+                                            style="margin-right:21px;margin-top:5px;">
+    </ng-click>
+</div>
 
-  .modal-header-div {
-    width: 25%;
-    text-align: center;
-  }
 
-  .modal-body {
-    background-color: #231f20;
-  }
-
-  .modal-body-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .modal-form-icon-container {
-    padding-bottom: 10px;
-  }
-
-  .selected-icon-container {
-    text-align: center;
-  }
-
-  .selected-icon {
-    width: 60%;
-    height: 60%;
-  }
-
-  .gridster-modal {
-    max-height: 50vh;
-    overflow: scroll;
-  }
-
-  .gridster-modal-icon {
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
-<button ng-click="saveWidgets()">Click me!</button>
-<button ng-click="deleteEnabled=true">Click me!</button>
-<div gridster="gridOptions">
+<div gridster="gridOptions" style="padding-top:40px;">
   <ul>
-    <li gridster-item="item" ng-repeat="widget in widgets">
-      <ng-click ng-click="logIt(widget.url);"> 
+    <li gridster-item 
+                            ng-repeat="widget in widgets track by $index"
+                            row="widget.row"
+                            col="widget.col"
+                            url="widget.url">
+      <a ng-disabled="urlsEnabled" ng-href="{{urlsEnabled ? widget.url : ''}}">
         <img id="widgetIcon" src={{widget.icon}}>
-        <img id="x-delete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">
-      </ng-click>
+        <img id="x-delete" ng-show="deleteEnabled" 
+                           ng-click="deleteWidget(widget)"
+                           style="opacity:0.75;"
+                           height="30px"
+                           width="30px"
+                           src="img/_xDelete.png">
+      </a>
     </li>
   </ul>
 </div>
 
 <script type="text/ng-template" id="mainModal.html">
-<div ng-hide="hideMainModal">
-  <div class="modal-header">
-        <div class="modal-header-div">
-          Rearrange 
-        </div>
-        <div class="modal-header-div">
-          Export 
-        </div>
-        <button type="button" class="btn btn-info" ng-click="openLoginModal()">Import</button>
-        <button type="button" class="btn btn-info" ng-click="deleteEnabled=true;">delete</button>
-        <div class="modal-header-div">
-          Sign Out
-        </div>
-      </div>
-      <div class="modal-body">
+<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+    <uib-tab class="main-modal-tab" heading="Add Widget">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
-        <div class="row modal-form-icon-container" style="padding-bottom:10px;">
-        <div class="col-xs-6 modal-body-form">
-          <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
-          <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
-          <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
-          <input type="submit" class="btn btn-info" value="Add Widget" />
-        </div>
-        <div class="col-xs-6 selected-icon-container">
+        <div class="row modal-form-icon-container">
+          <div class="col-xs-6 modal-body-form">
+            <input type="text" ng-model="widgetUrl"
+                               name="widgetUrl"
+                               placeholder="Paste URL"
+                               onfocus="this.placeholder = ''"
+                                  style="color:black;text-align:center;" />
+            <br />
+            <input type="submit" class="btn btn-info"
+                                 value="Add Widget" />
+          </div>
+          <div class="col-xs-6 selected-icon-container">
             <img src={{selectedIcon}} class="selected-icon">
-        </div>
+          </div>
         </div>
         <div class="gridster-modal" gridster="gridsterModalOptions">
           <ul>
-            <li gridster-item="item" ng-repeat="icon in allIcons">
+            <li gridster-item="item" ng-repeat="icon in shownIcons">
               <ng-click ng-click="selectIcon(icon.icon);"> 
                 <img src={{icon.icon}} class="gridster-modal-icon" alt="widget"
-                </ng-click>
+              </ng-click>
             </li>
           </ul>
         </div>
       </form>
+      <div style="width:100%;text-align:right;position:absolute;bottom:0;">
+        <button type="button" class="btn btn-info btn-xs" ng-click="loadAllIcons()" ng-hide="areIconsLoaded" style="">Load All</button>
+      </div>
+    </uib-tab>
+
+    <uib-tab heading="Export" style="height:100%">
+    <div ng-controller="dashboardCtrl" style="height:100%">
+      <div select-text style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;">
+        {{widgets}}
+      </div>
+      <h4 style="text-align:center;">
+        Copy the text above and paste it someplace safe!
+      </h4>
     </div>
-</div>
+    </uib-tab>
+
+    <uib-tab class="main-modal-tab" heading="Import" style="height:100%;">
+      <div ng-controller="dashboardCtrl">
+        <div style="height:100%;">
+          <textarea ng-model="widgetString"
+                    placeholder="Paste the text you exported here..."
+                    style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;">
+          </textarea>
+        </div>
+          <div style="text-align:center">
+            <button ng-click="importWidgets()" class="btn btn-danger" style="width:40%">
+              Import
+            </button>
+          </div>
+      </div>
+    </uib-tab>
+
+    <uib-tab heading="Other" style="text-align:center;">
+      <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
+      <div style="text-align:center" ng-controller="dashboardCtrl">
+        <button type="button" id="logout-button"
+                              class="btn btn-danger"
+                              ng-click="onLogout()">
+        <button type="button" id="logout-button"
+                              class="btn btn-success"
+                              ng-click="syncWidgets()">
+          Logout
+        </button>
+      </div>
+    </uib-tab>
+  </uib-tabset>
 </script>
 
-<script type="text/ng-template" id="loginModal.html">
-<div class="modal-header"
-      <button type="button" class="btn btn-info" ng-click="register()">Register</button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <form ng-submit="$reg.onSubmit()">
+<script type="text/ng-template" id="authModal.html">
+<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+    <uib-tab heading="Login">
+      <form ng-submit="$auth.onLogin()" class="main-modal-tab">
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$reg.credentials.email">
+          <input type="email" id="email"
+                              class="form-control"
+                              ng-model="$auth.credentials.email"
+                              placeholder="Enter email">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="$reg.credentials.password">
+          <input type="password" id="password"
+                                 class="form-control"
+                                 ng-model="$auth.credentials.password"
+                                 placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-default">Sign in!</button>
+        <button type="submit" class="btn btn-default">
+          Login
+        </button>
       </form>
-  </div>
+    </uib-tab>
+
+    <uib-tab heading="Register">
+      <form ng-submit="$auth.onReg()">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email"
+                              class="form-control"
+                              ng-model="$auth.credentials.email"
+                              placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password"
+                                 class="form-control"
+                                 ng-model="$auth.credentials.password"
+                                 placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">
+          Register
+        </button>
+      </form>
+    </uib-tab>
 </script>

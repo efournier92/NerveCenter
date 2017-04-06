@@ -22,8 +22,10 @@ module.exports.updateWidgets = function(req, res) {
   } else {
     User.findById(req.payload._id, function(err, user) {
       if (err) return handleError(err);
-      widgetString = JSON.stringify(req.body);
-      user.widgets = widgetString;
+
+      user.widgetsLg = JSON.stringify(req.body[0]);
+      user.widgetsMd = JSON.stringify(req.body[1]);
+      user.widgetsSm = JSON.stringify(req.body[2]);
 
       user.save(function(err, updatedUser) {
         if (err) return handleError(err);
@@ -32,3 +34,4 @@ module.exports.updateWidgets = function(req, res) {
     });
   };
 };
+
