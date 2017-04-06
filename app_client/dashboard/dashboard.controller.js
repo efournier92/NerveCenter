@@ -95,19 +95,19 @@
     };
 
     $scope.closeModal = function() {
-      this.$close;
-      // $scope.modalInstance.dismiss();
+      $dash.dismiss('cancel');
     };
 
     $scope.openMainModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
-      this.modalInstance = $uibModal.open({
+      var modalInstance = $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'mainModal.html',
-        controller: 'dashboardCtrl',
+        controller: 'mainModalCtrl',
+        controllerAs: '$ctrl',
         size: size,
         appendTo: parentElem,
         resolve: {

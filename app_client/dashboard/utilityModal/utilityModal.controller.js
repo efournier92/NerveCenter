@@ -2,16 +2,16 @@
 
   angular
     .module('nerveCenter')
-    .controller('utilityModalCtrl', utilityModalCtrl);
+    .controller('mainModalCtrl', mainModalCtrl);
   
-  function utilityModalCtrl($uibModalInstance, items) {
-    var $dash = this;
+  function mainModalCtrl($uibModalInstance, items) {
+    var $ctrl = this;
 
-    $dash.ok = function() {
+    $ctrl.ok = function() {
       $uibModalInstance.close($dash.selected.item);
     };
 
-    $dash.cancel = function() {
+    $ctrl.cancel = function() {
       $uibModalInstance.dismiss('cancel');
     };
   };
