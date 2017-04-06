@@ -6,7 +6,7 @@
       width:100%;
   }
   
-  #x_Delete {
+  #xDelete {
       position:absolute;
       z-index:1;
       height:100%;
@@ -21,7 +21,7 @@
     <li gridster-item="item" ng-repeat="widget in widgets">
       <ng-click ng-click="logIt(widget.url);"> 
         <img id="widgetIcon" src={{widget.icon}}>
-        <img id="x_Delete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/X_Delete.png">
+        <img id="xDelete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">
       </ng-click>
     </li>
   </ul>
