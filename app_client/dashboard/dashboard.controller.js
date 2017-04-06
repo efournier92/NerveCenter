@@ -48,7 +48,6 @@
           $scope.gridOptions = instantiateGridster();
         });
     }
-
     $scope.saveWidgets = function() {
       data = $scope.widgets;
       meanData.updateWidgets(data)
@@ -59,12 +58,16 @@
           console.log(e);
         })
         .finally(function() {
-          // $scope.widgets = angular.fromJson($dash.widgets);
-          // $scope.gridOptions = gridOptions;
+          $scope.widgets = angular.fromJson($dash.widgets);
+          $scope.gridOptions = gridOptions;
         });
     }
 
     updateWidgets();
+
+    $scope.enableDrag = function() {
+      $scope.gridOptions.draggable.enabled = true;
+    }
 
     $scope.createWidget = function() {
       var widgetUrl = $scope.widgetUrl;
