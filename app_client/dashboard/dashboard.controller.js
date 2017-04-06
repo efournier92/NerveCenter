@@ -21,6 +21,19 @@
     $scope.selectIcon = function(iconUrl) {
       $scope.selectedIcon = iconUrl;
     }
+    
+    function instantiateGridster() {
+      var width = this.window.innerWidth;
+      var adjustedGridOptions = gridOptions;
+      if (width > 1000) {
+        adjustedGridOptions.columns = 7; 
+      } else if (width > 500) {
+        adjustedGridOptions.columns = 6; 
+      } else {
+        adjustedGridOptions.columns = 2; 
+      }
+      return adjustedGridOptions;
+    }
 
     function updateWidgets() {
       meanData.getProfile()
@@ -32,7 +45,7 @@
         })
         .finally(function() {
           $scope.widgets = angular.fromJson($dash.widgets);
-          $scope.gridOptions = gridOptions;
+          $scope.gridOptions = instantiateGridster();
         });
     }
 

@@ -1,5 +1,5 @@
 var gridOptions = {
-  columns: 5,
+  columns: 7,
   pushing: true,
   floating: true,
   swapping: true,
