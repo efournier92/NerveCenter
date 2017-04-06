@@ -1,0 +1,74 @@
+<button ng-click="saveWidgets()">Click me!</button>
+<button ng-click="deleteEnabled=true">Click me!</button>
+<div gridster="gridOptions">
+  <ul>
+    <li gridster-item="item" ng-repeat="widget in widgets">
+      <ng-click ng-click="logIt(widget.url);"> 
+        <img id="widgetIcon" src={{widget.icon}}>
+        <img id="x-delete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">
+      </ng-click>
+    </li>
+  </ul>
+</div>
+
+<script type="text/ng-template" id="mainModal.html">
+<div ng-hide="hideMainModal">
+  <div class="modal-header">
+        <div class="modal-header-div">
+          Rearrange 
+        </div>
+        <div class="modal-header-div">
+          Export 
+        </div>
+        <button type="button" class="btn btn-info" ng-click="openLoginModal()">Import</button>
+        <button type="button" class="btn btn-info" ng-click="deleteEnabled=true;">delete</button>
+        <div class="modal-header-div">
+          Sign Out
+        </div>
+      </div>
+      <div class="modal-body">
+      <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
+        <div class="row modal-form-icon-container" style="padding-bottom:10px;">
+        <div class="col-xs-6 modal-body-form">
+          <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
+          <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
+          <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
+          <input type="submit" class="btn btn-info" value="Add Widget" />
+        </div>
+        <div class="col-xs-6 selected-icon-container">
+            <img src={{selectedIcon}} class="selected-icon">
+        </div>
+        </div>
+        <div class="gridster-modal" gridster="gridsterModalOptions">
+          <ul>
+            <li gridster-item="item" ng-repeat="icon in allIcons">
+              <ng-click ng-click="selectIcon(icon.icon);"> 
+                <img src={{icon.icon}} class="gridster-modal-icon" alt="widget"
+                </ng-click>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="loginModal.html">
+<div class="modal-header"
+      <button type="button" class="btn btn-info" ng-click="register()">Register</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <form ng-submit="$reg.onSubmit()">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$reg.credentials.email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="$reg.credentials.password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign in!</button>
+      </form>
+  </div>
+</script>
