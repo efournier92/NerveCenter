@@ -1,17 +1,25 @@
 <style>
   #widgetIcon {
-      position:absolute;
-      z-index:0;
-      height:100%;
-      width:100%;
+      position: absolute;
+      z-index: 0;
+      height: 100%;
+      width: 100%;
   }
   
-  #xDelete {
-      position:absolute;
-      z-index:1;
-      height:100%;
-      width:100%;
+  #x-delete {
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      width: 100%;
   }
+  
+  .modal-header {
+    background-color: #231f20;
+    color: white;
+    display: flex;
+    flex-direction: row;
+  }
+
 </style>
 
 <button ng-click="saveWidgets()">Click me!</button>
@@ -21,7 +29,7 @@
     <li gridster-item="item" ng-repeat="widget in widgets">
       <ng-click ng-click="logIt(widget.url);"> 
         <img id="widgetIcon" src={{widget.icon}}>
-        <img id="xDelete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">
+        <img id="x-delete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">
       </ng-click>
     </li>
   </ul>
@@ -29,7 +37,7 @@
 
 <script type="text/ng-template" id="mainModal.html">
 <div ng-hide="hideMainModal">
-  <div class="modal-header" style="background-color:#231f20;color:white;display:flex;flex-direction:row;">
+  <div class="modal-header">
         <div style="width:25%;text-align:center;">
           Rearrange 
         </div>
