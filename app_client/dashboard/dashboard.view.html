@@ -2,7 +2,7 @@
 <button ng-click="toggleDrag()">Click me!</button>
 <div gridster="gridOptions">
   <ul>
-    <li gridster-item="item" row="{{widget.row}}" col="{{widget.col}}" ng-repeat="widget in widgets">
+    <li gridster-item="item" ng-repeat="widget in widgets">
       <ng-click ng-click="logIt(widget.url);"> 
         <img id="widgetIcon" src={{widget.icon}}>
         <img id="x-delete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">
@@ -31,8 +31,6 @@
         <div class="row modal-form-icon-container" style="padding-bottom:10px;">
         <div class="col-xs-6 modal-body-form">
           <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
-          <input type="number" ng-model="widgetRow" name="widgetRow" placeholder="Row" /><br />
-          <input type="number" ng-model="widgetCol" name="widgetCol" placeholder="Column" /><br />
           <input type="submit" class="btn btn-info" value="Add Widget" />
         </div>
         <div class="col-xs-6 selected-icon-container">
