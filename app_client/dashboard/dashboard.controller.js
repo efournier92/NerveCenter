@@ -65,8 +65,13 @@
 
     updateWidgets();
 
-    $scope.enableDrag = function() {
-      $scope.gridOptions.draggable.enabled = true;
+    $scope.toggleDrag = function() {
+      if ($scope.gridOptions.draggable.enabled == false) {
+        $scope.gridOptions.draggable.enabled = true;
+      } else {
+        $scope.gridOptions.draggable.enabled = false;
+      }
+      console.log($scope.widgets);
     }
 
     $scope.createWidget = function() {
