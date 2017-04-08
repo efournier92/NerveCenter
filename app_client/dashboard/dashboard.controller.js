@@ -4,7 +4,9 @@
     .module('nerveCenter')
     .controller('dashboardCtrl', dashboardCtrl);
 
-  function dashboardCtrl($scope, $http, $location, $uibModal, $log, $document, $filter, meanData, auth) {
+  function dashboardCtrl($scope, $sessionStorage, $http, $location, 
+    $uibModal, $log, $document, $filter, meanData, auth) {
+
     var $dash = this;
 
     $scope.deleteEnabled = false;
@@ -91,6 +93,7 @@
       var newWidget = {
         weight: widgetWeight,
         icon: widgetIcon,
+        row: widgetRow,
         sizeX: 1,
         sizeY: 1,
         url: widgetUrl 

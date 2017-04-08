@@ -1,7 +1,7 @@
 (function () {
   angular.module('nerveCenter',
     ['ngRoute', 'ngAnimate', 'ngSanitize',
-      'ui.bootstrap', 'gridster', 'pr.longpress']);
+      'ui.bootstrap', 'gridster', 'pr.longpress', 'ngStorage']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
