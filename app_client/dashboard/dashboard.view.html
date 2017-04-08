@@ -2,7 +2,7 @@
 <button ng-click="toggleDrag()">Click me!</button>
 <div gridster="gridOptions">
   <ul>
-    <li gridster-item="item" ng-repeat="widget in widgets">
+    <li gridster-item="item" row="{{widget.row}}" col="{{widget.col}}" ng-repeat="widget in widgets">
       <ng-click ng-click="logIt(widget.url);"> 
         <img id="widgetIcon" src={{widget.icon}}>
         <img id="x-delete" ng-show="deleteEnabled" ng-click="deleteWidget(widget)" src=img/xDelete.png">

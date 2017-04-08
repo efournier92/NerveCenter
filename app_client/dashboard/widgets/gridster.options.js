@@ -19,6 +19,9 @@ var gridOptions = {
   },
   draggable: {
     enabled: false,
+    stop: function(event, $element, widget) {
+      $scope.saveAfterDrag($element.scope().gridster.grid);
+    }
   }
 };
 

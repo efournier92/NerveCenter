@@ -65,6 +65,10 @@
 
     updateWidgets();
 
+    $scope.saveAfterDrag = function() {
+      console.log($element.scope().gridster.grid);
+    }
+
     $scope.toggleDrag = function() {
       if ($scope.gridOptions.draggable.enabled == false) {
         $scope.gridOptions.draggable.enabled = true;
