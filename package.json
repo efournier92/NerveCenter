@@ -1,6 +1,9 @@
 {
   "name": "NerveCenter",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.4.5"
+  },
   "dependencies": {
     "angular-gridster": "^0.13.14",
     "angular-ui-bootstrap": "^2.5.0",
@@ -15,8 +18,6 @@
     "morgan": "~1.5.1",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
-    "pg-ng-dropdown": "^1.1.1",
-    "pryjs": "^1.0.3",
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {

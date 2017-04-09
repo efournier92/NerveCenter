@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var gracefulShutdown;
 var dbURI = process.env.MONGODB_URI || 'mongodb://localhost/NerveCenter';
 if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI;
+  dbURI = process.env.MONGODB_URI;
 }
 
 ////////////
