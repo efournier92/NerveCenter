@@ -1,9 +1,6 @@
 {
   "name": "NerveCenter",
   "version": "1.0.0",
-  "scripts": {
-    "start": "node app.js",
-  },
   "dependencies": {
     "angular-gridster": "^0.13.14",
     "angular-ui-bootstrap": "^2.5.0",
@@ -30,5 +27,8 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.3.4"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
