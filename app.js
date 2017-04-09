@@ -88,6 +88,7 @@ app.use(function(err, req, res, next) {
 // SERVER
 //
 app.listen(8080);
-console.log("App listening on port 8080");
+console.log('App listening on port 8080');
 
 module.exports = app;
+

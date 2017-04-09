@@ -2,7 +2,7 @@
 // DEPENDENCIES
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/NerveCenter';
+var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost/NerveCenter';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
