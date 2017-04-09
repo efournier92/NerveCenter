@@ -1,7 +1,9 @@
 {
   "name": "NerveCenter",
   "version": "1.0.0",
-  "start": "node app.js"
+  "scripts": {
+    "start": "node app.js",
+  }
   "dependencies": {
     "angular-gridster": "^0.13.14",
     "angular-ui-bootstrap": "^2.5.0",
