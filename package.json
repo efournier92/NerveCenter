@@ -1,6 +1,8 @@
 {
   "name": "NerveCenter",
+  "description": "Metro-style grid-based new tab app.",
   "version": "1.0.0",
+  "main": "app.js",
   "engines": {
     "node": "4.4.5"
   },
@@ -12,15 +14,12 @@
     "debug": "~2.1.1",
     "express": "~4.11.1",
     "express-jwt": "^3.0.1",
-    "jade": "~1.9.1",
     "jsonwebtoken": "^5.0.4",
     "mongoose": "^4.1.2",
     "morgan": "~1.5.1",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
-    "serve-favicon": "~2.2.0"
-  },
-  "devDependencies": {
+    "serve-favicon": "~2.2.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-ng-annotate": "^1.1.0",
@@ -31,5 +30,7 @@
   },
   "scripts": {
     "start": "node app.js"
-  }
+  },
+  "author" : "Eric Fournier",
+  "license": "MIT"
 }
