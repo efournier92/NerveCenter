@@ -95,9 +95,10 @@
       var widgetUrl = $scope.widgetUrl;
       var widgetWeight = $scope.widgetWeight;
       var widgetIcon = $scope.selectedIcon;
+      console.log(widgetIcon);
 
       var defaultIcon = "img/_blank.png";
-      // Handle null values 
+      // Form validation 
       if (!widgetUrl && widgetIcon === defaultIcon) {
         window.alert("Please Enter URL and Select an Icon");
         return;
@@ -135,6 +136,7 @@
           row: Math.floor(len / columns),
           col: (len % columns) + 1 
         }
+        return newWidget;
       }
 
       pushNewWidget('lg');
@@ -164,6 +166,7 @@
     } 
 
     $scope.deleteWidget = function (widget) {
+      console.log("Delete: ", widget);
       $scope.widgets = $scope.widgets.filter(function (element){
         return element.url != widget.url;
       });

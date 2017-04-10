@@ -17,7 +17,7 @@
       auth
         .register($auth.credentials)
         .error(function(err){
-          alert(err);
+          alert("Sorry, you didn't fill in both fields");
         })
         .then(function (){
           $location.path('../dashboard/dashboard.view');
@@ -30,7 +30,7 @@
       auth
         .login($auth.credentials)
         .error(function(err){
-          alert(err);
+          alert("Sorry, I don't know that combination.\nPlease try again");
         })
         .then(function (){
           $location.path('../dashboard/dashboard.view');

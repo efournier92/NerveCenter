@@ -43,7 +43,7 @@
 
 <script type="text/ng-template" id="mainModal.html">
   <uib-tabset id="main-modal" active="active">
-    <uib-tab class="main-modal-tab" heading="Add Widget">
+    <uib-tab class="modal-tab" heading="Add Widget">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
         <div class="row">
           <div class="col-xs-6 create-widget-form">
@@ -92,7 +92,7 @@
     </div>
     </uib-tab>
 
-    <uib-tab class="main-modal-tab full-height" heading="Import">
+    <uib-tab class="modal-tab full-height" heading="Import">
       <div ng-controller="dashboardCtrl">
         <div class="full-height">
           <textarea id="import-widgets-textbox" ng-model="widgetString"
@@ -109,7 +109,7 @@
       </div>
     </uib-tab>
 
-    <uib-tab class="text-centered full-height" heading="Other">
+    <uib-tab class="modal-tab text-centered full-height" heading="Other">
       <div ng-controller="dashboardCtrl">
         <div id="other-buttons-container" class="full-height">
         <button type="button" class="btn btn-success other-button"
@@ -133,7 +133,7 @@
 <script type="text/ng-template" id="authModal.html">
   <uib-tabset id="auth-modal" active="active">
     <uib-tab heading="Login">
-      <form ng-submit="$auth.onLogin()" class="main-modal-tab">
+      <form ng-submit="$auth.onLogin()" class="modal-tab">
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" id="email"
@@ -148,14 +148,14 @@
                                  ng-model="$auth.credentials.password"
                                  placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-default">
+        <button type="submit" class="btn btn-primary">
           Login
         </button>
       </form>
     </uib-tab>
 
     <uib-tab heading="Register">
-      <form ng-submit="$auth.onReg()">
+      <form ng-submit="$auth.onReg()" class="modal-tab">
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" id="email"
@@ -170,7 +170,7 @@
                                  ng-model="$auth.credentials.password"
                                  placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-default">
+        <button type="submit" class="btn btn-success">
           Register
         </button>
       </form>
