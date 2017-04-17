@@ -2,14 +2,14 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-var sendJSONresponse = function (res, status, content) {
+var sendJSONresponse = function(res, status, content) {
   res.status(status);
   res.json(content);
 };
 
-module.exports.register = function (req, res) {
+module.exports.register = function(req, res) {
 
-  if(!req.body.email || !req.body.password) {
+  if(!req.body.name || !req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"
     });
@@ -18,11 +18,12 @@ module.exports.register = function (req, res) {
 
   var user = new User();
 
+  user.name = req.body.name;
   user.email = req.body.email;
 
   user.setPassword(req.body.password);
 
-  user.save(function (err) {
+  user.save(function(err) {
     var token;
     token = user.generateJwt();
     res.status(200);
@@ -32,25 +33,26 @@ module.exports.register = function (req, res) {
   });
 };
 
-module.exports.login = function (req, res) {
-  if (!req.body.email || !req.body.password) {
+module.exports.login = function(req, res) {
+  debugger;
+  if(!req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"
     });
     return;
   }
 
-  passport.authenticate('local', function (err, user, info) {
+  passport.authenticate('local', function(err, user, info) {
     var token;
 
     // If Passport throws an error
-    if (err) {
+    if(err) {
       res.status(404).json(err);
       return;
     }
 
     // If user is found
-    if (user) {
+    if(user) {
       token = user.generateJwt();
       res.status(200);
       res.json({
@@ -61,5 +63,5 @@ module.exports.login = function (req, res) {
       res.status(401).json(info);
     }
   })(req, res);
-};
 
+};

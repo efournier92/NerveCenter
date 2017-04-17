@@ -1,7 +1,6 @@
 var mongoose = require( 'mongoose' );
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
-var defaultWidgets = require('../common/defaultWidgets');
 
 var userSchema = new mongoose.Schema({
   email: {
@@ -9,39 +8,36 @@ var userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  widgetsLg: {
+  name: {
     type: String,
-    default: defaultWidgets.widgetString
+    required: true
   },
-  widgetsMd: {
+  widgets: {
     type: String,
-    default: defaultWidgets.widgetString
-  },
-  widgetsSm: {
-    type: String,
-    default: defaultWidgets.widgetString
+    default: '[{"sizeX":1,"sizeY":1,"weight":0,"url":"https://www.google.com/","icon":"img/Google.png"},{"sizeX":1,"sizeY":1,"weight":1,"url":"http://en.wikipedia.org/wiki/Main_Page","icon":"img/Wiki.png"},{"sizeX":1,"sizeY":1,"weight":2,"url":"http://cake.whatbox.ca:57094/","icon":"img/RTorrent.png"},{"sizeX":1,"sizeY":1,"weight":3,"url":"https://github.com/","icon":"img/GitHub.png"},{"sizeX":1,"sizeY":1,"weight":4,"url":"https://twitter.com","icon":"img/Twitter.png"},{"sizeX":1,"sizeY":1,"weight":5,"url":"https://www.google.com/imghp?hl=en&tab=wi&ei=KA6OU4CWBtDisATKzoKwBA&ved=0CAQQqi4oAg","icon":"img/Image.png"},{"sizeX":1,"sizeY":1,"weight":6,"url":"https://getpocket.com/a/queue/list/","icon":"img/ReadLater.png"},{"sizeX":1,"sizeY":1,"weight":7,"url":"http://www.youtube.com/","icon":"img/Tube.png"},{"sizeX":1,"sizeY":1,"weight":8,"url":"https://app.simplenote.com/","icon":"img/Notes.png"},{"sizeX":1,"sizeY":1,"weight":9,"url":"https://www.linkedin.com","icon":"img/Linked.png"},{"sizeX":1,"sizeY":1,"weight":10,"url":"http://www.cnn.com/","icon":"img/CNN.png"}]'
   },
   hash: String,
   salt: String
 });
 
-userSchema.methods.setPassword = function (password){
+userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
 
-userSchema.methods.validPassword = function (password) {
+userSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash;
 };
 
-userSchema.methods.generateJwt = function () {
+userSchema.methods.generateJwt = function() {
   var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
 
   return jwt.sign({
     _id: this._id,
     email: this.email,
+    name: this.name,
     widgets: this.widgets, 
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET");
