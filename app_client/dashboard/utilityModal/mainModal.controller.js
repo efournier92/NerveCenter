@@ -3,7 +3,7 @@
   angular
     .module('nerveCenter')
     .controller('mainModalCtrl', mainModalCtrl);
-  
+
   function mainModalCtrl($uibModalInstance, items) {
     var $ctrl = this;
 
@@ -14,6 +14,7 @@
     $ctrl.cancel = function() {
       $uibModalInstance.dismiss('cancel');
     };
+
   };
 
 })();
