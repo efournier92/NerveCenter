@@ -45,6 +45,20 @@
   <uib-tab heading="Import">
     Import Content
   </uib-tab>
+  <uib-tab heading="Register">
+
+    <form ng-submit="$reg.onSubmit()">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$reg.credentials.email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" ng-model="$reg.credentials.password">
+      </div>
+      <button type="submit" class="btn btn-default">Sign in!</button>
+    </form>
+  </uib-tab>
   <uib-tab heading="Log Out">
     Really log out?
   </uib-tab>
