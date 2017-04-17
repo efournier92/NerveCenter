@@ -59,10 +59,6 @@
         })
         .error(function(e) {
           console.log(e);
-        })
-        .finally(function() {
-          $scope.widgets = angular.fromJson($dash.widgets);
-          $scope.gridOptions = gridOptions;
         });
     }
 
@@ -77,6 +73,7 @@
         $scope.gridOptions.draggable.enabled = true;
       } else {
         $scope.gridOptions.draggable.enabled = false;
+        $scope.saveWidgets();
       }
       console.log($scope.widgets);
     }
