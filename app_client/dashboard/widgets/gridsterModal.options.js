@@ -1,5 +1,5 @@
 var gridsterModalOptions = {
-  columns: 4,
+  columns: 6,
   pushing: true,
   floating: true,
   swapping: true,

@@ -28,14 +28,39 @@
   background-color: #231f20;
 }
 
-.modal-body-form {
+
+.main-modal {
+  background-color: #231f20;
+  height:75vh;
+  justify-content: center;
+}
+
+.main-modal-tab {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.modal-body-form {
+  height: 174px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-tabs>li>a {
+  color: #2aabd2;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  background-color: black;
+  color: white;
 }
 
 .modal-form-icon-container {
-  padding-bottom: 10px;
 }
 
 .selected-icon-container {
@@ -43,8 +68,8 @@
 }
 
 .selected-icon {
-  width: 60%;
-  height: 60%;
+  width: 40%;
+  height: 40%;
 }
 
 .gridster-modal {

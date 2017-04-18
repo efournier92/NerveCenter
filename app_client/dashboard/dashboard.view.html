@@ -17,10 +17,10 @@
 </div>
 
 <script type="text/ng-template" id="mainModal.html">
-  <uib-tabset active="active">
-    <uib-tab heading="Add Widget">
+  <uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+    <uib-tab class="main-modal-tab" heading="Add Widget">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
-        <div class="row modal-form-icon-container" style="padding-bottom:10px;">
+        <div class="row modal-form-icon-container">
           <div class="col-xs-6 modal-body-form">
             <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
             <input type="submit" class="btn btn-info" value="Add Widget" />
@@ -40,13 +40,15 @@
       </form>
     </uib-tab>
 
-    <uib-tab heading="Export">
-    <div ng-controller="dashboardCtrl">
-      {{widgets}}
+    <uib-tab heading="Export" style="height:100%">
+    <div ng-controller="dashboardCtrl" style="height:100%">
+      <div select-text class="" style="background:white;height:100%;margin:40px 80px;overflow: scroll;">
+        {{widgets}}
+      </div>
     </div>
     </uib-tab>
 
-    <uib-tab heading="Import">
+    <uib-tab class="main-modal-tab" heading="Import">
       <form ng-submit="importWidgets()" ng-controller="dashboardCtrl">
         <div class="form-group">
           <label for="widgetString">Email address</label>
@@ -56,8 +58,8 @@
       </form>
     </uib-tab>
 
-    <uib-tab heading="Register">
-      <form ng-submit="$reg.onSubmit()">
+    <uib-tab  heading="Register">
+      <form ng-submit="$reg.onSubmit()" class="main-modal-tab">
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$reg.credentials.email">

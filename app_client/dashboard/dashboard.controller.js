@@ -4,11 +4,10 @@
     .module('nerveCenter')
     .controller('dashboardCtrl', dashboardCtrl);
 
-  function dashboardCtrl($scope, $sessionStorage, $http, $location, 
+  function dashboardCtrl($scope, $http, $location, 
     $uibModal, $log, $document, $filter, meanData, auth) {
     var $dash = this;
 
-    $scope.$storage = $sessionStorage;
 
     $scope.deleteEnabled = false;
 
@@ -130,6 +129,7 @@
     };
 
     $scope.openMainModal = function(size, parentSelector) {
+      size = 'lg';
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
