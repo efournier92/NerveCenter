@@ -113,6 +113,14 @@
       $scope.saveWidgets();
     }
 
+    $scope.toggleDelete = function() {
+      if ($scope.deleteEnabled == false) {
+        $scope.deleteEnabled = true;
+      } else {
+        $scope.deleteEnabled = false;
+      }
+    }
+
     $scope.update = function() {
       id = auth.currentUser().id;
       console.log(id);
