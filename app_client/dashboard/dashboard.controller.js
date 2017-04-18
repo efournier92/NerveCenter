@@ -108,9 +108,7 @@
     }
 
     $scope.deleteWidget = function(widget) {
-      $uibModalInstance.dismiss('cancel');
-      // $scope.deleteEnabled = true; 
-      var index = $scope.widgets.indexOf(widget);
+      $scope.deleteEnabled = true;
       $scope.widgets.splice(index, 1);
       $scope.saveWidgets();
     }

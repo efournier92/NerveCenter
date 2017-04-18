@@ -1,23 +1,32 @@
-<button ng-click="openMainModal()">Modal</button>
-<button ng-click="toggleDrag()">Rearrange</button>
+<div style="text-align:right;">
+  <ng-click ng-click="openMainModal()"> 
+    <img id="mainModalIcon" src="img/_x.png" height="25px" width="25px" style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+  </ng-click>
+  <ng-click ng-click="openMainModal()"> 
+    <img id="mainModalIcon" src="img/_unlocked.png" height="25px" width="25px" style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+  </ng-click>
+  <ng-click ng-click="openMainModal()"> 
+    <img id="mainModalIcon" src="img/_options.png" height="25px" width="25px" style="margin-right:20px;margin-top:5px;margin-bottom:-3px;">
+  </ng-click>
+</div>
 
 <div gridster="gridOptions">
   <ul>
     <li gridster-item 
-        ng-repeat="widget in widgets track by $index"
-        row="widget.row"
-        col="widget.col">
+     ng-repeat="widget in widgets track by $index"
+     row="widget.row"
+     col="widget.col">
       <ng-click ng-click="logIt(gridsterItem);"> 
         <img id="widgetIcon" src={{widget.icon}}>
         <img id="x-delete" ng-show="deleteEnabled" 
-             ng-click="deleteWidget(widget)" src=img/xDelete.png">
+                           ng-click="deleteWidget(widget)" src=img/xDelete.png">
       </ng-click>
     </li>
   </ul>
 </div>
 
 <script type="text/ng-template" id="mainModal.html">
-  <uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
     <uib-tab class="main-modal-tab" heading="Add Widget">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
         <div class="row modal-form-icon-container">
@@ -62,7 +71,7 @@
     </uib-tab>
 
 
-    <uib-tab  heading="Register">
+    <uib-tab heading="Register">
       <form ng-submit="$reg.onSubmit()" class="main-modal-tab">
         <div class="form-group">
           <label for="email">Email address</label>
