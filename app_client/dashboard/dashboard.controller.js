@@ -38,6 +38,10 @@
       return adjustedGridOptions;
     }
 
+    $scope.importWidgets = function() {
+      $scope.widgets = angular.fromJson($scope.widgetString);
+      $scope.saveWidgets();
+    } 
     function updateWidgets() {
       meanData.getProfile()
         .success(function(data) {
@@ -67,6 +71,8 @@
     $scope.saveAfterDrag = function() {
       console.log($element.scope().gridster.grid);
     }
+
+    $scope.widgetString = angular.toJson($scope.widgets);
 
     $scope.toggleDrag = function() {
       if ($scope.gridOptions.draggable.enabled == false) {

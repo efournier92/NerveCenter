@@ -42,7 +42,7 @@
 
     <uib-tab heading="Export">
     <div ng-controller="dashboardCtrl">
-      {{widgets}}  
+      {{widgets}}
     </div>
     </uib-tab>
 
@@ -50,8 +50,9 @@
       <form ng-submit="importWidgets()" ng-controller="dashboardCtrl">
         <div class="form-group">
           <label for="widgetString">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$reg.credentials.email">
+          <input type="widgetString" class="form-control" id="widgetString" placeholder="Paste widget string..." ng-model="widgetString">
         </div>
+        <button type="submit" class="btn btn-danger">Import</button>
       </form>
     </uib-tab>
 
