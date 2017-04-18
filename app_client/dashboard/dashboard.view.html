@@ -22,7 +22,7 @@
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
         <div class="row modal-form-icon-container">
           <div class="col-xs-6 modal-body-form">
-            <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="URL" /><br />
+            <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="Paste URL" onfocus="this.placeholder = ''" style="text-align:center;" /><br />
             <input type="submit" class="btn btn-info" value="Add Widget" />
           </div>
           <div class="col-xs-6 selected-icon-container">
@@ -72,8 +72,9 @@
       </form>
     </uib-tab>
 
-    <uib-tab heading="Log Out">
-      Really log out?
+    <uib-tab class="modal-content" heading="Logout">
+      <h2>Do you really want to log out?</h2>
+      <button type="button" class="btn btn-danger">Logout</button>
     </uib-tab>
   </uib-tabset>
 
