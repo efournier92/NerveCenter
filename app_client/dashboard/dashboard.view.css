@@ -28,6 +28,18 @@
   background-color: #231f20;
 }
 
+#logout-button {
+  width: 60%;
+  text-align: center;
+}
+
+#widgetStringInput {
+  height: 200px;
+}
+
+.modal-content {
+  color: white;
+}
 
 .main-modal {
   background-color: #231f20;

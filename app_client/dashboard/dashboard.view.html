@@ -42,21 +42,25 @@
 
     <uib-tab heading="Export" style="height:100%">
     <div ng-controller="dashboardCtrl" style="height:100%">
-      <div select-text class="" style="background:white;height:100%;margin:40px 80px;overflow: scroll;">
+      <div select-text class="" style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;">
         {{widgets}}
       </div>
+      <h4 style="text-align:center;">
+        Copy the text above and paste it someplace safe!
+      </h4>
     </div>
     </uib-tab>
 
-    <uib-tab class="main-modal-tab" heading="Import">
-      <form ng-submit="importWidgets()" ng-controller="dashboardCtrl">
-        <div class="form-group">
-          <label for="widgetString">Email address</label>
-          <input type="widgetString" class="form-control" id="widgetString" placeholder="Paste widget string..." ng-model="widgetString">
-        </div>
-        <button type="submit" class="btn btn-danger">Import</button>
-      </form>
+    <uib-tab class="main-modal-tab" heading="Import" style="height:100%;">
+    <div ng-controller="dashboardCtrl" style="height:100%;">
+    <textarea ng-model="widgetString" style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;" placeholder="Paste the text you exported here...">
+    </textarea>
+    </div>
+      <div style="text-align:center">
+        <button ng-click="importWidgets()" class="btn btn-danger" style="width:40%">Import</button>
+      </div>
     </uib-tab>
+
 
     <uib-tab  heading="Register">
       <form ng-submit="$reg.onSubmit()" class="main-modal-tab">
@@ -72,9 +76,11 @@
       </form>
     </uib-tab>
 
-    <uib-tab class="modal-content" heading="Logout">
-      <h2>Do you really want to log out?</h2>
-      <button type="button" class="btn btn-danger">Logout</button>
+    <uib-tab class="modal-content" heading="Logout" style="text-align:center;">
+      <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
+      <div style="text-align:center;">
+        <button type="button" id="logout-button" class="btn btn-danger">Logout</button>
+      </div>
     </uib-tab>
   </uib-tabset>
 
