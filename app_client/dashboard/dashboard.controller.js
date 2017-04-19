@@ -49,7 +49,7 @@
           $dash.widgets = data.widgets;
         })
         .error(function() {
-          $scope.openLoginModal();
+          $scope.openAuthModal();
         })
         .finally(function() {
           $scope.widgets = angular.fromJson($dash.widgets);
@@ -160,16 +160,16 @@
       });
     };
 
-    $scope.openLoginModal = function(size, parentSelector) {
+    $scope.openAuthModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
-        templateUrl: 'loginModal.html',
-        controller: 'loginCtrl',
-        controllerAs: '$reg',
+        templateUrl: 'authModal.html',
+        controller: 'authCtrl',
+        controllerAs: '$auth',
         size: size,
         appendTo: parentElem,
         resolve: {

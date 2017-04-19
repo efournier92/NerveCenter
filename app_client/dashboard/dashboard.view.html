@@ -1,3 +1,7 @@
+<button ng-click="openAuthModal()">
+  
+</button>
+
 <ng-click ng-click="toggleDelete()"> 
   <img id="deleteIcon" src="img/_x.png"
                        height="25px" width="25px"
@@ -90,8 +94,19 @@
     </div>
     </uib-tab>
 
+    <uib-tab class="modal-content" heading="Logout" style="text-align:center;">
+      <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
+      <div style="text-align:center;">
+        <button type="button" id="logout-button" class="btn btn-danger">Logout</button>
+      </div>
+    </uib-tab>
+  </uib-tabset>
 
-    <uib-tab heading="Register">
+</script>
+
+<script type="text/ng-template" id="authModal.html">
+<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+    <uib-tab heading="Login">
       <form ng-submit="$reg.onSubmit()" class="main-modal-tab">
         <div class="form-group">
           <label for="email">Email address</label>
@@ -105,32 +120,21 @@
       </form>
     </uib-tab>
 
-    <uib-tab class="modal-content" heading="Logout" style="text-align:center;">
-      <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
-      <div style="text-align:center;">
-        <button type="button" id="logout-button" class="btn btn-danger">Logout</button>
-      </div>
-    </uib-tab>
-  </uib-tabset>
-
-</script>
-
-<script type="text/ng-template" id="loginModal.html">
-<div class="modal-header"
-      <button type="button" class="btn btn-info" ng-click="register()">Register</button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <form ng-submit="$reg.onSubmit()">
+    <uib-tab heading="Register">
+      <form ng-submit="vm.onSubmit()">
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model="vm.credentials.name">
+        </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$reg.credentials.email">
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="$reg.credentials.password">
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
         </div>
-        <button type="submit" class="btn btn-default">Sign in!</button>
+        <button type="submit" class="btn btn-default">Register!</button>
       </form>
-  </div>
+    </uib-tab>
 </script>
