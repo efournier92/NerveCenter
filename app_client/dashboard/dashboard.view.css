@@ -1,13 +1,31 @@
 #lockIcon {
   position: absolute;
   right: 40px;
-  z-index: 0;
+  z-index: 10;
 }
 
 #lockIconRed {
   position: absolute;
   right: 40px;
+  z-index: 11;
+}
+
+#deleteIcon {
+  position: absolute;
+  right: 80px;
+  z-index: 10;
+}
+
+#deleteIconRed {
+  position: absolute;
+  right: 80px;
   z-index: 1;
+}
+
+#openMainModal {
+  position: absolute;
+  right: 0px;
+  z-index: 10;
 }
 
 #widgetIcon {

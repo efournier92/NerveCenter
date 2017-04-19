@@ -1,25 +1,30 @@
-<div style="position:absolute;right:0;z-index:100;">
-  <ng-click ng-click="toggleDelete()"> 
-    <img id="toggleDelete" src="img/_x.png"
-                            height="25px" width="25px"
-                            style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
-  </ng-click>
-  <ng-click ng-click="toggleDraggable()"> 
-    <img id="lockIcon" src="img/_locked.png"
-                            height="25px" width="25px"
-                            style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
-    <img id="lockIconRed" src="img/_lockedRed.png"
-                            height="25px" width="25px"
-                            style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
-  </ng-click>
-  <ng-click ng-click="openMainModal()"> 
-    <img id="mainModalIcon" src="img/_options.png"
-                            height="25px" width="25px"
-                            style="margin-right:20px;margin-top:5px;margin-bottom:-3px;">
-  </ng-click>
+<ng-click ng-click="toggleDelete()"> 
+  <img id="deleteIcon" src="img/_x.png"
+                       height="25px" width="25px"
+                                     style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+  <img id="deleteIconRed" src="img/_x.png"
+                          height="25px" width="25px"
+                                        ng-show="deleteEnabled"
+                                        style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+</ng-click>
+</ng-click>
+<ng-click ng-click="toggleDraggable()"> 
+  <img id="lockIcon" src="img/_locked.png"
+                     height="25px" width="25px"
+                                   style="margin-right:14px;margin-top:5px;margin-bottom:-3px;">
+  <img id="lockIconRed" src="img/_lockedRed.png"
+                        height="25px" width="25px" ng-show="deleteEnabled"
+                                                   style="margin-right:14px;margin-top:5px;margin-bottom:-3px;">
+</ng-click>
+<ng-click ng-click="openMainModal()"> 
+  <img id="openMainModal" src="img/_options.png"
+                          height="25px" width="25px"
+                                        style="margin-right:20px;margin-top:6px;">
+</ng-click>
+<div style="height:25px;width:100%;">
+  
 </div>
-
-<div gridster="gridOptions">
+<div gridster="gridOptions" style="padding-top:40px;">
   <ul>
     <li gridster-item 
      ng-repeat="widget in widgets track by $index"
@@ -32,7 +37,7 @@
                            ng-click="deleteWidget(widget)"
                            style="opacity:0.75;"
                            height="30px" width="30px"
-                           src="img/_xDelete.png">
+                                         src="img/_xDelete.png">
       </ng-click>
     </li>
   </ul>
