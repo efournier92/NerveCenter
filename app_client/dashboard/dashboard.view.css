@@ -19,7 +19,7 @@
 #deleteIconRed {
   position: absolute;
   right: 80px;
-  z-index: 11;
+  z-index: 1;
 }
 
 #openMainModal {
