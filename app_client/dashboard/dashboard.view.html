@@ -1,12 +1,21 @@
-<div style="text-align:right;">
+<div style="position:absolute;right:0;z-index:100;">
   <ng-click ng-click="toggleDelete()"> 
-    <img id="mainModalIcon" src="img/_x.png" height="25px" width="25px" style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+    <img id="toggleDelete" src="img/_x.png"
+                            height="25px" width="25px"
+                            style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+  </ng-click>
+  <ng-click ng-click="toggleDraggable()"> 
+    <img id="lockIcon" src="img/_locked.png"
+                            height="25px" width="25px"
+                            style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+    <img id="lockIconRed" src="img/_lockedRed.png"
+                            height="25px" width="25px"
+                            style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
   </ng-click>
   <ng-click ng-click="openMainModal()"> 
-    <img id="mainModalIcon" src="img/_unlocked.png" height="25px" width="25px" style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
-  </ng-click>
-  <ng-click ng-click="openMainModal()"> 
-    <img id="mainModalIcon" src="img/_options.png" height="25px" width="25px" style="margin-right:20px;margin-top:5px;margin-bottom:-3px;">
+    <img id="mainModalIcon" src="img/_options.png"
+                            height="25px" width="25px"
+                            style="margin-right:20px;margin-top:5px;margin-bottom:-3px;">
   </ng-click>
 </div>
 
@@ -15,12 +24,15 @@
     <li gridster-item 
      ng-repeat="widget in widgets track by $index"
      row="widget.row"
-     col="widget.col">
+     col="widget.col"
+     url="widget.url">
       <ng-click ng-click="logIt(gridsterItem);"> 
         <img id="widgetIcon" src={{widget.icon}}>
         <img id="x-delete" ng-show="deleteEnabled" 
                            ng-click="deleteWidget(widget)"
-                           src=img/xDelete.png">
+                           style="opacity:0.75;"
+                           height="30px" width="30px"
+                           src="img/_xDelete.png">
       </ng-click>
     </li>
   </ul>
@@ -62,13 +74,15 @@
     </uib-tab>
 
     <uib-tab class="main-modal-tab" heading="Import" style="height:100%;">
-    <div ng-controller="dashboardCtrl" style="height:100%;">
-    <textarea ng-model="widgetString" style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;" placeholder="Paste the text you exported here...">
-    </textarea>
-    </div>
-      <div style="text-align:center">
-        <button ng-click="importWidgets()" class="btn btn-danger" style="width:40%">Import</button>
+    <div ng-controller="dashboardCtrl">
+      <div style="height:100%;">
+      <textarea ng-model="widgetString" style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;" placeholder="Paste the text you exported here...">
+      </textarea>
       </div>
+        <div style="text-align:center">
+          <button ng-click="importWidgets()" class="btn btn-danger" style="width:40%">Import</button>
+        </div>
+    </div>
     </uib-tab>
 
 

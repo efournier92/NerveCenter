@@ -40,7 +40,9 @@
     $scope.importWidgets = function() {
       $scope.widgets = angular.fromJson($scope.widgetString);
       $scope.saveWidgets();
+      location.reload();
     } 
+
     function updateWidgets() {
       meanData.getProfile()
         .success(function(data) {
@@ -73,7 +75,7 @@
 
     $scope.widgetString = angular.toJson($scope.widgets);
 
-    $scope.toggleDrag = function() {
+    $scope.toggleDraggable = function() {
       if ($scope.gridOptions.draggable.enabled == false) {
         $scope.gridOptions.draggable.enabled = true;
       } else {
@@ -108,8 +110,9 @@
     }
 
     $scope.deleteWidget = function(widget) {
-      $scope.deleteEnabled = true;
-      $scope.widgets.splice(index, 1);
+      $scope.widgets = $scope.widgets.filter(function(element){
+        return element.url != widget.url;
+      });
       $scope.saveWidgets();
     }
 

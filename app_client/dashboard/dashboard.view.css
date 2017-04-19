@@ -1,3 +1,15 @@
+#lockIcon {
+  position: absolute;
+  right: 40px;
+  z-index: 0;
+}
+
+#lockIconRed {
+  position: absolute;
+  right: 40px;
+  z-index: 1;
+}
+
 #widgetIcon {
   position: absolute;
   z-index: 0;
