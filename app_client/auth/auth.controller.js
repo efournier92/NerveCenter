@@ -9,30 +9,31 @@
     var $auth = this;
 
     $auth.credentials = {
-      name : "",
       email : "",
       password : ""
     };
 
-    $auth.user = {};
-
-    $auth.onSubmit = function () {
-      auth
-        .register($auth.credentials)
+    $auth.onReg = function() {
+      auth.register($auth.credentials)
         .error(function(err){
           alert(err);
         })
         .then(function(){
-          $location.path('profile');
+          $location.path('../dashboard/dashboard.view');
         });
     };
+    
+    $auth.user = {};
 
-    meanData.getProfile()
-      .success(function(data) {
-        $auth.user = data;
-      })
-      .error(function (e) {
-        console.log(e);
-      });
+    $auth.onLogin = function() {
+      auth.login($auth.credentials)
+        .error(function(err){
+          alert(err);
+        })
+        .then(function(){
+          $location.path('../dashboard/dashboard.view');
+        });
+    }
   }
+
 })();

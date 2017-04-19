@@ -148,7 +148,7 @@
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'mainModal.html',
-        controller: 'mainModalCtrl',
+        controller: 'dashboardCtrl',
         controllerAs: '$ctrl',
         size: size,
         appendTo: parentElem,
@@ -187,6 +187,16 @@
     $scope.logIt = function(obj) {
       console.log(obj); 
     };
+
+    $scope.onLogout = function() {
+      auth.logout()
+        .success(function() {
+          location.reload();
+        })
+        .error(function(err) {
+          alert(err);
+        });
+    }
   };
 
 })();
