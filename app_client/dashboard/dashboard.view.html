@@ -1,27 +1,27 @@
 <ng-click ng-click="toggleDelete()"> 
   <img id="deleteIcon" src="img/_x.png"
                        height="25px" width="25px"
-                                     style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
-  <img id="deleteIconRed" src="img/_x.png"
+                                     style="margin-right:6px;margin-top:5px;">
+  <img id="deleteIconRed" src="img/_xRed.png"
                           height="25px" width="25px"
                                         ng-show="deleteEnabled"
-                                        style="margin-right:10px;margin-top:5px;margin-bottom:-3px;">
+                                        style="margin-right:6px;margin-top:5px;">
 </ng-click>
 </ng-click>
 <ng-click ng-click="toggleDraggable()"> 
   <img id="lockIcon" src="img/_locked.png"
                      height="25px" width="25px"
-                                   style="margin-right:14px;margin-top:5px;margin-bottom:-3px;">
+                                   style="margin-right:13px;margin-top:5px;">
   <img id="lockIconRed" src="img/_lockedRed.png"
-                        height="25px" width="25px" ng-show="deleteEnabled"
-                                                   style="margin-right:14px;margin-top:5px;margin-bottom:-3px;">
+                        height="25px" width="25px" ng-show="draggable"
+                                                   style="margin-right:13px;margin-top:5px;">
 </ng-click>
 <ng-click ng-click="openMainModal()"> 
   <img id="openMainModal" src="img/_options.png"
                           height="25px" width="25px"
-                                        style="margin-right:20px;margin-top:6px;">
+                                        style="margin-right:21px;margin-top:6px;">
 </ng-click>
-<div style="height:25px;width:100%;">
+<div style="height:12px;width:100%;">
   
 </div>
 <div gridster="gridOptions" style="padding-top:40px;">

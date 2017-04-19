@@ -77,8 +77,10 @@
 
     $scope.toggleDraggable = function() {
       if ($scope.gridOptions.draggable.enabled == false) {
+        $scope.draggable = true;
         $scope.gridOptions.draggable.enabled = true;
       } else {
+        $scope.draggable = false;
         $scope.gridOptions.draggable.enabled = false;
         $scope.saveWidgets();
       }
