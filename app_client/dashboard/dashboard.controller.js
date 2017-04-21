@@ -180,10 +180,6 @@
       });
     };
 
-    $dash.onLongPress = function() {
-      $scope.openMainModal();
-    };
-
     $scope.logIt = function(obj) {
       console.log(obj); 
     };
