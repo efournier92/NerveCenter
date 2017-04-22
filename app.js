@@ -9,6 +9,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
+// ENV File
+require('dotenv').config()
 // Data Model
 require('./app_api/config/db');
 // Passport Config (after model is defined)
@@ -51,9 +53,9 @@ app.use(function(req, res) {
 //
 // Forward 404 to Error Handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // Unauthorised Errors
@@ -66,28 +68,30 @@ app.use(function (err, req, res, next) {
 
 // Dev Error Handler
 if (app.get('env') === 'production') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 // Prod Error Handler
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 ///////////////////////////////////
 // SERVER
 //
-app.listen(8080);
-console.log("App listening on port 8080");
+var port = process.env.PORT || 8080;
+app.listen(port);
+console.log('App listening on port', port);
 
 module.exports = app;
+

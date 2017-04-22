@@ -1,0 +1,172 @@
+<div id="tool-icon-container" >
+    <ng-click ng-click="toggleDelete()"> 
+      <img class="tool-icon"
+           src="{{deleteIcon}}"
+                              height="{{toolIconSize}}" width="{{toolIconSize}}">
+    </ng-click>
+
+    <ng-click ng-click="toggleDraggable()">
+      <img class="tool-icon" src="{{lockIcon}}"
+                             height="{{toolIconSize}}px"
+                             width="{{toolIconSize}}px">
+    </ng-click>
+
+    <ng-click ng-click="openMainModal()"> 
+      <img class="tool-icon" src="img/_options.png"
+                                       height="{{toolIconSize}}" width="{{toolIconSize}}">
+    </ng-click>
+</div>
+    <div id="grid-container" gridster="gridOptions" style="overflow:auto;padding-right:100px;">
+      <ul style="overflow:auto;padding-right:50px;">
+        <li gridster-item ng-repeat="widget in widgets track by $index"
+                          row="widget.row"
+                          col="widget.col"
+                          url="widget.url">
+          <a ng-href="{{urlsEnabled ? widget.url : ''}}" ng-disabled="urlsEnabled">
+            <img id="widget-icon" src={{widget.icon}}>
+            <img id="x-delete" ng-show="deleteEnabled" 
+                               ng-click="deleteWidget(widget)"
+                               src="img/_xDelete.png"
+                               height="30px" width="30px">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<script type="text/ng-template" id="mainModal.html">
+  <uib-tabset id="main-modal" active="active">
+    <uib-tab class="modal-tab" heading="Add Widget">
+      <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
+        <div class="row">
+          <div class="col-xs-6 create-widget-form">
+            <input id="widget-url-input" type="text"
+                                         ng-model="widgetUrl"
+                                         name="widgetUrl"
+                                         placeholder="Paste URL"
+                                         onfocus="this.placeholder = ''"
+            <br />
+            <input type="submit" id="submit-create-widget"
+                                 class="btn btn-info"
+                                 value="Add Widget" />
+          </div>
+          <div id="selected-icon-container" class="col-xs-6">
+            <img src={{selectedIcon}} id="selected-icon">
+          </div>
+        </div>
+        <div id="gridster-modal" gridster="gridsterModalOptions">
+      <div id="load-all-icons-button-container">
+        <button type="button" id="load-all-icons-button"
+                              class="btn btn-danger btn-sm"
+                              ng-click="loadAllIcons()"
+                              ng-hide="areIconsLoaded">
+          Load All Icons
+        </button>
+      </div>
+          <ul>
+            <li gridster-item="item" ng-repeat="icon in shownIcons">
+              <ng-click ng-click="selectIcon(icon.path);">
+                <img src="{{icon.path}}" class="gridster-modal-icon">
+              </ng-click>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </uib-tab>
+
+    <uib-tab class="full-height" heading="Export">
+    <div class="full-height" ng-controller="dashboardCtrl">
+      <div id="export-widgets-container" select-text>
+        {{widgets}}
+      </div>
+      <h4 id="export-widgets-message" class="text-centered"> 
+        Copy the text above and paste it someplace safe!
+      </h4>
+    </div>
+    </uib-tab>
+
+    <uib-tab class="modal-tab full-height" heading="Import">
+      <div ng-controller="dashboardCtrl">
+        <div class="full-height">
+          <textarea id="import-widgets-textbox" ng-model="widgetString"
+                    placeholder="Paste the text you exported here...">
+          </textarea>
+        </div>
+          <div class="text-centered">
+            <button id="import-widgets-button"
+                    class="btn btn-danger"
+                    ng-click="importWidgets()">
+              Import
+            </button>
+          </div>
+      </div>
+    </uib-tab>
+
+    <uib-tab class="modal-tab text-centered full-height" heading="Other">
+      <div ng-controller="dashboardCtrl">
+        <div id="other-buttons-container" class="full-height">
+        <button type="button" class="btn btn-success other-button"
+                              ng-click="syncWidgets()">
+          Sync Grids 
+        </button>
+        <button type="button" class="btn btn-warning other-button"
+                              ng-click="resetWidgets()">
+          Reset Grids
+        </button>
+        <button type="button" class="btn btn-danger other-button"
+                              ng-click="onLogout()">
+          Logout
+        </button>
+      </div>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</script>
+
+<script type="text/ng-template" id="authModal.html">
+  <uib-tabset id="auth-modal" active="active">
+    <uib-tab heading="Login">
+      <form ng-submit="$auth.onLogin()" class="modal-tab">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email"
+                              class="form-control"
+                              ng-model="$auth.credentials.email"
+                              placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password"
+                                 class="form-control"
+                                 ng-model="$auth.credentials.password"
+                                 placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Login
+        </button>
+      </form>
+    </uib-tab>
+
+    <uib-tab heading="Register">
+      <form ng-submit="$auth.onReg()" class="modal-tab">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email"
+                              class="form-control"
+                              ng-model="$auth.credentials.email"
+                              placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password"
+                                 class="form-control"
+                                 ng-model="$auth.credentials.password"
+                                 placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-success">
+          Register
+        </button>
+      </form>
+    </uib-tab>
+  </uib-tabset>
+</script>
