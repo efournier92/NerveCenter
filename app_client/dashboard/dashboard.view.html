@@ -1,0 +1,139 @@
+<button ng-click="openAuthModal()">
+  
+</button>
+
+<ng-click ng-click="toggleDelete()"> 
+  <img id="deleteIcon" src="img/_x.png"
+                       height="25px" width="25px"
+                                     style="margin-right:6px;margin-top:5px;">
+  <img id="deleteIconRed" src="img/_xRed.png"
+                          height="25px" width="25px"
+                                        ng-show="deleteEnabled"
+                                        style="margin-right:6px;margin-top:5px;">
+</ng-click>
+</ng-click>
+<ng-click ng-click="toggleDraggable()"> 
+  <img id="lockIcon" src="img/_locked.png"
+                     height="25px" width="25px"
+                                   style="margin-right:13px;margin-top:5px;">
+  <img id="lockIconRed" src="img/_lockedRed.png"
+                        height="25px" width="25px" ng-show="draggable"
+                                                   style="margin-right:13px;margin-top:5px;">
+</ng-click>
+<ng-click ng-click="openMainModal()"> 
+  <img id="openMainModal" src="img/_options.png"
+                          height="25px" width="25px"
+                                        style="margin-right:21px;margin-top:6px;">
+</ng-click>
+<div style="height:12px;width:100%;">
+  
+</div>
+<div gridster="gridOptions" style="padding-top:40px;">
+  <ul>
+    <li gridster-item 
+     ng-repeat="widget in widgets track by $index"
+     row="widget.row"
+     col="widget.col"
+     url="widget.url">
+      <ng-click ng-click="logIt(gridsterItem);"> 
+        <img id="widgetIcon" src={{widget.icon}}>
+        <img id="x-delete" ng-show="deleteEnabled" 
+                           ng-click="deleteWidget(widget)"
+                           style="opacity:0.75;"
+                           height="30px" width="30px"
+                                         src="img/_xDelete.png">
+      </ng-click>
+    </li>
+  </ul>
+</div>
+
+<script type="text/ng-template" id="mainModal.html">
+<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+    <uib-tab class="main-modal-tab" heading="Add Widget">
+      <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
+        <div class="row modal-form-icon-container">
+          <div class="col-xs-6 modal-body-form">
+            <input type="text" ng-model="widgetUrl" name="widgetUrl" placeholder="Paste URL" onfocus="this.placeholder = ''" style="text-align:center;" /><br />
+            <input type="submit" class="btn btn-info" value="Add Widget" />
+          </div>
+          <div class="col-xs-6 selected-icon-container">
+            <img src={{selectedIcon}} class="selected-icon">
+          </div>
+        </div>
+        <div class="gridster-modal" gridster="gridsterModalOptions">
+          <ul>
+            <li gridster-item="item" ng-repeat="icon in allIcons">
+              <ng-click ng-click="selectIcon(icon.icon);"> 
+                <img src={{icon.icon}} class="gridster-modal-icon" alt="widget"</ng-click>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </uib-tab>
+
+    <uib-tab heading="Export" style="height:100%">
+    <div ng-controller="dashboardCtrl" style="height:100%">
+      <div select-text class="" style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;">
+        {{widgets}}
+      </div>
+      <h4 style="text-align:center;">
+        Copy the text above and paste it someplace safe!
+      </h4>
+    </div>
+    </uib-tab>
+
+    <uib-tab class="main-modal-tab" heading="Import" style="height:100%;">
+    <div ng-controller="dashboardCtrl">
+      <div style="height:100%;">
+      <textarea ng-model="widgetString" style="background:white;color:black;height:250px;width:80%;margin:40px 80px;overflow: scroll;" placeholder="Paste the text you exported here...">
+      </textarea>
+      </div>
+        <div style="text-align:center">
+          <button ng-click="importWidgets()" class="btn btn-danger" style="width:40%">Import</button>
+        </div>
+    </div>
+    </uib-tab>
+
+    <uib-tab heading="Logout" style="text-align:center;">
+      <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
+      <div style="text-align:center" ng-controller="dashboardCtrl">
+        <button type="button" id="logout-button" class="btn btn-danger" ng-click="onLogout()">Logout</button>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</script>
+
+<script type="text/ng-template" id="authModal.html">
+<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+    <uib-tab heading="Login">
+      <form ng-submit="$auth.onLogin()" class="main-modal-tab">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="$auth.credentials.email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="$auth.credentials.password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign in!</button>
+      </form>
+    </uib-tab>
+
+    <uib-tab heading="Register">
+      <form ng-submit="vm.onSubmit()">
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model="vm.credentials.name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
+        </div>
+        <button type="submit" class="btn btn-default">Register!</button>
+      </form>
+    </uib-tab>
+</script>
