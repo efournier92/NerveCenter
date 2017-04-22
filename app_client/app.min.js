@@ -1,4 +1,5 @@
 (function() {
+
   angular.module('nerveCenter',
     ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap',
      'gridster']);
