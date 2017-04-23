@@ -34,7 +34,7 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
   debugger;
-  if(!req.body.email || !req.body.password) {
+  if (!req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"
     });
@@ -45,13 +45,13 @@ module.exports.login = function(req, res) {
     var token;
 
     // If Passport throws an error
-    if(err) {
+    if (err) {
       res.status(404).json(err);
       return;
     }
 
     // If user is found
-    if(user) {
+    if (user) {
       token = user.generateJwt();
       res.status(200);
       res.json({

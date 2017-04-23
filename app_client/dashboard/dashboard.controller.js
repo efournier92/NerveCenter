@@ -8,7 +8,6 @@
     $uibModal, $log, $document, $filter, meanData, auth) {
     var $dash = this;
 
-
     $scope.deleteEnabled = false;
 
     $dash.widgets = {};
@@ -185,13 +184,8 @@
     };
 
     $scope.onLogout = function() {
-      auth.logout()
-        .success(function() {
-          location.reload();
-        })
-        .error(function(err) {
-          alert(err);
-        });
+      auth.logout();
+      $location.path('dashboard.view');
     }
   };
 

@@ -14,7 +14,8 @@
     };
 
     $auth.onReg = function() {
-      auth.register($auth.credentials)
+      auth
+        .register($auth.credentials)
         .error(function(err){
           alert(err);
         })
@@ -26,7 +27,8 @@
     $auth.user = {};
 
     $auth.onLogin = function() {
-      auth.login($auth.credentials)
+      auth
+        .login($auth.credentials)
         .error(function(err){
           alert(err);
         })
