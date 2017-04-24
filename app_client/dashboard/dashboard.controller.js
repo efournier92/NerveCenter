@@ -9,6 +9,7 @@
 
     $scope.draggable = false;
     $scope.deleteEnabled = false;
+    $scope.urlsEnabled = true;
 
     updateWidgets();
 
@@ -98,15 +99,17 @@
     }
 
     $scope.toggleDraggable = function() {
-      if ($scope.gridOptions.draggable.enabled == false) {
-        $scope.draggable = true;
-        $scope.gridOptions.draggable.enabled = true;
-        gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
-      } else {
-        $scope.draggable = false;
-        $scope.gridOptions.draggable.enabled = false;
-        $scope.saveWidgets();
-      }
+      gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
+      $scope.urlsEnabled = !$scope.urlsEnabled;
+      if ($scope.deleteEnabled)
+        $scope.deleteEnabled = false;
+    }
+
+    $scope.toggleDelete = function() {
+      $scope.deleteEnabled = !$scope.deleteEnabled;
+      $scope.urlsEnabled = !$scope.urlsEnabled;
+      if (gridOptions.draggable.enabled)
+      gridOptions.draggable.enabled = false;
     }
 
     $scope.allIcons = allIcons;
@@ -118,6 +121,8 @@
     }
 
     $scope.openMainModal = function(size, parentSelector) {
+      gridOptions.draggable.enabled = false;
+      $scope.deleteEnabled = false;
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
       var modalInstance = $uibModal.open({
