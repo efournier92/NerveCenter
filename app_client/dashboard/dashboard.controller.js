@@ -109,7 +109,7 @@
       $scope.deleteEnabled = !$scope.deleteEnabled;
       $scope.urlsEnabled = !$scope.urlsEnabled;
       if (gridOptions.draggable.enabled)
-      gridOptions.draggable.enabled = false;
+        gridOptions.draggable.enabled = false;
     }
 
     $scope.allIcons = allIcons;
@@ -123,8 +123,10 @@
     $scope.openMainModal = function(size, parentSelector) {
       gridOptions.draggable.enabled = false;
       $scope.deleteEnabled = false;
+
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
+
       var modalInstance = $uibModal.open({
         templateUrl: 'mainModal.html',
         controller: 'dashboardCtrl',
@@ -136,6 +138,7 @@
     $scope.openAuthModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
+
       var modalInstance = $uibModal.open({
         templateUrl: 'authModal.html',
         controller: 'authCtrl',
