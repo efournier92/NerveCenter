@@ -84,10 +84,6 @@
       location.reload();
     } 
 
-    $scope.toggleDelete = function() {
-      $scope.deleteEnabled = !$scope.deleteEnabled;
-    }
-
     $scope.deleteWidget = function(widget) {
       $scope.widgets = $scope.widgets.filter(function(element){
         return element.url != widget.url;
@@ -98,13 +94,14 @@
 
     $scope.onLogout = function() {
       auth.logout();
-      $location.path('dashboard.view');
+      location.reload();
     }
 
     $scope.toggleDraggable = function() {
       if ($scope.gridOptions.draggable.enabled == false) {
         $scope.draggable = true;
         $scope.gridOptions.draggable.enabled = true;
+        gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
       } else {
         $scope.draggable = false;
         $scope.gridOptions.draggable.enabled = false;
