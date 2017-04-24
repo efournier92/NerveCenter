@@ -55,14 +55,15 @@
       var widgetWeight = $scope.widgetWeight;
       var widgetIcon = $scope.selectedIcon;
 
+      var defaultIcon = "img/_blank.png";
       // Handle null values 
-      if (!widgetUrl && !widgetIcon) {
+      if (!widgetUrl && widgetIcon === defaultIcon) {
         window.alert("Please Enter URL and Select an Icon");
         return;
       } else if (!widgetUrl) {
         window.alert("Please Enter URL");
         return;
-      } else if (!widgetIcon) {
+      } else if (widgetIcon === defaultIcon) {
         window.alert("Please Select an Icon");
         return;
       }
@@ -111,6 +112,14 @@
       }
     }
 
+    $scope.allIcons = allIcons;
+    $scope.gridsterModalOptions = gridsterModalOptions;
+    $scope.selectedIcon = "img/_blank.png";
+
+    $scope.selectIcon = function(iconUrl) {
+      $scope.selectedIcon = iconUrl;
+    }
+
     $scope.openMainModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
@@ -121,13 +130,6 @@
         appendTo: parentElem
       });
     };
-
-    $scope.allIcons = allIcons;
-    $scope.gridsterModalOptions = gridsterModalOptions;
-    $scope.selectedIcon = "img/_blank.png";
-    $scope.selectIcon = function(iconUrl) {
-      $scope.selectedIcon = iconUrl;
-    }
 
     $scope.openAuthModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
