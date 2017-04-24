@@ -5,11 +5,21 @@
     .controller('dashboardCtrl', dashboardCtrl);
 
   function dashboardCtrl($scope, $http, $location, 
-    $uibModal, $log, $document, $filter, meanData, auth) {
+    $uibModal, $log, $document, $filter, $window, meanData, auth) {
 
     $scope.draggable = false;
     $scope.deleteEnabled = false;
     $scope.urlsEnabled = true;
+
+
+    angular.element($window).bind('resize', function() {
+      if (($scope.screenSize == 'lg' && $window.innerWidth < 1000)
+        || ($scope.screenSize = 'md' && $window.innerWidth > 1000)
+        || ($scope.screenSize = 'md' && $window.innerWidth < 500)
+        || ($scope.screenSize = 'sm' && $window.innerWidth > 500)) {
+        location.reload();
+      }
+    });
 
     updateWidgets();
 
@@ -26,7 +36,20 @@
       return adjustedGridOptions;
     }
 
+    function checkScreenSize() {
+      var start = $window.innerWidth;
+      if (start > 1000) {
+        $scope.screenSize = 'lg';
+      } else if (start > 500) {
+        $scope.screenSize = 'md';
+      } else {
+        $scope.screenSize = 'sm';
+      }
+      console.log($scope.screenSize);
+    }
+
     function updateWidgets() {
+      checkScreenSize();
       meanData.getProfile()
         .success(function(data) {
           this.widgets = data.widgets;
