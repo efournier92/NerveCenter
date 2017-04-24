@@ -7,22 +7,10 @@
   function dashboardCtrl($scope, $http, $location, 
     $uibModal, $log, $document, $filter, meanData, auth) {
 
-    var $dash = this;
-
+    $scope.draggable = false;
     $scope.deleteEnabled = false;
 
-    $dash.widgets = {};
-    $scope.$watch('widgets', function(widgets){
-      console.log("changed:", $scope.widgets);
-    }, true);
-
-    $scope.allIcons = allIcons;
-    $scope.gridsterModalOptions = gridsterModalOptions;
-
-    $scope.selectedIcon = "img/_blank.png";
-    $scope.selectIcon = function(iconUrl) {
-      $scope.selectedIcon = iconUrl;
-    }
+    updateWidgets();
 
     function instantiateGridster() {
       var width = this.window.innerWidth;
@@ -40,22 +28,16 @@
     function updateWidgets() {
       meanData.getProfile()
         .success(function(data) {
-          $dash.widgets = data.widgets;
+          this.widgets = data.widgets;
         })
         .error(function() {
           $scope.openAuthModal();
         })
         .finally(function() {
-          $scope.widgets = angular.fromJson($dash.widgets);
+          $scope.widgets = angular.fromJson(this.widgets);
           $scope.gridOptions = instantiateGridster();
         });
     }
-
-    $scope.importWidgets = function() {
-      $scope.widgets = angular.fromJson($scope.widgetString);
-      $scope.saveWidgets();
-      location.reload();
-    } 
 
     $scope.saveWidgets = function() {
       data = $scope.widgets;
@@ -68,26 +50,12 @@
         });
     }
 
-    $scope.widgetString = angular.toJson($scope.widgets);
-
-    $scope.toggleDraggable = function() {
-      if ($scope.gridOptions.draggable.enabled == false) {
-        $scope.draggable = true;
-        $scope.gridOptions.draggable.enabled = true;
-      } else {
-        $scope.draggable = false;
-        $scope.gridOptions.draggable.enabled = false;
-        $scope.saveWidgets();
-      }
-      console.log($scope.widgets);
-    }
-
     $scope.createWidget = function() {
       var widgetUrl = $scope.widgetUrl;
       var widgetWeight = $scope.widgetWeight;
       var widgetIcon = $scope.selectedIcon;
 
-      // Handle null fields
+      // Handle null values 
       if (!widgetUrl && !widgetIcon) {
         window.alert("Please Enter URL and Select an Icon");
         return;
@@ -99,38 +67,49 @@
         return;
       }
 
-    var newWidget = {
-      icon: widgetIcon,
-      url: widgetUrl 
+      var newWidget = {
+        icon: widgetIcon,
+        url: widgetUrl 
+      }
+
+      $scope.widgets.push(newWidget);
+      $scope.saveWidgets();
+      $location.path('dashboard.view');
     }
 
-    $scope.widgets.push(newWidget);
-    $scope.saveWidgets();
-  }
-
-  $scope.deleteWidget = function(widget) {
-    $scope.widgets = $scope.widgets.filter(function(element){
-      return element.url != widget.url;
-    });
-    $scope.saveWidgets();
-  }
+    $scope.importWidgets = function() {
+      $scope.widgets = angular.fromJson($scope.widgetString);
+      $scope.saveWidgets();
+      location.reload();
+    } 
 
     $scope.toggleDelete = function() {
       $scope.deleteEnabled = !$scope.deleteEnabled;
     }
 
-    $scope.update = function() {
-      id = auth.currentUser().id;
-      console.log(id);
-      $http.put('/api/user/' + $scope.contact._id, $scope.contact)
-        .success(function(response) {
-          refresh();
-        })
-    };
+    $scope.deleteWidget = function(widget) {
+      $scope.widgets = $scope.widgets.filter(function(element){
+        return element.url != widget.url;
+      });
 
-    $scope.closeModal = function() {
-      $dash.dismiss('cancel');
-    };
+      $scope.saveWidgets();
+    }
+
+    $scope.onLogout = function() {
+      auth.logout();
+      $location.path('dashboard.view');
+    }
+
+    $scope.toggleDraggable = function() {
+      if ($scope.gridOptions.draggable.enabled == false) {
+        $scope.draggable = true;
+        $scope.gridOptions.draggable.enabled = true;
+      } else {
+        $scope.draggable = false;
+        $scope.gridOptions.draggable.enabled = false;
+        $scope.saveWidgets();
+      }
+    }
 
     $scope.openMainModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
@@ -143,6 +122,13 @@
       });
     };
 
+    $scope.allIcons = allIcons;
+    $scope.gridsterModalOptions = gridsterModalOptions;
+    $scope.selectedIcon = "img/_blank.png";
+    $scope.selectIcon = function(iconUrl) {
+      $scope.selectedIcon = iconUrl;
+    }
+
     $scope.openAuthModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
@@ -154,13 +140,6 @@
       });
     };
 
-    $scope.onLogout = function() {
-      auth.logout();
-      $location.path('dashboard.view');
-    }
-  
-  $scope.draggable = false;
-  updateWidgets();
   };
 
 })();
