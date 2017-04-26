@@ -21,7 +21,6 @@
           Authorization: 'Bearer '+ auth.getToken()
         }
       });
-      // $http({
       //   method: 'PUT',
       //   url: '/api/user/' ,
       //   headers: {

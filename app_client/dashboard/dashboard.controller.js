@@ -11,16 +11,6 @@
     $scope.deleteEnabled = false;
     $scope.urlsEnabled = true;
 
-
-    angular.element($window).bind('resize', function() {
-      if (($scope.screenSize == 'lg' && $window.innerWidth < 1000)
-        || ($scope.screenSize = 'md' && $window.innerWidth > 1000)
-        || ($scope.screenSize = 'md' && $window.innerWidth < 500)
-        || ($scope.screenSize = 'sm' && $window.innerWidth > 500)) {
-        location.reload();
-      }
-    });
-
     updateWidgets();
 
     function instantiateGridster() {
@@ -170,6 +160,14 @@
       });
     };
 
+    angular.element($window).bind('resize', function() {
+      if (($scope.screenSize == 'lg' && $window.innerWidth < 1000)
+        || ($scope.screenSize = 'md' && $window.innerWidth > 1000)
+        || ($scope.screenSize = 'md' && $window.innerWidth < 500)
+        || ($scope.screenSize = 'sm' && $window.innerWidth > 500)) {
+        location.reload();
+      }
+    });
   };
 
 })();
