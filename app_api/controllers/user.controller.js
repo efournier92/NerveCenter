@@ -22,8 +22,16 @@ module.exports.updateWidgets = function(req, res) {
   } else {
     User.findById(req.payload._id, function(err, user) {
       if (err) return handleError(err);
-      widgetString = JSON.stringify(req.body);
-      user.widgets = widgetString;
+      widgetString = JSON.stringify(req.body[0]);
+      size = req.body[1].size;
+
+      if (size == 'Lg') {
+        user.widgetsLg = widgetString;
+      } else if (size == 'Md') {
+        user.widgetsMd = widgetString;
+      } else if (size == 'Sm') {
+        user.widgetsSm = widgetString;
+      }
 
       user.save(function(err, updatedUser) {
         if (err) return handleError(err);
