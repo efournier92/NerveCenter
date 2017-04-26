@@ -33,7 +33,8 @@
 
     return {
       getProfile : getProfile,
-      updateWidgets: updateWidgets
+      updateWidgets: updateWidgets,
+      getIcons: getIcons 
     };
 
   }
