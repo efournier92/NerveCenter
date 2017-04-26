@@ -8,15 +8,15 @@ var auth = jwt({
 });
 
 var authCtrl = require('../controllers/auth.controller');
-var appCtrl = require('../controllers/app.controller');
+var icoCtrl = require('../controllers/ico.controller');
 var userCtrl = require('../controllers/user.controller');
 
 // Auth API 
 router.post('/register', authCtrl.register);
 router.post('/login', authCtrl.login);
 
-// App API
-router.get('/app', appCtrl.getIcons);
+// Ico API
+router.get('/ico', icoCtrl.getIcons);
 
 // User API
 router.get('/user', auth, userCtrl.profileRead);
