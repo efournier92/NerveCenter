@@ -173,18 +173,18 @@
           for (i = 0; i < len; i++) {
             var iconObj = {};
             var iconString = 'img/ico/' + this.icons[i];
-            iconObj.icon = iconString;
+            iconObj.path = iconString;
             $scope.allIcons.push(iconObj);
           }
         });
     }
 
-      getIcons();
+    getIcons();
     $scope.gridsterModalOptions = gridsterModalOptions;
     $scope.selectedIcon = "img/_blank.png";
 
-    $scope.selectIcon = function(iconUrl) {
-      $scope.selectedIcon = iconUrl;
+    $scope.selectIcon = function(iconPath) {
+      $scope.selectedIcon = iconPath;
     }
 
     $scope.openMainModal = function(size, parentSelector) {
