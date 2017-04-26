@@ -6,9 +6,9 @@ module.exports.getIcons = function(req, res) {
 
   fs.readdir(path, function(err, files) {
     if (err) {
-      sendJSONresponse(res, 400, {
-        "message": "Directory not found"
-      });
+    res.status(400).json({
+      'message' : 'Directory Not Found'
+    });
     }
     files.forEach(function(ico) {
       icoList.push(ico) 

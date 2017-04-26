@@ -23,6 +23,14 @@
       });
     };
 
+    var getIcons = function(data) {
+      return $http.get('/api/ico', data, {
+        headers: {
+          Authorization: 'Bearer '+ auth.getToken()
+        }
+      });
+    };
+
     return {
       getProfile : getProfile,
       updateWidgets: updateWidgets
