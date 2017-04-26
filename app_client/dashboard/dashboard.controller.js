@@ -21,7 +21,7 @@
       } else if (width > 500) {
         adjustedGridOptions.columns = 6; 
       } else {
-        adjustedGridOptions.columns = 2; 
+        adjustedGridOptions.columns =3;
       }
       return adjustedGridOptions;
     }
@@ -123,6 +123,7 @@
       $scope.widgetsMd = $scope.widgets;
       $scope.widgetsSm = $scope.widgets;
       $scope.saveWidgets();
+      location.reload();
     }
 
     $scope.importWidgets = function() {

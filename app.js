@@ -46,6 +46,22 @@ app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 
+var fs = require('fs');
+var testPath = '/public/img';
+fs.realpath(__dirname, function(err, testPath) {
+    if (err) {
+        console.log(err);
+     return;
+    }
+    console.log('Path is : ' + testPath);
+});
+fs.readdir('./public/img/ico', function(err, files) {
+    if (err) return;
+    files.forEach(function(f) {
+        console.log('Files: ' + f);
+    });
+});
+
 ///////////////////////////////////
 // ERROR HANDLERS
 //
