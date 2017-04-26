@@ -108,9 +108,14 @@
       </div>
     </uib-tab>
 
-    <uib-tab heading="Logout" style="text-align:center;">
+    <uib-tab heading="Other" style="text-align:center;">
       <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
       <div style="text-align:center" ng-controller="dashboardCtrl">
+        <button type="button" id="logout-button"
+                              class="btn btn-success"
+                              ng-click="syncWidgets()">
+          Sync Grids 
+        </button>
         <button type="button" id="logout-button"
                               class="btn btn-danger"
                               ng-click="onLogout()">
