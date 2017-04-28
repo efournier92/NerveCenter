@@ -68,11 +68,11 @@
           <div class="col-xs-6 selected-icon-container">
             <img src={{selectedIcon}} class="selected-icon">
           </div>
-      <div style="width:98%;text-align:right;">
-        <button type="button" class="btn btn-info btn-xs" ng-click="loadAllIcons()" ng-hide="areIconsLoaded" style="">Load All</button>
-      </div>
         </div>
         <div class="gridster-modal" style="width:98%" gridster="gridsterModalOptions">
+      <div style="position:fixed;bottom:0;right:25px;z-index:10;">
+        <button type="button" class="btn btn-warning btn-sm" ng-click="loadAllIcons()" ng-hide="areIconsLoaded" style="">Load All Icons</button>
+      </div>
           <ul>
             <li gridster-item="item" ng-repeat="icon in shownIcons">
               <ng-click ng-click="selectIcon(icon.path);">
