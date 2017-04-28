@@ -73,11 +73,11 @@
       }
 
       data = [
-        $scope.widgetsLg, 
+      $scope.widgetsLg, 
         $scope.widgetsMd, 
         $scope.widgetsSm, 
         { size: $scope.screenSize }
-      ];
+    ];
 
       meanData.updateWidgets(data)
         .success(function(data) {
@@ -175,8 +175,19 @@
             var iconString = 'img/ico/' + this.icons[i];
             iconObj.path = iconString;
             $scope.allIcons.push(iconObj);
+            $scope.shownIcons = [];
+            $scope.loadMoreIcons();
+            $scope.loadMoreIcons();
           }
         });
+    }
+
+    $scope.loadMoreIcons = function() {
+      var shownLen = $scope.shownIcons.length;
+      for(var i = 1; i <= 12; i++) {
+        var newIco = $scope.allIcons[shownLen + i]
+        $scope.shownIcons.push(newIco);
+      }
     }
 
     getIcons();

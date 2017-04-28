@@ -70,9 +70,9 @@
           </div>
         </div>
         <div class="gridster-modal" gridster="gridsterModalOptions">
-          <ul>
-            <li gridster-item="item" ng-repeat="icon in allIcons">
-              <ng-click ng-click="selectIcon(icon.path);"> 
+          <ul infinite-scroll='loadMoreIcons()'>
+            <li gridster-item="item" ng-repeat="ico in shownIcons">
+              <ng-click ng-click="selectIcon(ico.path);"> 
                 <img src={{icon.path}} class="gridster-modal-icon" alt="widget"
               </ng-click>
             </li>
