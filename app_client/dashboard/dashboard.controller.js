@@ -10,6 +10,7 @@
     $scope.draggable = false;
     $scope.deleteEnabled = false;
     $scope.urlsEnabled = true;
+    $scope.areIconsLoaded = false;
 
     updateWidgets();
 
@@ -175,19 +176,36 @@
             var iconString = 'img/ico/' + this.icons[i];
             iconObj.path = iconString;
             $scope.allIcons.push(iconObj);
-            $scope.shownIcons = [];
-            $scope.loadMoreIcons();
-            $scope.loadMoreIcons();
           }
+            $scope.shownIcons = [];
+            // $scope.loadMoreIcons();
+            $scope.loadSomeIcons();
         });
     }
 
-    $scope.loadMoreIcons = function() {
+    $scope.loadMore = function () {
+      console.log('loadMore');
+    };
+
+    $scope.loadAllIcons = function () {
       var shownLen = $scope.shownIcons.length;
-      for(var i = 1; i <= 12; i++) {
+      var totalIcons = $scope.allIcons.length;
+      console.log('Hit');
+      var iconsLeft = totalIcons - shownLen;
+      for(var i = shownLen; i <= iconsLeft; i++) {
         var newIco = $scope.allIcons[shownLen + i]
         $scope.shownIcons.push(newIco);
       }
+      console.log($scope.shownIcons);
+    }
+
+    $scope.loadSomeIcons = function () {
+      var shownLen = $scope.shownIcons.length;
+      for(var i = 1; i <= 24; i++) {
+        var newIco = $scope.allIcons[shownLen + i]
+        $scope.shownIcons.push(newIco);
+      }
+      console.log($scope.showIcons);
     }
 
     getIcons();
@@ -234,6 +252,5 @@
       }
     });
   };
-
 })();
 
