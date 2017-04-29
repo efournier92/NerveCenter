@@ -59,6 +59,7 @@
             $scope.widgets = $scope.widgetsSm;
           }
           $scope.gridOptions = instantiateGridster();
+          this.currentWidth = $window.innerWidth;
         });
     }
 
@@ -74,11 +75,11 @@
       }
 
       data = [
-      $scope.widgetsLg, 
+        $scope.widgetsLg, 
         $scope.widgetsMd, 
         $scope.widgetsSm, 
         { size: $scope.screenSize }
-    ];
+      ];
 
       meanData.updateWidgets(data)
         .success(function(data) {
@@ -177,9 +178,9 @@
             iconObj.path = iconString;
             $scope.allIcons.push(iconObj);
           }
-            $scope.shownIcons = [];
-            // $scope.loadMoreIcons();
-            $scope.loadSomeIcons();
+          $scope.shownIcons = [];
+          // $scope.loadMoreIcons();
+          $scope.loadSomeIcons();
         });
     }
 
@@ -241,12 +242,22 @@
       });
     };
 
+    var resizeBreaks = {
+      'md' : 1000,
+      'sm' : 500
+    };
+
     angular.element($window).bind('resize', function() {
-      if (($scope.screenSize == 'lg' && $window.innerWidth < 1000)
-        || ($scope.screenSize = 'md' && $window.innerWidth > 1000)
-        || ($scope.screenSize = 'md' && $window.innerWidth < 500)
-        || ($scope.screenSize = 'sm' && $window.innerWidth > 500)) {
-        location.reload();
+      var oldWidth = this.currentWidth;
+      var newWidth = $window.innerWidth;
+      console.log('old', oldWidth);
+      console.log('new', newWidth);
+      if ((oldWidth > resizeBreaks['md'] && newWidth < resizeBreaks['md'])
+        || (oldWidth < resizeBreaks['md'] && newWidth > resizeBreaks['md'])
+        || (oldWidth > resizeBreaks['sm'] && newWidth < resizeBreaks['sm'])
+        || (oldWidth < resizeBreaks['sm'] && newWidth > resizeBreaks['sm'])) {
+
+        updateWidgets();
       }
     });
   };
