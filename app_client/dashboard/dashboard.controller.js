@@ -15,6 +15,7 @@
     $scope.areIconsLoaded = false;
 
     updateWidgets();
+    getIcons();
 
     function instantiateGridster() {
       var width = this.window.innerWidth;
@@ -70,16 +71,16 @@
       if ($dshBrd.screenSize == 'lg') {
         $dshBrd.widgetsLg = $dshBrd.widgets;
       } else if ($dshBrd.screenSize == 'md') {
-        $dshBrd.widgetsMd = $dshBrd$scope.widgets;
+        $dshBrd.widgetsMd = $dshBrd.widgets;
       } else {
-        $scope.widgetsSm = $scope.widgets;
+        $dshBrd.widgetsSm = $scope.widgets;
       }
 
       data = [
-        $scope.widgetsLg, 
-        $scope.widgetsMd, 
-        $scope.widgetsSm, 
-        { size: $scope.screenSize }
+        $dshBrd.widgetsLg, 
+        $dshBrd.widgetsMd, 
+        $dshBrd.widgetsSm, 
+        { size: $dshBrd.screenSize }
       ];
 
       meanData.updateWidgets(data)
@@ -90,12 +91,11 @@
           console.log(e);
         });
     }
-    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj:q
-    hjkjtjjjjjjjjjjjjjjjjjj/conc
+
     $scope.createWidget = function() {
       var widgetUrl = $scope.widgetUrl;
       var widgetWeight = $scope.widgetWeight;
-      var widgetIcon = $scope.selected2con;
+      var widgetIcon = $scope.selectedIcon;
 
       var defaultIcon = "img/_blank.png";
       // Handle null values 
@@ -115,17 +115,17 @@
         url: widgetUrl
       }
 
-      $scope.widgetsLg.push(newWidget);
-      $scope.widgetsMd.push(newWidget);
-      $scope.widgetsSm.push(newWidget);
+      $dshBrd.widgetsLg.push(newWidget);
+      $dshBrd.widgetsMd.push(newWidget);
+      $dshBrd.widgetsSm.push(newWidget);
       $scope.saveWidgets('create');
       $location.path('dashboard.view');
     }
 
     $scope.syncWidgets = function() {
-      $scope.widgetsLg = $scope.widgets;
-      $scope.widgetsMd = $scope.widgets;
-      $scope.widgetsSm = $scope.widgets;
+      $dshBrd.widgetsLg = $scope.widgets;
+      $dshBrd.widgetsMd = $scope.widgets;
+      $dshBrd.widgetsSm = $scope.widgets;
       $scope.saveWidgets();
       location.reload();
     }
@@ -171,32 +171,27 @@
           $dshBrd.icons = icons;
         })
         .finally(function() {
-          $scope.allIcons = [];
+          $dshBrd.allIcons = [];
           var len = $dshBrd.icons.length;
 
           for (i = 0; i < len; i++) {
             var iconObj = {};
             var iconString = 'img/ico/' + $dshBrd.icons[i];
             iconObj.path = iconString;
-            $scope.allIcons.push(iconObj);
+            $dshBrd.allIcons.push(iconObj);
           }
           $scope.shownIcons = [];
-          // $scope.loadMoreIcons();
           $scope.loadSomeIcons();
         });
     }
 
-    $scope.loadMore = function () {
-      console.log('loadMore');
-    };
-
     $scope.loadAllIcons = function () {
       var shownLen = $scope.shownIcons.length;
-      var totalIcons = $scope.allIcons.length;
+      var totalIcons = $dshBrd.allIcons.length;
       var iconsRemaining = totalIcons - shownLen - 1;
       $scope.areIconsLoaded = true;
       for (var i = shownLen; i <= iconsRemaining; i++) {
-        var newIco = $scope.allIcons[shownLen + i]
+        var newIco = $dshBrd.allIcons[shownLen + i]
         $scope.shownIcons.push(newIco);
       }
     }
@@ -204,12 +199,11 @@
     $scope.loadSomeIcons = function () {
       var shownLen = $scope.shownIcons.length;
       for (var i = 1; i <= 24; i++) {
-        var newIco = $scope.allIcons[shownLen + i]
+        var newIco = $dshBrd.allIcons[shownLen + i]
         $scope.shownIcons.push(newIco);
       }
     }
 
-    getIcons();
     $scope.gridsterModalOptions = gridsterModalOptions;
     $scope.selectedIcon = "img/_blank.png";
 
@@ -234,7 +228,7 @@
 
     $scope.openAuthModal = function(size, parentSelector) {
       var parentElem = parentSelector ? 
-        angular.element($document[0].querySelector('.modal-demo')) : undefined;
+        angular.element($document[0].querySelector('.main-modal')) : undefined;
 
       var modalInstance = $uibModal.open({
         templateUrl: 'authModal.html',
