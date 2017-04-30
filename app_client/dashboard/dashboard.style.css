@@ -46,9 +46,10 @@ body {
 
 #x-delete {
   position: absolute;
-  z-index: 1;
   width: 100%;
   height: 100%;
+  opacity: 0.75;
+  z-index: 1;
 }
 
 .modal-header {
@@ -61,6 +62,11 @@ body {
 .modal-header-div {
   width: 25%;
   text-align: center;
+}
+
+#tool-icon-container {
+  height:21px;
+  width:100%;
 }
 
 .tool-icon {
@@ -85,9 +91,44 @@ body {
 }
 
 .main-modal {
-  background-color: #231f20;
-  height: 75vh;
+  background-color: black;
+  height: 80vh;
+  overflow: hidden;
   justify-content: center;
+}
+
+.widget-url-input {
+  color: black;
+  text-align: center;
+}
+
+#load-all-icons-container {
+  position: fixed;
+  right: 25px;
+  bottom: 0;
+  z-index: 10;
+}
+
+#export-widgets-container {
+  background: white;
+  color: black;
+  height: 250px;
+  width: 80%;
+  margin: 40px 80px;
+  overflow: scroll;
+}
+
+#import-widgets-textbox {
+  background: white;
+  color: black;
+  height: 250px;
+  width: 80%;
+  margin:40px 80px;
+  overflow: scroll;
+}
+
+#import-widgets-button {
+  width:40%;
 }
 
 .main-modal-tab {
@@ -127,6 +168,10 @@ body {
   height: 40%;
 }
 
+.grid-container {
+  padding-top:40px;
+}
+
 .gridster-modal {
   max-height: 50vh;
   overflow: scroll;
@@ -135,5 +180,9 @@ body {
 .gridster-modal-icon {
   width: 100%;
   height: 100%;
+}
+
+.text-centered {
+  text-align:center
 }
 
