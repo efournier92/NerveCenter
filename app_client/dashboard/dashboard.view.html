@@ -56,11 +56,11 @@
                                placeholder="Paste URL"
                                onfocus="this.placeholder = ''"
             <br />
-            <input type="submit" class="btn btn-info"
+            <input type="submit" id="submit-create-widget" class="btn btn-info"
                                  value="Add Widget" />
           </div>
-          <div class="col-xs-6 selected-icon-container">
-            <img src={{selectedIcon}} class="selected-icon">
+          <div id="selected-icon-container" class="col-xs-6">
+            <img src={{selectedIcon}} id="selected-icon">
           </div>
         </div>
         <div class="gridster-modal" gridster="gridsterModalOptions">
@@ -93,7 +93,7 @@
       <div ng-controller="dashboardCtrl">
         <div class="full-height">
           <textarea id="import-widgets-textbox" ng-model="widgetString"
-                    placeholder="Paste the text you exported here..."
+                    placeholder="Paste the text you exported here...">
           </textarea>
         </div>
           <div class="text-centered">

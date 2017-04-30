@@ -6,6 +6,7 @@ body {
   position: absolute;
   margin-right: 10px;
   right: 40px;
+  margin-top: 5px;
   z-index: 10;
 }
 
@@ -107,9 +108,14 @@ body {
   height: 80vh;
 }
 
-.widget-url-input {
+#widget-url-input {
   color: black;
+  height: 30px;
   text-align: center;
+}
+
+#submit-create-widget {
+  height: 35px;
 }
 
 #load-all-icons-container {
@@ -169,13 +175,19 @@ body {
 .modal-form-icon-container {
 }
 
-.selected-icon-container {
+#selected-icon-container {
   text-align: center;
+  padding: 12px 0;
 }
 
-.selected-icon {
+#selected-icon {
   width: 40%;
   height: 40%;
+}
+
+#other-buttons-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .grid-container {
