@@ -4,6 +4,7 @@ body {
 
 #lockIcon {
   position: absolute;
+  margin-right: 10px;
   right: 40px;
   z-index: 10;
 }
@@ -11,6 +12,8 @@ body {
 #lockIconRed {
   position: absolute;
   right: 40px;
+  margin-right: 10px;
+  margin-top: 5px;
   z-index: 11;
 }
 
@@ -29,6 +32,8 @@ body {
 #openMainModal {
   position: absolute;
   right: 0px;
+  margin-right:21px;
+  margin-top:5px;
   z-index: 10;
 }
 
@@ -58,6 +63,10 @@ body {
   text-align: center;
 }
 
+.tool-icon {
+  margin-top: 5px;
+}
+
 .modal-body {
   background-color: #231f20;
 }
@@ -77,7 +86,7 @@ body {
 
 .main-modal {
   background-color: #231f20;
-  height:75vh;
+  height: 75vh;
   justify-content: center;
 }
 
