@@ -79,8 +79,9 @@ body {
 }
 
 #logout-button {
-  width: 60%;
+  width: 70%;
   text-align: center;
+  margin-top: 100px;
 }
 
 #widgetStringInput {
@@ -188,6 +189,7 @@ body {
 #other-buttons-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .grid-container {

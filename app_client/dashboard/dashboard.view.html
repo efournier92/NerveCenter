@@ -104,16 +104,20 @@
       </div>
     </uib-tab>
 
-    <uib-tab class="text-centered" heading="Other">
-      <div class="text-centered" ng-controller="dashboardCtrl">
+    <uib-tab class="text-centered full-height" heading="Other">
+      <div ng-controller="dashboardCtrl">
+        <div id="other-buttons-container" class="full-height">
         <button type="button" id="logout-button"
                               class="btn btn-danger"
                               ng-click="onLogout()">
+          Logout
+        </button>
         <button type="button" id="logout-button"
                               class="btn btn-success"
                               ng-click="syncWidgets()">
-          Logout
+          Sync Grids 
         </button>
+      </div>
       </div>
     </uib-tab>
   </uib-tabset>
