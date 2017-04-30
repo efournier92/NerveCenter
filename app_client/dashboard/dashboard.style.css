@@ -90,11 +90,21 @@ body {
   color: white;
 }
 
-.main-modal {
+#main-modal {
   background-color: black;
   height: 80vh;
   overflow: hidden;
   justify-content: center;
+}
+
+#load-all-icons-button {
+  opacity: 0.85;
+}
+
+#auth-modal {
+  overflow: scroll;
+  background-color: black;
+  height: 80vh;
 }
 
 .widget-url-input {
@@ -184,5 +194,9 @@ body {
 
 .text-centered {
   text-align:center
+}
+
+.full-height {
+  height: 100%;
 }
 

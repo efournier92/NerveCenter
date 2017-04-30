@@ -46,7 +46,7 @@
 </div>
 
 <script type="text/ng-template" id="mainModal.html">
-<uib-tabset class="main-modal" active="active">
+<uib-tabset id="main-modal" active="active">
     <uib-tab class="main-modal-tab" heading="Add Widget">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
         <div class="row modal-form-icon-container">
@@ -63,9 +63,9 @@
             <img src={{selectedIcon}} class="selected-icon">
           </div>
         </div>
-        <div class="gridster-modal" style="width:98%" gridster="gridsterModalOptions">
+        <div class="gridster-modal" gridster="gridsterModalOptions">
       <div id="load-all-icons-container">
-        <button type="button" class="btn btn-danger btn-sm" ng-click="loadAllIcons()" ng-hide="areIconsLoaded" style="opacity:0.85;">Load All Icons</button>
+        <button type="button" id="load-all-icons-button" class="btn btn-danger btn-sm" ng-click="loadAllIcons()" ng-hide="areIconsLoaded">Load All Icons</button>
       </div>
           <ul>
             <li gridster-item="item" ng-repeat="icon in shownIcons">
@@ -78,25 +78,25 @@
       </form>
     </uib-tab>
 
-    <uib-tab heading="Export" style="height:100%">
-    <div ng-controller="dashboardCtrl" style="height:100%">
+    <uib-tab class="full-height" heading="Export">
+    <div class="full-height" ng-controller="dashboardCtrl">
       <div id="export-widgets-container" select-text>
         {{widgets}}
       </div>
-      <h4 style="text-align:center;">
+      <h4 class="text-centered"> 
         Copy the text above and paste it someplace safe!
       </h4>
     </div>
     </uib-tab>
 
-    <uib-tab class="main-modal-tab" heading="Import" style="height:100%;">
+    <uib-tab class="main-modal-tab full-height" heading="Import">
       <div ng-controller="dashboardCtrl">
-        <div style="height:100%;">
+        <div class="full-height">
           <textarea id="import-widgets-textbox" ng-model="widgetString"
                     placeholder="Paste the text you exported here..."
           </textarea>
         </div>
-          <div class="text-centered" style="text-align:center">
+          <div class="text-centered">
             <button id="import-widgets-button" ng-click="importWidgets()" class="btn btn-danger">
               Import
             </button>
@@ -104,9 +104,8 @@
       </div>
     </uib-tab>
 
-    <uib-tab heading="Other" style="text-align:center;">
-      <h3 style="text-align:center;margin-bottom:25px;">You Sure?</h3>
-      <div style="text-align:center" ng-controller="dashboardCtrl">
+    <uib-tab class="text-centered" heading="Other">
+      <div class="text-centered" ng-controller="dashboardCtrl">
         <button type="button" id="logout-button"
                               class="btn btn-danger"
                               ng-click="onLogout()">
@@ -121,7 +120,7 @@
 </script>
 
 <script type="text/ng-template" id="authModal.html">
-<uib-tabset class="main-modal" active="active" style="overflow:scroll;background-color:black;height:80vh;">
+<uib-tabset id="auth-modal" active="active">
     <uib-tab heading="Login">
       <form ng-submit="$auth.onLogin()" class="main-modal-tab">
         <div class="form-group">
