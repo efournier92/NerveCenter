@@ -13,26 +13,26 @@
       password : ""
     };
 
-    $auth.onReg = function() {
+    $auth.onReg = function () {
       auth
         .register($auth.credentials)
         .error(function(err){
           alert(err);
         })
-        .then(function(){
+        .then(function (){
           $location.path('../dashboard/dashboard.view');
         });
     };
     
     $auth.user = {};
 
-    $auth.onLogin = function() {
+    $auth.onLogin = function () {
       auth
         .login($auth.credentials)
         .error(function(err){
           alert(err);
         })
-        .then(function(){
+        .then(function (){
           $location.path('../dashboard/dashboard.view');
         });
     }

@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   angular
     .module('nerveCenter')
@@ -11,11 +11,11 @@
       $window.localStorage['mean-token'] = token;
     };
 
-    var getToken = function() {
+    var getToken = function () {
       return $window.localStorage['mean-token'];
     };
 
-    var isLoggedIn = function() {
+    var isLoggedIn = function () {
       var token = getToken();
       var payload;
 
@@ -30,7 +30,7 @@
       }
     };
 
-    var currentUser = function() {
+    var currentUser = function () {
       if(isLoggedIn()){
         var token = getToken();
         var payload = token.split('.')[1];
@@ -56,7 +56,7 @@
       });
     };
 
-    logout = function() {
+    logout = function () {
       $window.localStorage.removeItem('mean-token');
     };
 

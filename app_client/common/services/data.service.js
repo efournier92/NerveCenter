@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   angular
     .module('nerveCenter')
@@ -7,7 +7,7 @@
   meanData.$inject = ['$http', 'auth'];
   function meanData($http, auth) {
 
-    var getProfile = function() {
+    var getProfile = function () {
       return $http.get('/api/user', {
         headers: {
           Authorization: 'Bearer '+ auth.getToken()

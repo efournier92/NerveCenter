@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   angular
     .module('nerveCenter')
@@ -25,7 +25,7 @@
       //   link: function(scope, element, attrs) {
       //     var raw = element[0];
 
-      //     element.bind('scroll', function() {
+      //     element.bind('scroll', function () {
       //       // var yPosition = raw.scrollTop + raw.offsetHeight;
       //       // if (yPosition > scope.lastYPosition) {
       //         console.log('in scroll');

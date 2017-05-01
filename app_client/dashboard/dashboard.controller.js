@@ -1,4 +1,4 @@
-(function() { 
+(function () { 
 
   angular
     .module('nerveCenter')
@@ -49,10 +49,10 @@
           $dshBrd.widgetsMd = angular.fromJson(user.widgetsMd);
           $dshBrd.widgetsSm = angular.fromJson(user.widgetsSm);
         })
-        .error(function() {
+        .error(function () {
           $scope.openAuthModal();
         })
-        .finally(function() {
+        .finally(function () {
           if ($dshBrd.screenSize == 'lg') {
             $scope.widgets = $dshBrd.widgetsLg;
           } else if ($dshBrd.screenSize == 'md') {
@@ -92,7 +92,7 @@
         });
     }
 
-    $scope.createWidget = function() {
+    $scope.createWidget = function () {
       var widgetUrl = $scope.widgetUrl;
       var widgetWeight = $scope.widgetWeight;
       var widgetIcon = $scope.selectedIcon;
@@ -122,7 +122,7 @@
       $location.path('dashboard.view');
     }
 
-    $scope.syncWidgets = function() {
+    $scope.syncWidgets = function () {
       $dshBrd.widgetsLg = $scope.widgets;
       $dshBrd.widgetsMd = $scope.widgets;
       $dshBrd.widgetsSm = $scope.widgets;
@@ -130,7 +130,7 @@
       location.reload();
     }
 
-    $scope.importWidgets = function() {
+    $scope.importWidgets = function () {
       $scope.widgets = angular.fromJson($scope.widgetString);
       $scope.saveWidgets();
       location.reload();
@@ -144,12 +144,12 @@
       $scope.saveWidgets();
     }
 
-    $scope.onLogout = function() {
+    $scope.onLogout = function () {
       auth.logout();
       location.reload();
     }
 
-    $scope.toggleDraggable = function() {
+    $scope.toggleDraggable = function () {
       gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
       $scope.urlsEnabled = !$scope.urlsEnabled;
       if ($scope.deleteEnabled)
@@ -158,7 +158,7 @@
         $scope.saveWidgets();
     }
 
-    $scope.toggleDelete = function() {
+    $scope.toggleDelete = function () {
       $scope.deleteEnabled = !$scope.deleteEnabled;
       $scope.urlsEnabled = !$scope.urlsEnabled;
       if (gridOptions.draggable.enabled)
@@ -170,7 +170,7 @@
         .success(function(icons) {
           $dshBrd.icons = icons;
         })
-        .finally(function() {
+        .finally(function () {
           $dshBrd.allIcons = [];
           var len = $dshBrd.icons.length;
 
@@ -243,7 +243,7 @@
       'sm' : 500
     };
 
-    angular.element($window).bind('resize', function() {
+    angular.element($window).bind('resize', function () {
       var oldWidth = $dshBrd.currentWidth;
       var newWidth = $window.innerWidth;
       console.log('old', oldWidth);

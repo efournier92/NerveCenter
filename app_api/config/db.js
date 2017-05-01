@@ -13,37 +13,37 @@ mongoose.connect(dbURI);
 
 ////////////////////
 // CONNECTION EVENTS
-mongoose.connection.on('connected', function() {
+mongoose.connection.on('connected',  {
   console.log('Mongoose connected to ' + dbURI);
 });
 mongoose.connection.on('error', function(err) {
   console.log('Mongoose connection error: ' + err);
 });
-mongoose.connection.on('disconnected', function() {
+mongoose.connection.on('disconnected',  {
   console.log('Mongoose disconnected');
 });
 
 //////////////////////////
 // APP TERMINATION EVENTS
 gracefulShutdown = function(msg, callback) {
-  mongoose.connection.close(function() {
+  mongoose.connection.close( {
     console.log('Mongoose disconnected through ' + msg);
     callback();
   });
 };
 
-process.once('SIGUSR2', function() {
-  gracefulShutdown('nodemon restart', function() {
+process.once('SIGUSR2',  {
+  gracefulShutdown('nodemon restart',  {
     process.kill(process.pid, 'SIGUSR2');
   });
 });
-process.on('SIGINT', function() {
-  gracefulShutdown('app termination', function() {
+process.on('SIGINT',  {
+  gracefulShutdown('app termination',  {
     process.exit(0);
   });
 });
-process.on('SIGTERM', function() {
-  gracefulShutdown('Heroku app termination', function() {
+process.on('SIGTERM',  {
+  gracefulShutdown('Heroku app termination',  {
     process.exit(0);
   });
 });
