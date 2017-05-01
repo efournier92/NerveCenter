@@ -2,48 +2,45 @@
 // DEPENDENCIES
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/NerveCenter';
-if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI;
-}
 
 ////////////
 // MONGOOSE 
-mongoose.connect(dbURI);
+var dbURI = process.env.MONGODB_URI || 'mongodb://localhost/NerveCenter';
+mongoose.connect(dbURI, {auth:{authdb:"admin"}});
 
 ////////////////////
 // CONNECTION EVENTS
-mongoose.connection.on('connected',  {
+mongoose.connection.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
 });
-mongoose.connection.on('error', function(err) {
+mongoose.connection.on('error', function (err) {
   console.log('Mongoose connection error: ' + err);
 });
-mongoose.connection.on('disconnected',  {
+mongoose.connection.on('disconnected', function () {
   console.log('Mongoose disconnected');
 });
 
 //////////////////////////
 // APP TERMINATION EVENTS
-gracefulShutdown = function(msg, callback) {
-  mongoose.connection.close( {
+gracefulShutdown = function (msg, callback) {
+  mongoose.connection.close(function () {
     console.log('Mongoose disconnected through ' + msg);
     callback();
   });
 };
 
-process.once('SIGUSR2',  {
-  gracefulShutdown('nodemon restart',  {
+process.once('SIGUSR2', function () {
+  gracefulShutdown('nodemon restart', function () {
     process.kill(process.pid, 'SIGUSR2');
   });
 });
-process.on('SIGINT',  {
-  gracefulShutdown('app termination',  {
+process.on('SIGINT', function () {
+  gracefulShutdown('app termination', function () {
     process.exit(0);
   });
 });
-process.on('SIGTERM',  {
-  gracefulShutdown('Heroku app termination',  {
+process.on('SIGTERM', function () {
+  gracefulShutdown('Heroku app termination', function () {
     process.exit(0);
   });
 });
