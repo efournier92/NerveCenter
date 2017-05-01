@@ -2,10 +2,10 @@
 
   angular
     .module('nerveCenter')
-    .service('meanData', meanData);
+    .service('apiData', apiData);
 
-  meanData.$inject = ['$http', 'auth'];
-  function meanData($http, auth) {
+  apiData.$inject = ['$http', 'auth'];
+  function apiData($http, auth) {
 
     var getProfile = function () {
       return $http.get('/api/user', {

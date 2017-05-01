@@ -5,7 +5,7 @@
     .controller('dashboardCtrl', dashboardCtrl);
 
   function dashboardCtrl($scope, $http, $location, 
-    $uibModal, $log, $document, $filter, $window, meanData, auth) {
+    $uibModal, $log, $document, $filter, $window, apiData, auth) {
 
     var $dshBrd = this;
 
@@ -43,7 +43,7 @@
 
     function updateWidgets() {
       checkScreenSize();
-      meanData.getProfile()
+      apiData.getProfile()
         .success(function(user) {
           $dshBrd.widgetsLg = angular.fromJson(user.widgetsLg);
           $dshBrd.widgetsMd = angular.fromJson(user.widgetsMd);
@@ -83,7 +83,7 @@
         { size: $dshBrd.screenSize }
       ];
 
-      meanData.updateWidgets(data)
+      apiData.updateWidgets(data)
         .success(function(data) {
           console.log("Success!: ", data)
         })
@@ -166,7 +166,7 @@
     }
 
     function getIcons() {
-      meanData.getIcons()
+      apiData.getIcons()
         .success(function(icons) {
           $dshBrd.icons = icons;
         })

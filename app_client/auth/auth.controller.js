@@ -4,8 +4,8 @@
     .module('nerveCenter')
     .controller('authCtrl', authCtrl);
 
-  authCtrl.$inject = ['$location', 'auth', 'meanData'];
-  function authCtrl($location, auth, meanData) {
+  authCtrl.$inject = ['$location', 'auth', 'apiData'];
+  function authCtrl($location, auth, apiData) {
     var $auth = this;
 
     $auth.credentials = {
