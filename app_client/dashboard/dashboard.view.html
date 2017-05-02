@@ -107,17 +107,17 @@
     <uib-tab class="text-centered full-height" heading="Other">
       <div ng-controller="dashboardCtrl">
         <div id="other-buttons-container" class="full-height">
-        <button type="button" class="btn btn-warning other-button"
-                              ng-click="onLogout()">
-          Logout
-        </button>
         <button type="button" class="btn btn-success other-button"
                               ng-click="syncWidgets()">
           Sync Grids 
         </button>
-        <button type="button" class="btn btn-danger other-button"
+        <button type="button" class="btn btn-warning other-button"
                               ng-click="syncWidgets()">
-          Sync Grids 
+          Reset Grids
+        </button>
+        <button type="button" class="btn btn-danger other-button"
+                              ng-click="onLogout()">
+          Logout
         </button>
       </div>
       </div>
