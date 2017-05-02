@@ -6,7 +6,7 @@ var gracefulShutdown;
 ////////////
 // MONGOOSE 
 var dbURI = process.env.MONGODB_URI || 'mongodb://localhost/NerveCenter';
-mongoose.connect(dbURI, {auth:{authdb:"admin"}});
+mongoose.connect(dbURI);
 
 ////////////////////
 // CONNECTION EVENTS
