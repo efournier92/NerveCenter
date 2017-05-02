@@ -154,17 +154,21 @@ body {
   overflow: scroll;
 }
 
+#export-widgets-message {
+  color: white;
+}
+
 #import-widgets-textbox {
-  background: white;
-  color: black;
-  height: 250px;
-  width: 80%;
-  margin:40px 80px;
-  overflow: scroll;
+background: white;
+color: black;
+height: 250px;
+width: 80%;
+margin:40px 80px;
+overflow: scroll;
 }
 
 #import-widgets-button {
-  width:40%;
+width:40%;
 }
 
 #other-buttons-container {

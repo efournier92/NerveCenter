@@ -83,7 +83,7 @@
       <div id="export-widgets-container" select-text>
         {{widgets}}
       </div>
-      <h4 class="text-centered"> 
+      <h4 id="export-widgets-message" class="text-centered"> 
         Copy the text above and paste it someplace safe!
       </h4>
     </div>
@@ -107,13 +107,15 @@
     <uib-tab class="text-centered full-height" heading="Other">
       <div ng-controller="dashboardCtrl">
         <div id="other-buttons-container" class="full-height">
-        <button type="button" class="other-button"
-                              class="btn btn-danger"
+        <button type="button" class="btn btn-warning other-button"
                               ng-click="onLogout()">
           Logout
         </button>
-        <button type="button" class="other-button"
-                              class="btn btn-success"
+        <button type="button" class="btn btn-success other-button"
+                              ng-click="syncWidgets()">
+          Sync Grids 
+        </button>
+        <button type="button" class="btn btn-danger other-button"
                               ng-click="syncWidgets()">
           Sync Grids 
         </button>
