@@ -67,6 +67,7 @@
 
     $scope.saveWidgets = function(action) {
       checkScreenSize();
+      screenSize = { size: $dshBrd.screenSize };
 
       if ($dshBrd.screenSize == 'lg') {
         $dshBrd.widgetsLg = $dshBrd.widgets;
@@ -77,10 +78,10 @@
       }
 
       data = [
-        $dshBrd.widgetsLg, 
-        $dshBrd.widgetsMd, 
-        $dshBrd.widgetsSm, 
-        { size: $dshBrd.screenSize }
+        $dshBrd.widgetsLg,
+        $dshBrd.widgetsMd,
+        $dshBrd.widgetsSm,
+        screenSize
       ];
 
       apiData.updateWidgets(data)
@@ -109,15 +110,39 @@
         window.alert("Please Select an Icon");
         return;
       }
-
-      var newWidget = {
-        icon: widgetIcon,
-        url: widgetUrl
+      
+      function pushNewWidget(size) {
+        if (size === 'lg') {
+          var len = $dshBrd.widgetsLg.length();
+          var columns = 7;
+          var newWidget = createNewWidget(len, columns);
+          $dshBrd.widgetsLg.push(newWidget);
+        } else if (size === 'md') {
+          var len = $dshBrd.widgetsMd.length();
+          var columns = 6;
+          var newWidget = createNewWidget(len, columns);
+          $dshBrd.widgetsMd.push(newWidget);
+        } else if (size === 'sm') {
+          var len = $dshBrd.widgetsSm.length();
+          var columns = 3;
+          var newWidget = createNewWidget(len, columns);
+          $dshBrd.widgetsSm.push(newWidget);
+        }
       }
 
-      $dshBrd.widgetsLg.push(newWidget);
-      $dshBrd.widgetsMd.push(newWidget);
-      $dshBrd.widgetsSm.push(newWidget);
+      function createNewWidget(len, columns) {
+        var newWidget = {
+          icon: widgetIcon,
+          url: widgetUrl,
+          row: Math.floor(len / columns),
+          col: (len % columns) + 1 
+        }
+      }
+
+      pushNewWidget('lg');
+      pushNewWidget('md');
+      pushNewWidget('sm');
+
       $scope.saveWidgets('create');
       $location.path('dashboard.view');
     }
