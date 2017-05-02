@@ -1,4 +1,5 @@
 (function () {
+
   angular
     .module('nerveCenter')
     .controller('authCtrl', authCtrl);
@@ -15,11 +16,10 @@
     $auth.onReg = function () {
       auth
         .register($auth.credentials)
-        .error(function(err) {
-          alert("Sorry, you didn't fill in both fields.\nPlease try again.");
+        .error(function(err){
+          alert(err);
         })
-        .then(function () {
-          auth.login($auth.credentials)
+        .then(function (){
           $location.path('../dashboard/dashboard.view');
         });
     };
@@ -29,10 +29,10 @@
     $auth.onLogin = function () {
       auth
         .login($auth.credentials)
-        .error(function(err) {
-          alert("Sorry, the username and password you entered don't match.\nPlease try again.");
+        .error(function(err){
+          alert(err);
         })
-        .then(function () {
+        .then(function (){
           $location.path('../dashboard/dashboard.view');
         });
     }

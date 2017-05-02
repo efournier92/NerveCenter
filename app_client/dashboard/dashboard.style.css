@@ -2,33 +2,52 @@ body {
   background-color: #231f20;
 }
 
-.text-centered {
-  text-align: center;
-}
-
-.full-height {
-  height: 100%;
-}
-
 #tool-icon-container {
-  position: fixed;
-  text-align: right;
-  top: 0;
-  right: 0;
-  margin-top: 8px;
-  margin-right: 16px;
-  z-index: 100;
+  height:21px;
+  width:100%;
 }
 
 .tool-icon {
-  margin-right: 6px;
+  margin-top: 5px;
 }
 
-.grid-container {
-  padding-top: 40px;
+#delete-icon {
+  position: absolute;
+  right: 80px;
+  z-index: 10;
 }
 
-#widget-icon {
+#delete-icon-red {
+  position: absolute;
+  right: 80px;
+  z-index: 11;
+}
+
+#lock-icon {
+  position: absolute;
+  margin-right: 10px;
+  right: 40px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+#lock-icon-red {
+  position: absolute;
+  right: 40px;
+  margin-right: 10px;
+  margin-top: 5px;
+  z-index: 11;
+}
+
+#open-main-modal-button {
+  position: absolute;
+  right: 0px;
+  margin-right:21px;
+  margin-top:5px;
+  z-index: 10;
+}
+
+#widgetIcon {
   position: absolute;
   z-index: 0;
   width: 100%;
@@ -43,10 +62,104 @@ body {
   z-index: 1;
 }
 
+.modal-header {
+  background-color: #231f20;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-header-div {
+  width: 25%;
+  text-align: center;
+}
+
+
+.modal-body {
+  background-color: #231f20;
+}
+
+#logout-button {
+  width: 70%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#widgetStringInput {
+  height: 200px;
+}
+
+.modal-content {
+  color: white;
+}
+
 #main-modal {
   background-color: black;
   height: 80vh;
   overflow: hidden;
+  justify-content: center;
+}
+
+#load-all-icons-button {
+  opacity: 0.85;
+}
+
+#auth-modal {
+  overflow: scroll;
+  background-color: black;
+  height: 80vh;
+}
+
+#widget-url-input {
+  color: black;
+  height: 30px;
+  text-align: center;
+}
+
+#submit-create-widget {
+  height: 35px;
+}
+
+#load-all-icons-container {
+  position: fixed;
+  right: 25px;
+  bottom: 0;
+  z-index: 10;
+}
+
+#export-widgets-container {
+  background: white;
+  color: black;
+  height: 250px;
+  width: 80%;
+  margin: 40px 80px;
+  overflow: scroll;
+}
+
+#import-widgets-textbox {
+  background: white;
+  color: black;
+  height: 250px;
+  width: 80%;
+  margin:40px 80px;
+  overflow: scroll;
+}
+
+#import-widgets-button {
+  width:40%;
+}
+
+.main-modal-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-body-form {
+  height: 174px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -61,26 +174,7 @@ body {
   color: white;
 }
 
-.modal-tab {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.create-widget-form {
-  height: 174px;
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#widget-url-input {
-  height: 30px;
-}
-
-#submit-create-widget {
-  height: 35px;
+.modal-form-icon-container {
 }
 
 #selected-icon-container {
@@ -93,7 +187,17 @@ body {
   height: 40%;
 }
 
-#gridster-modal {
+#other-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-container {
+  padding-top:40px;
+}
+
+.gridster-modal {
   max-height: 50vh;
   overflow: scroll;
 }
@@ -103,58 +207,11 @@ body {
   height: 100%;
 }
 
-#load-all-icons-button-container {
-  position: fixed;
-  right: 25px;
-  bottom: 0;
-  z-index: 10;
+.text-centered {
+  text-align:center
 }
 
-#load-all-icons-button {
-  opacity: 0.85;
-}
-
-#export-widgets-container {
-  background: white;
-  color: black;
-  height: 250px;
-  width: 80%;
-  margin: 40px 80px;
-  overflow: scroll;
-}
-
-#export-widgets-message {
-  color: white;
-}
-
-#import-widgets-textbox {
-  background: white;
-  color: black;
-  height: 250px;
-  width: 80%;
-  margin:40px 80px;
-  overflow: scroll;
-}
-
-#import-widgets-button {
-  width: 40%;
-}
-
-#other-buttons-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.other-button {
-  width: 70%;
-  text-align: center;
-  margin-top: 5%;
-}
-
-#auth-modal {
-  overflow: scroll;
-  background-color: black;
-  height: 80vh;
+.full-height {
+  height: 100%;
 }
 
