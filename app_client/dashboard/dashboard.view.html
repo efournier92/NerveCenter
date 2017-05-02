@@ -1,9 +1,9 @@
 <div id="tool-icon-container" >
     <ng-click ng-click="toggleDelete()"> 
-      <img id="delete-icon" class="tool-icon"
+      <img id="delete-button" class="tool-icon"
                            src="img/_x.png"
                            height="20px" width="20px">
-      <img id="delete-icon-active" class="tool-icon" 
+      <img id="delete-button-active" class="tool-icon" 
                               src="img/_xRed.png"
                               height="20px"
                               width="20px"
@@ -34,7 +34,7 @@
                             col="widget.col"
                             url="widget.url">
       <a ng-disabled="urlsEnabled" ng-href="{{urlsEnabled ? widget.url : ''}}">
-        <img id="widgetIcon" src={{widget.icon}}>
+        <img id="widget-icon" src={{widget.icon}}>
         <img id="x-delete" ng-show="deleteEnabled" 
                            ng-click="deleteWidget(widget)"
                            height="30px"
@@ -49,8 +49,8 @@
 <uib-tabset id="main-modal" active="active">
     <uib-tab class="main-modal-tab" heading="Add Widget">
       <form ng-submit="createWidget()" ng-controller="dashboardCtrl">
-        <div class="row modal-form-icon-container">
-          <div class="col-xs-6 modal-body-form">
+        <div class="row">
+          <div class="col-xs-6 create-widget-form">
             <input id="widget-url-input" type="text" ng-model="widgetUrl"
                                name="widgetUrl"
                                placeholder="Paste URL"
@@ -63,8 +63,8 @@
             <img src={{selectedIcon}} id="selected-icon">
           </div>
         </div>
-        <div class="gridster-modal" gridster="gridsterModalOptions">
-      <div id="load-all-icons-container">
+        <div id="gridster-modal" gridster="gridsterModalOptions">
+      <div id="load-all-icons-button-container">
         <button type="button" id="load-all-icons-button" class="btn btn-danger btn-sm" ng-click="loadAllIcons()" ng-hide="areIconsLoaded">Load All Icons</button>
       </div>
           <ul>
@@ -107,12 +107,12 @@
     <uib-tab class="text-centered full-height" heading="Other">
       <div ng-controller="dashboardCtrl">
         <div id="other-buttons-container" class="full-height">
-        <button type="button" id="logout-button"
+        <button type="button" class="other-button"
                               class="btn btn-danger"
                               ng-click="onLogout()">
           Logout
         </button>
-        <button type="button" id="logout-button"
+        <button type="button" class="other-button"
                               class="btn btn-success"
                               ng-click="syncWidgets()">
           Sync Grids 

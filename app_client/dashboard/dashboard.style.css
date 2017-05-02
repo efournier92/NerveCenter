@@ -2,6 +2,14 @@ body {
   background-color: #231f20;
 }
 
+.text-centered {
+  text-align:center
+}
+
+.full-height {
+  height: 100%;
+}
+
 #tool-icon-container {
   height:21px;
   width:100%;
@@ -11,19 +19,19 @@ body {
   margin-top: 5px;
 }
 
-#delete-icon {
+#delete-button {
   position: absolute;
   right: 80px;
   z-index: 10;
 }
 
-#delete-icon-red {
+#delete-button-active {
   position: absolute;
   right: 80px;
   z-index: 11;
 }
 
-#lock-icon {
+#lock-button {
   position: absolute;
   margin-right: 10px;
   right: 40px;
@@ -31,7 +39,7 @@ body {
   z-index: 10;
 }
 
-#lock-icon-red {
+#lock-button-active {
   position: absolute;
   right: 40px;
   margin-right: 10px;
@@ -47,7 +55,11 @@ body {
   z-index: 10;
 }
 
-#widgetIcon {
+.grid-container {
+  padding-top:40px;
+}
+
+#widget-icon {
   position: absolute;
   z-index: 0;
   width: 100%;
@@ -62,37 +74,6 @@ body {
   z-index: 1;
 }
 
-.modal-header {
-  background-color: #231f20;
-  color: white;
-  display: flex;
-  flex-direction: row;
-}
-
-.modal-header-div {
-  width: 25%;
-  text-align: center;
-}
-
-
-.modal-body {
-  background-color: #231f20;
-}
-
-#logout-button {
-  width: 70%;
-  text-align: center;
-  margin-top: 100px;
-}
-
-#widgetStringInput {
-  height: 200px;
-}
-
-.modal-content {
-  color: white;
-}
-
 #main-modal {
   background-color: black;
   height: 80vh;
@@ -100,31 +81,68 @@ body {
   justify-content: center;
 }
 
-#load-all-icons-button {
-  opacity: 0.85;
+.nav-tabs>li>a {
+  color: #2aabd2;
 }
 
-#auth-modal {
-  overflow: scroll;
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
   background-color: black;
-  height: 80vh;
+  color: white;
+}
+
+.main-modal-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.create-widget-form {
+  height: 174px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #widget-url-input {
-  color: black;
   height: 30px;
-  text-align: center;
 }
 
 #submit-create-widget {
   height: 35px;
 }
 
-#load-all-icons-container {
+#selected-icon-container {
+  text-align: center;
+  padding: 12px 0;
+}
+
+#selected-icon {
+  width: 40%;
+  height: 40%;
+}
+
+#gridster-modal {
+  max-height: 50vh;
+  overflow: scroll;
+}
+
+.gridster-modal-icon {
+  width: 100%;
+  height: 100%;
+}
+
+#load-all-icons-button-container {
   position: fixed;
   right: 25px;
   bottom: 0;
   z-index: 10;
+}
+
+#load-all-icons-button {
+  opacity: 0.85;
 }
 
 #export-widgets-container {
@@ -149,69 +167,21 @@ body {
   width:40%;
 }
 
-.main-modal-tab {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.modal-body-form {
-  height: 174px;
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.nav-tabs>li>a {
-  color: #2aabd2;
-}
-
-.nav-tabs>li.active>a,
-.nav-tabs>li.active>a:focus,
-.nav-tabs>li.active>a:hover {
-  background-color: black;
-  color: white;
-}
-
-.modal-form-icon-container {
-}
-
-#selected-icon-container {
-  text-align: center;
-  padding: 12px 0;
-}
-
-#selected-icon {
-  width: 40%;
-  height: 40%;
-}
-
 #other-buttons-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.grid-container {
-  padding-top:40px;
+.other-button {
+  width: 70%;
+  text-align: center;
+  margin-top: 100px;
 }
 
-.gridster-modal {
-  max-height: 50vh;
+#auth-modal {
   overflow: scroll;
-}
-
-.gridster-modal-icon {
-  width: 100%;
-  height: 100%;
-}
-
-.text-centered {
-  text-align:center
-}
-
-.full-height {
-  height: 100%;
+  background-color: black;
+  height: 80vh;
 }
 
