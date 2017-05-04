@@ -1,4 +1,5 @@
 var fs = require('fs');
+var defaultWidgets = require('../common/defaultWidgets');
 
 module.exports.getIcons = function (req, res) {
   var path = 'public/img/ico';
@@ -16,3 +17,8 @@ module.exports.getIcons = function (req, res) {
     res.status(200).json(files);
   });
 };
+
+module.exports.getDefaultGrid = function (req, res) {
+    res.status(200).json(defaultWidgets.widgetString);
+};
+

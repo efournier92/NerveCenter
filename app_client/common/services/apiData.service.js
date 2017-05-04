@@ -31,10 +31,19 @@
       });
     };
 
+    var getDefaultGrid = function (data) {
+      return $http.get('/api/defaultgrid', data, {
+        headers: {
+          Authorization: 'Bearer '+ auth.getToken()
+        }
+      });
+    };
+
     return {
       getProfile : getProfile,
       updateWidgets: updateWidgets,
-      getIcons: getIcons 
+      getIcons: getIcons,
+      getDefaultGrid: getDefaultGrid
     };
 
   }

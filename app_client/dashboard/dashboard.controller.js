@@ -65,14 +65,13 @@
         });
     }
 
-    $scope.saveWidgets = function(action) {
+    $dshBrd.saveWidgets = function () {
       checkScreenSize();
-      screenSize = { size: $dshBrd.screenSize };
 
       if ($dshBrd.screenSize == 'lg') {
-        $dshBrd.widgetsLg = $dshBrd.widgets;
+        $dshBrd.widgetsLg = $scope.widgets;
       } else if ($dshBrd.screenSize == 'md') {
-        $dshBrd.widgetsMd = $dshBrd.widgets;
+        $dshBrd.widgetsMd = $scope.widgets;
       } else {
         $dshBrd.widgetsSm = $scope.widgets;
       }
@@ -80,15 +79,14 @@
       data = [
         $dshBrd.widgetsLg,
         $dshBrd.widgetsMd,
-        $dshBrd.widgetsSm,
-        screenSize
+        $dshBrd.widgetsSm
       ];
 
       apiData.updateWidgets(data)
-        .success(function(data) {
+        .success(function (data) {
           console.log("Success!: ", data)
         })
-        .error(function(e) {
+        .error(function (e) {
           console.log(e);
         });
     }
@@ -143,7 +141,7 @@
       pushNewWidget('md');
       pushNewWidget('sm');
 
-      $scope.saveWidgets('create');
+      $dshBrd.saveWidgets();
       $location.path('dashboard.view');
     }
 
@@ -151,22 +149,45 @@
       $dshBrd.widgetsLg = $scope.widgets;
       $dshBrd.widgetsMd = $scope.widgets;
       $dshBrd.widgetsSm = $scope.widgets;
-      $scope.saveWidgets();
+      $dshBrd.saveWidgets();
       location.reload();
+    }
+
+    $scope.resetWidgets = function () {
+      checkScreenSize();
+      var defaultGrid = '';
+
+      apiData.getDefaultGrid()
+        .success(function (data) {
+          defaultGrid = data;
+          console.log("Grid Restroed")
+        })
+        .error(function (e) {
+          console.log(e);
+        });
+
+      $scope.widgets = defaultGrid;
+      if ($dshBrd.screenSize == 'lg') {
+        $dshBrd.widgetsLg = defaultGrid;
+      } else if ($dshBrd.screenSize == 'md') {
+        $dshBrd.widgetsMd = defaultGrid;
+      } else {
+        $dshBrd.widgetsSm = defaultGrid;
+      }
     }
 
     $scope.importWidgets = function () {
       $scope.widgets = angular.fromJson($scope.widgetString);
-      $scope.saveWidgets();
+      $dshBrd.saveWidgets();
       location.reload();
     } 
 
-    $scope.deleteWidget = function(widget) {
-      $scope.widgets = $scope.widgets.filter(function(element){
+    $scope.deleteWidget = function (widget) {
+      $scope.widgets = $scope.widgets.filter(function (element){
         return element.url != widget.url;
       });
 
-      $scope.saveWidgets();
+      $dshBrd.saveWidgets();
     }
 
     $scope.onLogout = function () {
@@ -180,7 +201,7 @@
       if ($scope.deleteEnabled)
         $scope.deleteEnabled = false;
       if (!gridOptions.draggable.enabled)
-        $scope.saveWidgets();
+        $dshBrd.saveWidgets();
     }
 
     $scope.toggleDelete = function () {
@@ -192,7 +213,7 @@
 
     function getIcons() {
       apiData.getIcons()
-        .success(function(icons) {
+        .success(function (icons) {
           $dshBrd.icons = icons;
         })
         .finally(function () {
@@ -232,11 +253,11 @@
     $scope.gridsterModalOptions = gridsterModalOptions;
     $scope.selectedIcon = "img/_blank.png";
 
-    $scope.selectIcon = function(iconPath) {
+    $scope.selectIcon = function (iconPath) {
       $scope.selectedIcon = iconPath;
     }
 
-    $scope.openMainModal = function(size, parentSelector) {
+    $scope.openMainModal = function (size, parentSelector) {
       gridOptions.draggable.enabled = false;
       $scope.deleteEnabled = false;
 
@@ -251,7 +272,7 @@
       });
     };
 
-    $scope.openAuthModal = function(size, parentSelector) {
+    $scope.openAuthModal = function (size, parentSelector) {
       var parentElem = parentSelector ? 
         angular.element($document[0].querySelector('.main-modal')) : undefined;
 
@@ -271,8 +292,7 @@
     angular.element($window).bind('resize', function () {
       var oldWidth = $dshBrd.currentWidth;
       var newWidth = $window.innerWidth;
-      console.log('old', oldWidth);
-      console.log('new', newWidth);
+
       if ((oldWidth > resizeBreaks['md'] && newWidth < resizeBreaks['md'])
         || (oldWidth < resizeBreaks['md'] && newWidth > resizeBreaks['md'])
         || (oldWidth > resizeBreaks['sm'] && newWidth < resizeBreaks['sm'])
