@@ -3,7 +3,7 @@ body {
 }
 
 .text-centered {
-  text-align:center
+  text-align: center;
 }
 
 .full-height {
@@ -11,52 +11,21 @@ body {
 }
 
 #tool-icon-container {
-  height:21px;
-  width:100%;
+  position: fixed;
+  text-align: right;
+  top: 0;
+  right: 0;
+  margin-top: 8px;
+  margin-right: 16px;
+  z-index: 100;
 }
 
 .tool-icon {
-  margin-top: 5px;
-}
-
-#delete-button {
-  position: absolute;
-  right: 80px;
-  z-index: 10;
-}
-
-#delete-button-active {
-  position: absolute;
-  right: 80px;
-  z-index: 11;
-}
-
-#lock-button {
-  position: absolute;
-  margin-right: 10px;
-  right: 40px;
-  margin-top: 5px;
-  z-index: 10;
-}
-
-#lock-button-active {
-  position: absolute;
-  right: 40px;
-  margin-right: 10px;
-  margin-top: 5px;
-  z-index: 11;
-}
-
-#open-main-modal-button {
-  position: absolute;
-  right: 0px;
-  margin-right:21px;
-  margin-top:5px;
-  z-index: 10;
+  margin-right: 6px;
 }
 
 .grid-container {
-  padding-top:40px;
+  padding-top: 40px;
 }
 
 #widget-icon {
@@ -92,7 +61,7 @@ body {
   color: white;
 }
 
-.main-modal-tab {
+.modal-tab {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -159,16 +128,16 @@ body {
 }
 
 #import-widgets-textbox {
-background: white;
-color: black;
-height: 250px;
-width: 80%;
-margin:40px 80px;
-overflow: scroll;
+  background: white;
+  color: black;
+  height: 250px;
+  width: 80%;
+  margin:40px 80px;
+  overflow: scroll;
 }
 
 #import-widgets-button {
-width:40%;
+  width: 40%;
 }
 
 #other-buttons-container {
@@ -180,7 +149,7 @@ width:40%;
 .other-button {
   width: 70%;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 5%;
 }
 
 #auth-modal {

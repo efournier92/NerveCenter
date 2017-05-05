@@ -24,8 +24,7 @@ module.exports.updateWidgets = function (req, res) {
       if (err) return handleError(err);
 
       user.widgetsLg = JSON.stringify(req.body[0]);
-      user.widgetsMd = JSON.stringify(req.body[1]);
-      user.widgetsSm = JSON.stringify(req.body[2]);
+      user.widgetsSm = JSON.stringify(req.body[1]);
 
       user.save(function (err, updatedUser) {
         if (err) return handleError(err);
@@ -34,4 +33,3 @@ module.exports.updateWidgets = function (req, res) {
     });
   };
 };
-
