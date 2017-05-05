@@ -12,16 +12,50 @@ body {
 
 #tool-icon-container {
   position: fixed;
-  text-align: right;
   top: 0;
   right: 0;
-  margin-top: 8px;
-  margin-right: 16px;
-  z-index: 100;
+  height: 21px;
+  width: 100%;
 }
 
 .tool-icon {
-  margin-right: 6px;
+  margin-top: 5px;
+}
+
+#delete-button {
+  position: absolute;
+  right: 80px;
+  z-index: 10;
+}
+
+#delete-button-active {
+  position: absolute;
+  right: 80px;
+  z-index: 11;
+}
+
+#lock-button {
+  position: absolute;
+  margin-right: 10px;
+  right: 40px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+#lock-button-active {
+  position: absolute;
+  right: 40px;
+  margin-right: 10px;
+  margin-top: 5px;
+  z-index: 11;
+}
+
+#open-main-modal-button {
+  position: absolute;
+  right: 0px;
+  margin-right: 21px;
+  margin-top: 5px;
+  z-index: 10;
 }
 
 .grid-container {
@@ -61,7 +95,7 @@ body {
   color: white;
 }
 
-.modal-tab {
+.main-modal-tab {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -149,7 +183,7 @@ body {
 .other-button {
   width: 70%;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 100px;
 }
 
 #auth-modal {
