@@ -97,7 +97,7 @@ body {
   color: white;
 }
 
-.main-modal-tab {
+.modal-tab {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -35,7 +35,7 @@
       if (start > 1000) {
         $dshBrd.screenSize = 'lg';
       } else if (start > 500) {
- values        $dshBrd.screenSize = 'md';
+        $dshBrd.screenSize = 'md';
       } else {
         $dshBrd.screenSize = 'sm';
       }
