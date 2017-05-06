@@ -2,10 +2,10 @@
 // DEPENDENCIES
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/NerveCenter';
-if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI;
-}
+var dbURI = "mongodb://heroku_j448r4xk:9580fs6ufnq2b0l7mc24nuoida@ds157390.mlab.com:57390/heroku_j448r4xk";
+// if (process.env.NODE_ENV === 'production') {
+//   dbURI = process.env.MONGODB_URI;
+// }
 
 ////////////
 // MONGOOSE 

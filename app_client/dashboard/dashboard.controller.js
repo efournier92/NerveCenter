@@ -111,17 +111,17 @@
 
       function pushNewWidget(size) {
         if (size === 'lg') {
-          var len = $dshBrd.widgetsLg.length();
+          var len = $dshBrd.widgetsLg.length;
           var columns = 7;
           var newWidget = createNewWidget(len, columns);
           $dshBrd.widgetsLg.push(newWidget);
         } else if (size === 'md') {
-          var len = $dshBrd.widgetsMd.length();
+          var len = $dshBrd.widgetsMd.length;
           var columns = 6;
           var newWidget = createNewWidget(len, columns);
           $dshBrd.widgetsMd.push(newWidget);
         } else if (size === 'sm') {
-          var len = $dshBrd.widgetsSm.length();
+          var len = $dshBrd.widgetsSm.length;
           var columns = 3;
           var newWidget = createNewWidget(len, columns);
           $dshBrd.widgetsSm.push(newWidget);
@@ -145,36 +145,6 @@
       $location.path('dashboard.view');
     }
 
-    $scope.syncWidgets = function () {
-      $dshBrd.widgetsLg = $scope.widgets;
-      $dshBrd.widgetsMd = $scope.widgets;
-      $dshBrd.widgetsSm = $scope.widgets;
-      $dshBrd.saveWidgets();
-      $location.path('dashboard.view');
-    }
-
-    $scope.resetWidgets = function () {
-      checkScreenSize();
-
-      apiData.getDefaultGrid()
-        .success(function (defaultGrid) {
-          defaultGrid = angular.fromJson(defaultGrid);
-          $scope.widgets = defaultGrid;
-          if ($dshBrd.screenSize == 'lg') {
-            $dshBrd.widgetsLg = defaultGrid;
-          } else if ($dshBrd.screenSize == 'md') {
-            $dshBrd.widgetsMd = defaultGrid;
-          } else {
-            $dshBrd.widgetsSm = defaultGrid;
-          }
-        })
-        .error(function (e) {
-          console.log(e);
-        })
-        .finally(function () {
-          $dshBrd.saveWidgets();
-        });
-    }
 
     $scope.importWidgets = function () {
       var widgetString = angular.fromJson($scope.widgetString);
@@ -199,11 +169,6 @@
       });
 
       $dshBrd.saveWidgets();
-    }
-
-    $scope.onLogout = function () {
-      auth.logout();
-      $location.path('dashboard.view');
     }
 
     $scope.toggleDraggable = function () {
@@ -295,6 +260,42 @@
       });
     };
 
+    $scope.onLogout = function () {
+      auth.logout();
+      $location.path('dashboard.view');
+    }
+
+    $scope.syncWidgets = function () {
+      $dshBrd.widgetsLg = $scope.widgets;
+      $dshBrd.widgetsMd = $scope.widgets;
+      $dshBrd.widgetsSm = $scope.widgets;
+      $dshBrd.saveWidgets();
+      $location.path('dashboard.view');
+    }
+
+    $scope.resetWidgets = function () {
+      checkScreenSize();
+
+      apiData.getDefaultGrid()
+        .success(function (defaultGrid) {
+          defaultGrid = angular.fromJson(defaultGrid);
+          $scope.widgets = defaultGrid;
+          if ($dshBrd.screenSize == 'lg') {
+            $dshBrd.widgetsLg = defaultGrid;
+          } else if ($dshBrd.screenSize == 'md') {
+            $dshBrd.widgetsMd = defaultGrid;
+          } else {
+            $dshBrd.widgetsSm = defaultGrid;
+          }
+        })
+        .error(function (e) {
+          console.log(e);
+        })
+        .finally(function () {
+          $dshBrd.saveWidgets();
+        });
+    }
+
     var resizeBreaks = {
       'md' : 1000,
       'sm' : 500
@@ -312,6 +313,7 @@
         updateWidgets();
       }
     });
+
   };
 })();
 
