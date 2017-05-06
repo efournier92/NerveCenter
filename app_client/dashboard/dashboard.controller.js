@@ -166,6 +166,7 @@
     } 
 
     $scope.deleteWidget = function (widget) {
+      console.log("Delete: ", widget);
       $scope.widgets = $scope.widgets.filter(function (element){
         return element.url != widget.url;
       });
