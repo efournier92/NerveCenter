@@ -9,6 +9,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
+// ENV File
+require('dotenv').config()
 // Data Model
 require('./app_api/config/db');
 // Passport Config (after model is defined)

@@ -35,7 +35,7 @@
       if (start > 1000) {
         $dshBrd.screenSize = 'lg';
       } else if (start > 500) {
-        $dshBrd.screenSize = 'md';
+ values        $dshBrd.screenSize = 'md';
       } else {
         $dshBrd.screenSize = 'sm';
       }
@@ -95,9 +95,10 @@
       var widgetUrl = $scope.widgetUrl;
       var widgetWeight = $scope.widgetWeight;
       var widgetIcon = $scope.selectedIcon;
+      console.log(widgetIcon);
 
       var defaultIcon = "img/_blank.png";
-      // Handle null values 
+      // Form validation 
       if (!widgetUrl && widgetIcon === defaultIcon) {
         window.alert("Please Enter URL and Select an Icon");
         return;
@@ -135,6 +136,7 @@
           row: Math.floor(len / columns),
           col: (len % columns) + 1 
         }
+        return newWidget;
       }
 
       pushNewWidget('lg');
