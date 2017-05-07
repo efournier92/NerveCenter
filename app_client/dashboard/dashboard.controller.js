@@ -18,7 +18,7 @@
     getIcons();
 
     function instantiateGridster() {
-      var width = this.window.innerWidth;
+      var width = this.window.outerWidth;
       var adjustedGridOptions = gridOptions;
       if (width > 1000) {
         adjustedGridOptions.columns = 7; 
@@ -31,7 +31,7 @@
     }
 
     function checkScreenSize() {
-      var start = $window.innerWidth;
+      var start = $window.outerWidth;
       if (start > 1000) {
         $dshBrd.screenSize = 'lg';
       } else if (start > 500) {
@@ -61,7 +61,7 @@
             $scope.widgets = $dshBrd.widgetsSm;
           }
           $scope.gridOptions = instantiateGridster();
-          $dshBrd.currentWidth = $window.innerWidth;
+          $dshBrd.currentWidth = $window.outerWidth;
         });
     }
 
@@ -306,7 +306,7 @@
 
     angular.element($window).bind('resize', function () {
       var oldWidth = $dshBrd.currentWidth;
-      var newWidth = $window.innerWidth;
+      var newWidth = $window.outerWidth;
 
       if ((oldWidth > resizeBreaks['md'] && newWidth < resizeBreaks['md'])
         || (oldWidth < resizeBreaks['md'] && newWidth > resizeBreaks['md'])

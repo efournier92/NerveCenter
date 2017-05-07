@@ -6,6 +6,11 @@
   "engines": {
     "node": "4.4.5"
   },
+  "repository" :
+  { 
+    "type" : "git",
+    "url" : "https://github.com/efournier92/nervecenter.git"
+  },
   "dependencies": {
     "angular-gridster": "^0.13.14",
     "angular-ui-bootstrap": "^2.5.0",
