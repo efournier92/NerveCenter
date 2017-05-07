@@ -1,10 +1,10 @@
-(function () { 
+(function () {
 
   angular
     .module('nerveCenter')
     .controller('dashboardCtrl', dashboardCtrl);
 
-  function dashboardCtrl($scope, $http, $location, 
+  function dashboardCtrl($scope, $http, $location,
     $uibModal, $log, $document, $filter, $window, apiData, auth) {
 
     var $dshBrd = this;
@@ -13,6 +13,7 @@
     $scope.deleteEnabled = false;
     $scope.urlsEnabled = true;
     $scope.areIconsLoaded = false;
+    $dshBrd.lastScreenSize = $window.outerWidth;
 
     updateWidgets();
     getIcons();
@@ -21,11 +22,9 @@
       var width = this.window.outerWidth;
       var adjustedGridOptions = gridOptions;
       if (width > 1000) {
-        adjustedGridOptions.columns = 7; 
-      } else if (width > 500) {
-        adjustedGridOptions.columns = 6; 
+        adjustedGridOptions.columns = 7;
       } else {
-        adjustedGridOptions.columns =3;
+        adjustedGridOptions.columns = 3;
       }
       return adjustedGridOptions;
     }
@@ -34,8 +33,6 @@
       var start = $window.outerWidth;
       if (start > 1000) {
         $dshBrd.screenSize = 'lg';
-      } else if (start > 500) {
-        $dshBrd.screenSize = 'md';
       } else {
         $dshBrd.screenSize = 'sm';
       }
@@ -46,7 +43,6 @@
       apiData.getProfile()
         .success(function (user) {
           $dshBrd.widgetsLg = angular.fromJson(user.widgetsLg);
-          $dshBrd.widgetsMd = angular.fromJson(user.widgetsMd);
           $dshBrd.widgetsSm = angular.fromJson(user.widgetsSm);
         })
         .error(function () {
@@ -55,13 +51,16 @@
         .finally(function () {
           if ($dshBrd.screenSize == 'lg') {
             $scope.widgets = $dshBrd.widgetsLg;
-          } else if ($dshBrd.screenSize == 'md') {
-            $scope.widgets = $dshBrd.widgetsMd;
           } else {
             $scope.widgets = $dshBrd.widgetsSm;
           }
           $scope.gridOptions = instantiateGridster();
           $dshBrd.currentWidth = $window.outerWidth;
+          if ($dshBrd.screenSize !== $dshBrd.lastScreenSize) {
+            $dshBrd.lastScreenSize = $dshBrd.screenSize;
+            $location.path('dashboard.view');
+          }
+          $dshBrd.lastScreenSize = $dshBrd.screenSize;
         });
     }
 
@@ -70,15 +69,12 @@
 
       if ($dshBrd.screenSize == 'lg') {
         $dshBrd.widgetsLg = $scope.widgets;
-      } else if ($dshBrd.screenSize == 'md') {
-        $dshBrd.widgetsMd = $scope.widgets;
       } else {
         $dshBrd.widgetsSm = $scope.widgets;
       }
 
       data = [
         $dshBrd.widgetsLg,
-        $dshBrd.widgetsMd,
         $dshBrd.widgetsSm
       ];
 
@@ -98,7 +94,7 @@
       console.log(widgetIcon);
 
       var defaultIcon = "img/_blank.png";
-      // Form validation 
+      // Form validation
       if (!widgetUrl && widgetIcon === defaultIcon) {
         window.alert("Please Enter URL and Select an Icon");
         return;
@@ -116,11 +112,6 @@
           var columns = 7;
           var newWidget = createNewWidget(len, columns);
           $dshBrd.widgetsLg.push(newWidget);
-        } else if (size === 'md') {
-          var len = $dshBrd.widgetsMd.length;
-          var columns = 6;
-          var newWidget = createNewWidget(len, columns);
-          $dshBrd.widgetsMd.push(newWidget);
         } else if (size === 'sm') {
           var len = $dshBrd.widgetsSm.length;
           var columns = 3;
@@ -134,13 +125,12 @@
           icon: widgetIcon,
           url: widgetUrl,
           row: Math.floor(len / columns),
-          col: (len % columns) + 1 
+          col: (len % columns) + 1
         }
         return newWidget;
       }
 
       pushNewWidget('lg');
-      pushNewWidget('md');
       pushNewWidget('sm');
 
       $dshBrd.saveWidgets();
@@ -155,15 +145,13 @@
       checkScreenSize();
       if ($dshBrd.screenSize == 'lg') {
         $dshBrd.widgetsLg = widgetString;
-      } else if ($dshBrd.screenSize == 'md') {
-        $dshBrd.widgetsMd = widgetString;
       } else {
         $dshBrd.widgetsSm = widgetString;
       }
 
       $dshBrd.saveWidgets();
       $location.path('dashboard.view');
-    } 
+    }
 
     $scope.deleteWidget = function (widget) {
       console.log("Delete: ", widget);
@@ -240,7 +228,7 @@
       gridOptions.draggable.enabled = false;
       $scope.deleteEnabled = false;
 
-      var parentElem = parentSelector ? 
+      var parentElem = parentSelector ?
         angular.element($document[0].querySelector('.modal-demo')) : undefined;
 
       var modalInstance = $uibModal.open({
@@ -252,7 +240,7 @@
     };
 
     $scope.openAuthModal = function (size, parentSelector) {
-      var parentElem = parentSelector ? 
+      var parentElem = parentSelector ?
         angular.element($document[0].querySelector('.main-modal')) : undefined;
 
       var modalInstance = $uibModal.open({
@@ -270,7 +258,6 @@
 
     $scope.syncWidgets = function () {
       $dshBrd.widgetsLg = $scope.widgets;
-      $dshBrd.widgetsMd = $scope.widgets;
       $dshBrd.widgetsSm = $scope.widgets;
       $dshBrd.saveWidgets();
       $location.path('dashboard.view');
@@ -285,8 +272,6 @@
           $scope.widgets = defaultGrid;
           if ($dshBrd.screenSize == 'lg') {
             $dshBrd.widgetsLg = defaultGrid;
-          } else if ($dshBrd.screenSize == 'md') {
-            $dshBrd.widgetsMd = defaultGrid;
           } else {
             $dshBrd.widgetsSm = defaultGrid;
           }
@@ -300,7 +285,6 @@
     }
 
     var resizeBreaks = {
-      'md' : 1000,
       'sm' : 500
     };
 
@@ -308,9 +292,7 @@
       var oldWidth = $dshBrd.currentWidth;
       var newWidth = $window.outerWidth;
 
-      if ((oldWidth > resizeBreaks['md'] && newWidth < resizeBreaks['md'])
-        || (oldWidth < resizeBreaks['md'] && newWidth > resizeBreaks['md'])
-        || (oldWidth > resizeBreaks['sm'] && newWidth < resizeBreaks['sm'])
+      if ((oldWidth > resizeBreaks['sm'] && newWidth < resizeBreaks['sm'])
         || (oldWidth < resizeBreaks['sm'] && newWidth > resizeBreaks['sm'])) {
 
         updateWidgets();
