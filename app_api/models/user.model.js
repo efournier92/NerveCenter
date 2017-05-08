@@ -38,9 +38,10 @@ userSchema.methods.generateJwt = function () {
   return jwt.sign({
     _id: this._id,
     email: this.email,
-    widgets: this.widgets,
-    exp: parseInt(expiry.getTime() / 1000),
-  }, "MY_SECRET");
+    widgetsLg: this.widgetsLg,
+    widgetsSm: this.widgetsSm,
+    exp: parseInt(expiry.getTime() / 1000)
+  }, process.env.JWT_SECRET);
 };
 
 mongoose.model('User', userSchema);
