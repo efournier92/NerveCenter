@@ -12,6 +12,7 @@ body {
 
 #tool-icon-container {
   position: fixed;
+  text-align: right;
   top: 0;
   right: 0;
   margin-top: 8px;
