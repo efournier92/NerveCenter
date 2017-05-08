@@ -293,23 +293,15 @@
 
     angular.element($window).bind('resize', function () {
       var oldWidth = $dshBrd.currentWidth;
-      var newWidth = $window.outerWidth;
-      // console.log('old: ', oldWidth);
-      // console.log('new: ', newWidth);
-
       var oldSize = $dshBrd.lastScreenSize;
+      var newWidth = $window.outerWidth;
       var newSize = inputScreenSize(newWidth);
-      console.log('old: ', oldSize);
-      console.log('new: ', newSize);
-      // if ((oldWidth > resizeBreaks['sm'] && newWidth < resizeBreaks['sm'])
-      //   || (oldWidth < resizeBreaks['sm'] && newWidth > resizeBreaks['sm'])) {
+
       if (oldSize !== newSize) {
-        // updateWidgets();
         $location.path('dashboard.view');
       }
+
       $dshBrd.lastScreenSize = newSize;
-      // $dshBrd.currentWidth = newWidth;
-      // console.log('last: ', $dshBrd.lastScreenSize);
     });
 
   };
