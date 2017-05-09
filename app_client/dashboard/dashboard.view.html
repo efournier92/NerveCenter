@@ -1,25 +1,23 @@
 <div id="tool-icon-container" >
     <ng-click ng-click="toggleDelete()"> 
       <img id="delete-button" class="tool-icon"
-                              src="img/_x.png"
-                              height="20px" width="20px">
-      <img id="delete-button-active" class="tool-icon"
-                                     src="img/_xRed.png"
-                                     ng-show="deleteEnabled"
-                                     height="20px" width="20px">
+                              src="{{deleteIcon}}"
+                              height="{{toolIconSize}}"
+                              width="{{toolIconSize}}">
     </ng-click>
 
     <ng-click ng-click="toggleDraggable()">
-      <img id="lock-button" src="img/_locked.png"
-                            height="20px" width="20px">
-      <img id="lock-button-active" src="img/_lockedRed.png"
-                                   ng-show="gridOptions.draggable.enabled"
-                                   height="20px" width="20px">
+      <img id="lock-button" class="tool-icon"
+                            src="{{lockIcon}}"
+                            height="{{toolIconSize}}"
+                            width="{{toolIconSize}}">
     </ng-click>
 
     <ng-click ng-click="openMainModal()"> 
-      <img id="open-main-modal-button" src="img/_options.png"
-                                       height="20px" width="20px">
+      <img id="open-main-modal-button" class="tool-icon"
+                                       src="img/_options.png"
+                                       height="{{toolIconSize}}"
+                                       width="{{toolIconSize}}">
     </ng-click>
 </div>
 

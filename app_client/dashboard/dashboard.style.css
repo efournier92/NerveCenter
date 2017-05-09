@@ -14,50 +14,13 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  margin-top: 6px;
-  height: 10%;
-  width: 100%;
+  margin-top: 8px;
+  margin-right: 16px;
   z-index: 100;
 }
 
 .tool-icon {
-  margin-top: 5px;
-}
-
-#delete-button {
-  position: absolute;
-  right: 80px;
-  z-index: 10;
-}
-
-#delete-button-active {
-  position: absolute;
-  right: 80px;
-  z-index: 11;
-}
-
-#lock-button {
-  position: absolute;
-  margin-right: 10px;
-  right: 40px;
-  margin-top: 5px;
-  z-index: 10;
-}
-
-#lock-button-active {
-  position: absolute;
-  right: 40px;
-  margin-right: 10px;
-  margin-top: 5px;
-  z-index: 11;
-}
-
-#open-main-modal-button {
-  position: absolute;
-  right: 0px;
-  margin-right: 21px;
-  margin-top: 5px;
-  z-index: 10;
+  margin-right: 6px;
 }
 
 .grid-container {
