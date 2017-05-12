@@ -2,10 +2,10 @@
 // DEPENDENCIES
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = process.env.MONGODB_URI || 'mongodb://localhost/NerveCenter';
 
 ////////////
 // MONGOOSE 
+var dbURI = process.env.MONGODB_URI || 'mongodb://localhost/NerveCenter';
 mongoose.connect(dbURI);
 
 ////////////////////

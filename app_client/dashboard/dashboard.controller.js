@@ -42,7 +42,7 @@
     function updateToolIconSize() { 
       $scope.toolIconSize = 
         $dshBrd.screenSize == 'sm'
-        ? $scope.toolIconSize = 10 + '%'
+        ? $scope.toolIconSize = 27 + 'px'
         : $scope.toolIconSize = 20 + 'px';
     }
 
