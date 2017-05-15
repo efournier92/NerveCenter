@@ -25,24 +25,10 @@
   <ul>
     <li gridster-item ng-repeat="widget in widgets track by $index"
                       row="widget.row"
-                      col="widget.col">
-      <ng-include src="'/dashboard/link-widget.htm'"></ng-include>
-      <!-- <link-widget></link-widget> -->
-      <!-- <a ng-href="{{urlsEnabled ? widget.url : ''}}" ng-disabled="urlsEnabled"> -->
-      <!--   <img id="widget-icon" src={{widget.icon}}> -->
-      <!--   <img id="x-delete" ng-show="deleteEnabled" --> 
-      <!--                      ng-click="deleteWidget(widget)" -->
-      <!--                      src="img/_xDelete.png" -->
-      <!--                      height="30px" width="30px"> -->
-      <!-- </a> -->
-    <!-- </li> -->
-    <!-- <li gridster-item sizeX="1" row="3" col="0"> -->
-    <!-- <div style="style=width:50%;"> -->
-    <!--   <div style="style=width:2px;margin:0 auto;"> -->
-    <!--     <ds-widget-clock show-analog theme='dark'></ds-widget-clock> -->
-    <!--   </div> -->
-    <!-- </div> -->
-    <!-- <clock-widget></clock-widget> -->
+                      col="widget.col"
+                      type="linkWidget">
+
+      <div ng-include="'/dashboard/widgetTemplates/' + widget.type + 'linkWidget.template.html'"></div>
     </li>
   </ul>
 </div>
