@@ -16,8 +16,6 @@
     $scope.deleteIcon = 'img/_x.png';
     $scope.lockIcon = 'img/_locked.png';
 
-    $scope.clockWidget = "<ds-widget-clock show-analog theme='dark'></ds-widget-clock>"
-
     updateWidgets();
     getIcons();
 
