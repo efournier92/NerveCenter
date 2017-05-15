@@ -111,6 +111,14 @@
       return;
     }
 
+    $scope.getWidgetTemplate = function (widgetType) {
+      var templates = {
+        'linkWidget'  : '/dashboard/link-Widget.html',
+        'clockWidget' : '/dashboard/widgetTemplates/clock-widget.html'
+      };
+      return templates[widgetType];
+    };
+
     function pushNewWidget(size) {
       if (size === 'lg') {
         var len = $dshBrd.widgetsLg.length;
