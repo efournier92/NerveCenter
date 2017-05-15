@@ -24,9 +24,9 @@
 <div id="grid-container" gridster="gridOptions">
   <ul>
     <li gridster-item ng-repeat="widget in widgets track by $index"
+                      type="widget.type"
                       row="widget.row"
-                      col="widget.col"
-                      type="linkWidget">
+                      col="widget.col">
 
       <div ng-include="'/dashboard/widgetTemplates/' + widget.type + 'linkWidget.template.html'"></div>
     </li>
