@@ -111,12 +111,9 @@
       return;
     }
 
-    $scope.getWidgetTemplate = function (widgetType) {
-      var templates = {
-        'link-widget'  : '/dashboard/link-widget.html',
-        'clock-widget' : '/dashboard/widgetTemplates/clock-widget.html'
-      };
-      return templates[widgetType];
+      $scope.widgetTemplate = '/dashboard/widgetTemplates/link-widget.template.html';
+    $scope.getWidgetTemplate = function () {
+      return '/dashboard/widgetTemplates/link-widget.template.html';
     };
 
     function pushNewWidget(size) {
@@ -151,192 +148,192 @@
   }
 
 
-  $scope.importWidgets = function () {
-    var widgetString = angular.fromJson($scope.widgetString);
-    $scope.widgets = widgetString;
+    $scope.importWidgets = function () {
+      var widgetString = angular.fromJson($scope.widgetString);
+      $scope.widgets = widgetString;
 
-    checkScreenSize();
-    if ($dshBrd.screenSize == 'lg') {
-      $dshBrd.widgetsLg = widgetString;
-    } else {
-      $dshBrd.widgetsSm = widgetString;
-    }
+      checkScreenSize();
+      if ($dshBrd.screenSize == 'lg') {
+        $dshBrd.widgetsLg = widgetString;
+      } else {
+        $dshBrd.widgetsSm = widgetString;
+      }
 
-    $dshBrd.saveWidgets();
-    $location.path('dashboard.view');
-  }
-
-  $scope.deleteWidget = function (widget) {
-    console.log("Delete: ", widget);
-    $scope.widgets = $scope.widgets.filter(function (element){
-      return element.url != widget.url;
-    });
-
-    $dshBrd.saveWidgets();
-  }
-
-  $scope.toggleDraggable = function () {
-    gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
-    $scope.urlsEnabled = !$scope.urlsEnabled;
-
-    if (gridOptions.draggable.enabled) {
-      $scope.lockIcon = 'img/_lockedRed.png';
-    } else {
-      $scope.lockIcon = 'img/_locked.png';
-    }
-
-    if ($scope.deleteEnabled)
-      $scope.deleteEnabled = false;
-    if (!gridOptions.draggable.enabled)
       $dshBrd.saveWidgets();
-  }
-
-  $scope.toggleDelete = function () {
-    $scope.deleteEnabled = !$scope.deleteEnabled;
-    $scope.urlsEnabled = !$scope.urlsEnabled;
-
-    if ($scope.deleteEnabled) {
-      $scope.deleteIcon = 'img/_xRed.png';
-    } else {
-      $scope.deleteIcon = 'img/_x.png';
-    }
-
-    if (gridOptions.draggable.enabled) {
-      gridOptions.draggable.enabled = false;
-    }
-  }
-
-  function getIcons() {
-    apiData.getIcons()
-      .success(function (icons) {
-        $dshBrd.icons = icons;
-      })
-      .finally(function () {
-        $dshBrd.allIcons = [];
-        var len = $dshBrd.icons.length;
-
-        for (i = 0; i < len; i++) {
-          var iconObj = {};
-          var iconString = 'img/ico/' + $dshBrd.icons[i];
-          iconObj.path = iconString;
-          $dshBrd.allIcons.push(iconObj);
-        }
-        $scope.shownIcons = [];
-        $scope.loadSomeIcons();
-      });
-  }
-
-  $scope.loadAllIcons = function () {
-    var shownLen = $scope.shownIcons.length;
-    var totalIcons = $dshBrd.allIcons.length;
-    var iconsRemaining = totalIcons - shownLen - 1;
-    $scope.areIconsLoaded = true;
-    for (var i = shownLen; i <= iconsRemaining; i++) {
-      var newIco = $dshBrd.allIcons[shownLen + i]
-      $scope.shownIcons.push(newIco);
-    }
-  }
-
-  $scope.loadSomeIcons = function () {
-    var shownLen = $scope.shownIcons.length;
-    for (var i = 1; i <= 24; i++) {
-      var newIco = $dshBrd.allIcons[shownLen + i]
-      $scope.shownIcons.push(newIco);
-    }
-  }
-
-  $scope.gridsterModalOptions = gridsterModalOptions;
-  $scope.selectedIcon = "img/_blank.png";
-
-  $scope.selectIcon = function (iconPath) {
-    $scope.selectedIcon = iconPath;
-  }
-
-  $scope.openMainModal = function (size, parentSelector) {
-    gridOptions.draggable.enabled = false;
-    $scope.deleteEnabled = false;
-
-    var parentElem = parentSelector ?
-      angular.element($document[0].querySelector('.modal-demo')) : undefined;
-
-    var modalInstance = $uibModal.open({
-      templateUrl: 'mainModal.html',
-      controller: 'dashboardCtrl',
-      size: 'lg',
-      appendTo: parentElem
-    });
-  };
-
-  $scope.openAuthModal = function (size, parentSelector) {
-    var parentElem = parentSelector ?
-      angular.element($document[0].querySelector('.main-modal')) : undefined;
-
-    var modalInstance = $uibModal.open({
-      templateUrl: 'authModal.html',
-      controller: 'authCtrl',
-      controllerAs: '$auth',
-      appendTo: parentElem,
-    });
-  };
-
-  $scope.onLogout = function () {
-    auth.logout();
-    $location.path('dashboard.view');
-  }
-
-  $scope.syncWidgets = function () {
-    $dshBrd.widgetsLg = $scope.widgets;
-    $dshBrd.widgetsSm = $scope.widgets;
-    $dshBrd.saveWidgets();
-    $location.path('dashboard.view');
-  }
-
-  $scope.resetWidgets = function () {
-    checkScreenSize();
-
-    apiData.getDefaultGrid()
-      .success(function (defaultGrid) {
-        defaultGrid = angular.fromJson(defaultGrid);
-        $scope.widgets = defaultGrid;
-        if ($dshBrd.screenSize == 'lg') {
-          $dshBrd.widgetsLg = defaultGrid;
-        } else {
-          $dshBrd.widgetsSm = defaultGrid;
-        }
-      })
-      .error(function (e) {
-        console.log(e);
-      })
-      .finally(function () {
-        $dshBrd.saveWidgets();
-      });
-  }
-
-  var resizeBreaks = {
-    'sm' : 500
-  };
-
-  function inputScreenSize(width) {
-    if (width > 500) {
-      return 'lg';
-    } else {
-      return 'sm';
-    }
-  }
-
-  angular.element($window).bind('resize', function () {
-    var oldWidth = $dshBrd.currentWidth;
-    var oldSize = $dshBrd.lastScreenSize;
-    var newWidth = $window.outerWidth;
-    var newSize = inputScreenSize(newWidth);
-
-    if (oldSize !== newSize) {
       $location.path('dashboard.view');
     }
 
-    $dshBrd.lastScreenSize = newSize;
-  });
+    $scope.deleteWidget = function (widget) {
+      console.log("Delete: ", widget);
+      $scope.widgets = $scope.widgets.filter(function (element){
+        return element.url != widget.url;
+      });
 
-};
+      $dshBrd.saveWidgets();
+    }
+
+    $scope.toggleDraggable = function () {
+      gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
+      $scope.urlsEnabled = !$scope.urlsEnabled;
+
+      if (gridOptions.draggable.enabled) {
+        $scope.lockIcon = 'img/_lockedRed.png';
+      } else {
+        $scope.lockIcon = 'img/_locked.png';
+      }
+
+      if ($scope.deleteEnabled)
+        $scope.deleteEnabled = false;
+      if (!gridOptions.draggable.enabled)
+        $dshBrd.saveWidgets();
+    }
+
+    $scope.toggleDelete = function () {
+      $scope.deleteEnabled = !$scope.deleteEnabled;
+      $scope.urlsEnabled = !$scope.urlsEnabled;
+
+      if ($scope.deleteEnabled) {
+        $scope.deleteIcon = 'img/_xRed.png';
+      } else {
+        $scope.deleteIcon = 'img/_x.png';
+      }
+
+      if (gridOptions.draggable.enabled) {
+        gridOptions.draggable.enabled = false;
+      }
+    }
+
+    function getIcons() {
+      apiData.getIcons()
+        .success(function (icons) {
+          $dshBrd.icons = icons;
+        })
+        .finally(function () {
+          $dshBrd.allIcons = [];
+          var len = $dshBrd.icons.length;
+
+          for (i = 0; i < len; i++) {
+            var iconObj = {};
+            var iconString = 'img/ico/' + $dshBrd.icons[i];
+            iconObj.path = iconString;
+            $dshBrd.allIcons.push(iconObj);
+          }
+          $scope.shownIcons = [];
+          $scope.loadSomeIcons();
+        });
+    }
+
+    $scope.loadAllIcons = function () {
+      var shownLen = $scope.shownIcons.length;
+      var totalIcons = $dshBrd.allIcons.length;
+      var iconsRemaining = totalIcons - shownLen - 1;
+      $scope.areIconsLoaded = true;
+      for (var i = shownLen; i <= iconsRemaining; i++) {
+        var newIco = $dshBrd.allIcons[shownLen + i]
+        $scope.shownIcons.push(newIco);
+      }
+    }
+
+    $scope.loadSomeIcons = function () {
+      var shownLen = $scope.shownIcons.length;
+      for (var i = 1; i <= 24; i++) {
+        var newIco = $dshBrd.allIcons[shownLen + i]
+        $scope.shownIcons.push(newIco);
+      }
+    }
+
+    $scope.gridsterModalOptions = gridsterModalOptions;
+    $scope.selectedIcon = "img/_blank.png";
+
+    $scope.selectIcon = function (iconPath) {
+      $scope.selectedIcon = iconPath;
+    }
+
+    $scope.openMainModal = function (size, parentSelector) {
+      gridOptions.draggable.enabled = false;
+      $scope.deleteEnabled = false;
+
+      var parentElem = parentSelector ?
+        angular.element($document[0].querySelector('.modal-demo')) : undefined;
+
+      var modalInstance = $uibModal.open({
+        templateUrl: 'mainModal.html',
+        controller: 'dashboardCtrl',
+        size: 'lg',
+        appendTo: parentElem
+      });
+    };
+
+    $scope.openAuthModal = function (size, parentSelector) {
+      var parentElem = parentSelector ?
+        angular.element($document[0].querySelector('.main-modal')) : undefined;
+
+      var modalInstance = $uibModal.open({
+        templateUrl: 'authModal.html',
+        controller: 'authCtrl',
+        controllerAs: '$auth',
+        appendTo: parentElem,
+      });
+    };
+
+    $scope.onLogout = function () {
+      auth.logout();
+      $location.path('dashboard.view');
+    }
+
+    $scope.syncWidgets = function () {
+      $dshBrd.widgetsLg = $scope.widgets;
+      $dshBrd.widgetsSm = $scope.widgets;
+      $dshBrd.saveWidgets();
+      $location.path('dashboard.view');
+    }
+
+    $scope.resetWidgets = function () {
+      checkScreenSize();
+
+      apiData.getDefaultGrid()
+        .success(function (defaultGrid) {
+          defaultGrid = angular.fromJson(defaultGrid);
+          $scope.widgets = defaultGrid;
+          if ($dshBrd.screenSize == 'lg') {
+            $dshBrd.widgetsLg = defaultGrid;
+          } else {
+            $dshBrd.widgetsSm = defaultGrid;
+          }
+        })
+        .error(function (e) {
+          console.log(e);
+        })
+        .finally(function () {
+          $dshBrd.saveWidgets();
+        });
+    }
+
+    var resizeBreaks = {
+      'sm' : 500
+    };
+
+    function inputScreenSize(width) {
+      if (width > 500) {
+        return 'lg';
+      } else {
+        return 'sm';
+      }
+    }
+
+    angular.element($window).bind('resize', function () {
+      var oldWidth = $dshBrd.currentWidth;
+      var oldSize = $dshBrd.lastScreenSize;
+      var newWidth = $window.outerWidth;
+      var newSize = inputScreenSize(newWidth);
+
+      if (oldSize !== newSize) {
+        $location.path('dashboard.view');
+      }
+
+      $dshBrd.lastScreenSize = newSize;
+    });
+
+  };
 })();
 

@@ -23,12 +23,12 @@
 
 <div id="grid-container" gridster="gridOptions">
   <ul>
-    <li gridster-item ng-repeat="widget in widgets track by $index"
-                      type="widget.type"
+    <li gridster-item ng-repeat="widget in widgets"
                       row="widget.row"
                       col="widget.col">
 
-      <div ng-include="'/dashboard/widgetTemplates/' + widget.type + 'linkWidget.template.html'"></div>
+      <!-- <ng-include src=widgetTemplate></ng-include> -->
+      <ng-include ng-init="var a = link-widget" src="'/dashboard/widgetTemplates/' + a + '.template.html'"></ng-include>
     </li>
   </ul>
 </div>
