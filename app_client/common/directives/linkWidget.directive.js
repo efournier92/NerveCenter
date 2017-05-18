@@ -6,8 +6,12 @@
 
   function linkWidget() {
     return {
-      templateUrl: '/dashboard/widgetTemplates/link-widget.template.html';
+      templateUrl: function (elem, attrs) {
+        console.log(attrs);
+       return "/dashboard/widgetTemplates/" + "link-widget" +".template.html";
+
+      }
     }
   };
-});
+})();
 

@@ -64,6 +64,7 @@
             $dshBrd.screenSize == 'lg'
             ? $dshBrd.widgetsLg
             : $dshBrd.widgetsSm;
+          console.log($scope.widgets);
           $scope.gridOptions = instantiateGridster();
           $dshBrd.currentWidth = $window.outerWidth;
         });
@@ -111,7 +112,7 @@
       return;
     }
 
-      $scope.widgetTemplate = '/dashboard/widgetTemplates/link-widget.template.html';
+    $scope.widgetTemplate = '/dashboard/widgetTemplates/link-widget.template.html';
     $scope.getWidgetTemplate = function () {
       return '/dashboard/widgetTemplates/link-widget.template.html';
     };
@@ -307,6 +308,17 @@
         .finally(function () {
           $dshBrd.saveWidgets();
         });
+    }
+
+    $scope.clearGrid = function () {
+      $scope.widgets = [];
+      if ($dshBrd.screenSize == 'lg') {
+        $dshBrd.widgetsLg = [];
+      } else {
+        $dshBrd.widgetsSm = [];
+      }
+      $dshBrd.saveWidgets();
+      $location.path('dashboard.view');
     }
 
     var resizeBreaks = {

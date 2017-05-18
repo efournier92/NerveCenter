@@ -23,12 +23,12 @@
 
 <div id="grid-container" gridster="gridOptions">
   <ul>
-    <li gridster-item ng-repeat="widget in widgets"
+    <li>
+      <link-widget gridster-item ng-model="widget" ng-repeat="widget in widgets"
                       row="widget.row"
-                      col="widget.col">
-
-      <!-- <ng-include src=widgetTemplate></ng-include> -->
-      <ng-include ng-init="var a = link-widget" src="'/dashboard/widgetTemplates/' + a + '.template.html'"></ng-include>
+                      col="widget.col"
+                      type="widget.type">
+      </link-widget>
     </li>
   </ul>
 </div>
@@ -111,6 +111,10 @@
         <button type="button" class="btn btn-warning other-button"
                               ng-click="resetWidgets()">
           Reset Grids
+        </button>
+        <button type="button" class="btn btn-warning other-button"
+                              ng-click="clearGrid()">
+          Clear Grid
         </button>
         <button type="button" class="btn btn-danger other-button"
                               ng-click="onLogout()">
