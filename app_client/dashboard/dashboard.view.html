@@ -24,11 +24,12 @@
 <div id="grid-container" gridster="gridOptions">
   <ul>
     <li>
-      <link-widget gridster-item ng-model="widget" ng-repeat="widget in widgets"
+      <div gridster-item ng-model="widget" ng-repeat="widget in widgets"
                       row="widget.row"
                       col="widget.col"
                       type="widget.type">
-      </link-widget>
+        <div class="{{widget.type}}"></div>
+      </div>
     </li>
   </ul>
 </div>

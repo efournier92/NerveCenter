@@ -6,9 +6,9 @@
 
   function linkWidget() {
     return {
+      restrict: 'C',
       templateUrl: function (elem, attrs) {
-        console.log(attrs);
-       return "/dashboard/widgetTemplates/" + "link-widget" +".template.html";
+        return "/dashboard/widgetTemplates/" + "link-widget" +".template.html";
 
       }
     }
