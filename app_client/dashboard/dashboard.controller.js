@@ -177,14 +177,17 @@
       gridOptions.draggable.enabled = !gridOptions.draggable.enabled;
       $scope.urlsEnabled = !$scope.urlsEnabled;
 
+      if ($scope.deleteEnabled) {
+        $scope.deleteEnabled = false;
+        $scope.deleteIcon = 'img/_x.png';
+      }
+
       if (gridOptions.draggable.enabled) {
         $scope.lockIcon = 'img/_lockedRed.png';
       } else {
         $scope.lockIcon = 'img/_locked.png';
       }
 
-      if ($scope.deleteEnabled)
-        $scope.deleteEnabled = false;
       if (!gridOptions.draggable.enabled)
         $dshBrd.saveWidgets();
     }
@@ -201,6 +204,7 @@
 
       if (gridOptions.draggable.enabled) {
         gridOptions.draggable.enabled = false;
+        $scope.lockIcon = 'img/_locked.png';
       }
     }
 
