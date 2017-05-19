@@ -307,6 +307,7 @@
         })
         .finally(function () {
           $dshBrd.saveWidgets();
+          $location.path('dashboard.view');
         });
     }
 
