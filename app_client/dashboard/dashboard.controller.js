@@ -338,6 +338,10 @@
       }
     }
 
+    function logIt(type) {
+      console.log("Type:", type);
+    }
+
     angular.element($window).bind('resize', function () {
       var oldWidth = $dshBrd.currentWidth;
       var oldSize = $dshBrd.lastScreenSize;

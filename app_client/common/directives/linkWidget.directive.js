@@ -6,7 +6,7 @@
 
   function linkWidget() {
     return {
-      restrict: 'C',
+      restrict: 'AEC',
       templateUrl: function (elem, attrs) {
         return "/dashboard/widgetTemplates/" + "link-widget" +".template.html";
 
