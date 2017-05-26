@@ -21,6 +21,7 @@
     </ng-click>
 </div>
 
+          <clock-widget></clock-widget>
 <div id="grid-container" gridster="gridOptions">
   <ul>
     <li>
@@ -28,16 +29,10 @@
                       row="widget.row"
                       col="widget.col"
                       type="widget.type">
-        <div class="clock-widget"></div> 
-        <!-- <div ng-switch> -->
-        <!-- <div ng-switch-when="widget.type == 'link-widget'"> -->
-        <!--   <link-widget></link-widget> --> 
-        <!-- </div> -->
-        <!-- <div ng-switch-when="widget.type == 'clock-widget'"> -->
-        <!--   <clock-widget></clock-widget> --> 
-        <!-- </div> -->
-        <!-- </div> -->
-        <!-- <div class="{{widget.type}}"></div> -->
+        <div ng-switch="widget.type">
+          <div ng-switch-when="link-widget" link-widget></div>
+          <div ng-switch-when="clock" clock-widget></div>
+        </div>
       </div>
     </li>
   </ul>
