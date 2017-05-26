@@ -2,13 +2,13 @@
 
   angular
     .module('nerveCenter')
-    .directive('linkWidget', linkWidget);
+    .directive('clockWidget', clockWidget);
 
-  function linkWidget() {
+  function clockWidget() {
     return {
       restrict: 'AEC',
       templateUrl: function (elem, attrs) {
-        return "/dashboard/widgetTemplates/" + "link-widget" +".template.html";
+        return "/dashboard/widgetTemplates/clock-widget.template.html";
       }
     }
   };
