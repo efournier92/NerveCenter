@@ -29,8 +29,8 @@
                       col="widget.col"
                       type="widget.type">
         <div ng-switch="widget.type">
-          <div ng-switch-when="link-widget" link-widget></div>
-          <div ng-switch-when="clock" clock-widget></div>
+          <div ng-switch-when="link-widget" render-widget type="link-widget"></div>
+          <div ng-switch-when="clock-widget" clock-widget type="clock-widget"></div>
         </div>
       </div>
     </li>

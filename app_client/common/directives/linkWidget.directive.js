@@ -2,13 +2,14 @@
 
   angular
     .module('nerveCenter')
-    .directive('linkWidget', linkWidget);
+    .directive('renderWidget', renderWidget);
 
-  function linkWidget() {
+  function renderWidget() {
     return {
       restrict: 'AEC',
       templateUrl: function (elem, attrs) {
-        return "/dashboard/widgetTemplates/" + "link-widget" +".template.html";
+        console.log(attrs);
+        return "/dashboard/widgetTemplates/" + attrs.type +".template.html";
       }
     }
   };
