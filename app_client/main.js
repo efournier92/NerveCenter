@@ -2,7 +2,7 @@
 
   angular.module('nerveCenter',
     ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap',
-     'gridster', 'infinite-scroll', 'ds.clock', 'angular-calculator']);
+     'gridster', 'infinite-scroll', 'ds.clock']);
 
   function config($routeProvider, $locationProvider) {
     $routeProvider
