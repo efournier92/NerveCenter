@@ -1,11 +1,16 @@
-"use strict";
-var myApp = angular.module('ng-calc', []) ;
+(function () {
 
-/*Create a custom directive */
-myApp.directive('calculator', function() {
+  angular
+    .module('nerveCenter')
+    .directive('ngCalc', ngCalc);
+
+  function ngCalc() {
+    return {
+        restrict: 'AE',
+        controller: 'ngCalcCtrl';
+    }
+
     var dir = {};
-        dir.restrict   = 'E'; /* restrict this directive to elements */
-        dir.controller = 'CalcuController'; /* controller this directive function belongs */
         dir.template   = '<div  class="calculator demo">'
                           +'<div class="u4 display">'
                           +'<div class="display-inner">{{out}}</div>'
@@ -101,3 +106,4 @@ myApp.factory('MathNumbers', function() {
    return factory;
 }); 
 
+})();
