@@ -14,7 +14,7 @@ myApp.directive('calculator', function() {
                           +'ng-class="{\'u2\': calkey == \'0\' || calkey == \'<-\', \'button-blue\' : calkey == \'=\' , \'button-red\' : calkey == \'c\' }"'
                           +'class="u1 button button-gray" >'
                           +'<div ng-if="calkey!=\'<-\'">{{calkey}}</div>'
-                          +'<div ng-if="calkey==\'<-\'">Backspace</div>'
+                          +'<div ng-if="calkey==\'<-\'">Back</div>'
                           +'</button>'
                           +'</div>';
        //dir.templateUrl = 'calculator.html'; //
@@ -90,11 +90,10 @@ myApp.factory('MathNumbers', function() {
    var factory = {};
    
    factory.calcnumbers = function() {
-      var numbs =  [ 'c','<-','/',
-                     '7','8','9','+',
-                     '4','5','6','-',
-                     '1','2','3','*',
-                     '0','.','='];
+      var numbs =  [ 'c','<-',
+                     '6','7','8','9','/','*',
+                     '4','5','6','7','-','+',
+                     '0','1','2','3','.','=' ];
         
       return numbs;
    }

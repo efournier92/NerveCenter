@@ -13,10 +13,11 @@
 .u1 {
    /* width: 40px;*/
     width: 49px;
+    height: 25%;
 }
 .u2 {
-    /*width: 86px;*/
-    width: 103px;
+    width: 49px;
+    /* width: 103px; */
 }
 .u3 {
     width: 132px;
@@ -39,7 +40,8 @@
 	float: left;
 	padding: 6px;
 	/*width: 184px;*/
-	width: 220px
+	width: 100%;
+	height: 100%;
 }
 
 .display {
@@ -59,7 +61,7 @@
 }
 .display{
 	background-color: #fff;
-	min-height: 40px;
+	height: 25%;
 
 }
 .display-text {
