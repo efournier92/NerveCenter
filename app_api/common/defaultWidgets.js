@@ -6,7 +6,7 @@ var defaultArray = [
   {"type" : "link-widget", "url" : "https://www.reddit.com/", "icon" : "img/ico/A005_Reddit.png"},
   {"type" : "link-widget", "url" : "https://www.amazon.com/", "icon" : "img/ico/A006_Amazon.png"},
   {"type" : "clock-widget"},
-  {"type" : "ng-calc-widget"},
+  {"type" : "calc-widget"},
   {"type" : "link-widget", "url" : "https://twitter.com/", "icon" : "img/ico/A007_Twitter.png"},
   {"type" : "link-widget", "url" : "https://www.instagram.com/", "icon" : "img/ico/A008_Instagram.png"},
   {"type" : "link-widget", "url" : "https://www.linkedin.com/", "icon" : "img/ico/A009_LinkedIn.png"},
