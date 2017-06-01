@@ -79,6 +79,8 @@
       $dshBrd.widgetsSm = $scope.widgets;
     }
 
+    console.log('Save: ', $scope.widgets);
+
     data = [
       $dshBrd.widgetsLg,
       $dshBrd.widgetsSm
@@ -354,6 +356,10 @@
 
       $dshBrd.lastScreenSize = newSize;
     });
+
+    $scope.logIt = function (widget) {
+      console.log(widget);
+    }
 
   };
 })();

@@ -26,8 +26,11 @@
       <div gridster-item ng-model="widget" ng-repeat="widget in widgets"
                                            row="widget.row"
                                            col="widget.col"
-                                           type="widget.type">
-        <div ng-switch="widget.type" >
+                                           size-x=widget.sizeX
+                                           size-y="widget.sizeY"
+                                           type="widget.type"
+                                           ng-click="logIt(widget)">
+r       <div ng-switch="widget.type" >
           <div ng-switch-when="link-widget" render-widget type="link-widget"></div>
           <div ng-switch-when="clock-widget" render-widget type="clock-widget"></div>
           <div ng-switch-when="ng-calc-widget" render-widget type="ng-calc-widget"></div>
