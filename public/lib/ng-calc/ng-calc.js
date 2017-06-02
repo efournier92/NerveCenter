@@ -1,12 +1,11 @@
 "use strict";
-var myApp = angular.module('ng-calc', []) ;
+var ngCalc = angular.module('ng-calc', []) ;
 
-/*Create a custom directive */
-myApp.directive('calculator', function() {
+ngCalc.directive('calculator', function() {
     var dir = {};
         dir.restrict   = 'E'; /* restrict this directive to elements */
         dir.controller = 'CalcuController'; /* controller this directive function belongs */
-        dir.template   = '<div  class="calculator demo">'
+        dir.template   = '<div  class="calculator">'
                           +'<div class="u4 display">'
                           +'<div class="display-inner">{{out}}</div>'
                           +'</div>'
@@ -22,7 +21,7 @@ myApp.directive('calculator', function() {
 });
 
 //Register Calculater controller 
-myApp.controller('CalcuController',function docal($scope,MathNumbers){
+ngCalc.controller('CalcuController',function docal($scope,MathNumbers){
   
      $scope.out     = '';
      $scope.result  = 0;
@@ -86,7 +85,7 @@ myApp.controller('CalcuController',function docal($scope,MathNumbers){
  Register factory method to set keypads to the calculator.
 */
 
-myApp.factory('MathNumbers', function() {
+ngCalc.factory('MathNumbers', function() {
    var factory = {};
    
    factory.calcnumbers = function() {
