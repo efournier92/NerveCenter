@@ -18,36 +18,35 @@ ngCalc.directive('calculator', function () {
   }
 });
 
-//Register Calculater controller 
-ngCalc.controller('ngCalcCtrl',function docal($scope,MathNumbers){
+ngCalc.controller('ngCalcCtrl', function ($scope,buttonFactory) {
 
-  $scope.out     = '';
-  $scope.result  = 0;
-  //display function. click 
-  $scope.display = function (number){
+  $scope.out = '';
+  $scope.result = 0;
 
-    if($scope.out!='undefined' && number!='=' && number!='c' && number!='<-'){
+  $scope.display = function (number) {
+
+    if ($scope.out != 'undefined' && number != '=' && number != 'c' && number != '<-') {
       $scope.out = $scope.out+number;
     }
 
-    if($scope.calinput!=''){
-      switch(number){
+    if ($scope.calinput != '') {
+      switch (number) {
 
         case 'c':
-          //Cancel /reset the display
+          //Cancel
+          //resets display
           $scope.out = '';
           break;
 
         case '<-':
-          //Backspace operation 
+          //Backspace
           $scope.out =  $scope.out.slice(0, -1);
           break;
 
         case '=':
-          //do calculation 
+          //Calculate
           if($scope.checksymbol($scope.out)){
             $scope.out = eval($scope.out).toString();
-
           }
           break;
 
@@ -55,42 +54,35 @@ ngCalc.controller('ngCalcCtrl',function docal($scope,MathNumbers){
           break
       }
     }
-
   }
 
   /* 
     Check whether the string contains a restricted charater
-    in first or last postion .
-    @param strin number
+    in first or last postion
+    @param string number
     */
-  $scope.checksymbol = function (number){
-
-    var notallow = ['+','-','/','*','.',''] ;
-    if(notallow.indexOf(number.slice(-1))> -1 || notallow.indexOf(number.slice(0,1))>-1){
+  $scope.checksymbol = function (number) {
+    var notallow = ['+','-','/','*','.',''];
+    if (notallow.indexOf(number.slice(-1))> -1 || notallow.indexOf(number.slice(0,1))>-1) {
       return false;
     }
     return true;
-
   }
 
   //Set the keyboard values using the factory method.  
-  $scope.mykeys = MathNumbers.calcnumbers();
+  $scope.mykeys = buttonFactory.digits();
 
 });
 
-
-/*
- Register factory method to set keypads to the calculator.
- */
-
-ngCalc.factory('MathNumbers', function() {
+ngCalc.factory('buttonFactory', function () {
   var factory = {};
 
-  factory.calcnumbers = function() {
-    var numbs =  [ '7','8','9','0','c','<-',
+  factory.digits = function () {
+    var numbs = [ 
+      '7','8','9','0','c','<-',
       '4','5','6','.','-','+',
-      '1','2','3','=','/','*' ];
-
+      '1','2','3','=','/','*'
+    ];
     return numbs;
   }
   return factory;
