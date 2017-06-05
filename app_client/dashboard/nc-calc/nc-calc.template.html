@@ -1,0 +1,30 @@
+<div class="calculator">
+  <div class="u4 display">
+    <div class="display-inner">{{out}}</div>
+  </div>
+
+  <div>
+    <div gridster="calcGridOptions">
+      <ul>
+        <li>
+          <gridster-item class="calc-key"
+                         ng-repeat="calcKey in allCalcKeys"
+                         ng-class="{ 'digit-key': calcKey.type === 'digitKey',
+                                     'operator-key': calcKey.type === 'operatorKey',
+                                     'special-key': calcKey.type === 'specialKey' }"
+                         ng-click="display(calcKey.key)">
+                         <!-- ng-class="{ digitkey: true }"> -->
+            <!-- ng-click="display(calkey)"> -->
+            {{calcKey.key}} 
+          </gridster-item>
+        </li>
+        <!-- <div ng-if="calkey!=\'<-\'">{{calkey}}</div> -->
+        <!-- <div ng-if="calkey==\'<-\'">B</div> -->
+      </ul>
+    </div>
+  <img id="x-delete" ng-show="deleteEnabled" 
+                     ng-click="deleteWidget(widget)"
+                     src="img/_xDelete.png"
+                     height="30px" width="30px">
+  </div>
+</div>

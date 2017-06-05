@@ -17,7 +17,6 @@
     $scope.lockIcon = 'img/_locked.png';
 
     updateWidgets();
-    getIcons();
 
     function instantiateGridster() {
       var width = this.window.outerWidth;
@@ -64,91 +63,93 @@
             $dshBrd.screenSize == 'lg'
             ? $dshBrd.widgetsLg
             : $dshBrd.widgetsSm;
-          console.log($scope.widgets);
+
           $scope.gridOptions = instantiateGridster();
           $dshBrd.currentWidth = $window.outerWidth;
+
+          getIcons();
         });
-  }
-
-  $dshBrd.saveWidgets = function () {
-    checkScreenSize();
-
-    if ($dshBrd.screenSize == 'lg') {
-      $dshBrd.widgetsLg = $scope.widgets;
-    } else {
-      $dshBrd.widgetsSm = $scope.widgets;
     }
 
-    console.log('Save: ', $scope.widgets);
+    $dshBrd.saveWidgets = function () {
+      checkScreenSize();
 
-    data = [
-      $dshBrd.widgetsLg,
-      $dshBrd.widgetsSm
-    ];
-
-    apiData.updateWidgets(data)
-      .success(function (data) {
-        console.log("Success!: ", data)
-      })
-      .error(function (e) {
-        console.log(e);
-      });
-  }
-
-  $scope.createWidget = function () {
-    var widgetUrl = $scope.widgetUrl;
-    var widgetWeight = $scope.widgetWeight;
-    var widgetIcon = $scope.selectedIcon;
-    console.log(widgetIcon);
-
-    var defaultIcon = "img/_blank.png";
-    // Form validation
-    if (!widgetUrl && widgetIcon === defaultIcon) {
-      window.alert("Please Enter URL and Select an Icon");
-      return;
-    } else if (!widgetUrl) {
-      window.alert("Please Enter URL");
-      return;
-    } else if (widgetIcon === defaultIcon) {
-      window.alert("Please Select an Icon");
-      return;
-    }
-
-    $scope.widgetTemplate = '/dashboard/widgetTemplates/link-widget.template.html';
-    $scope.getWidgetTemplate = function () {
-      return '/dashboard/widgetTemplates/link-widget.template.html';
-    };
-
-    function pushNewWidget(size) {
-      if (size === 'lg') {
-        var len = $dshBrd.widgetsLg.length;
-        var columns = 7;
-        var newWidget = createNewWidget(len, columns);
-        $dshBrd.widgetsLg.push(newWidget);
-      } else if (size === 'sm') {
-        var len = $dshBrd.widgetsSm.length;
-        var columns = 3;
-        var newWidget = createNewWidget(len, columns);
-        $dshBrd.widgetsSm.push(newWidget);
+      if ($dshBrd.screenSize == 'lg') {
+        $dshBrd.widgetsLg = $scope.widgets;
+      } else {
+        $dshBrd.widgetsSm = $scope.widgets;
       }
+
+      console.log('Save: ', $scope.widgets);
+
+      data = [
+        $dshBrd.widgetsLg,
+        $dshBrd.widgetsSm
+      ];
+
+      apiData.updateWidgets(data)
+        .success(function (data) {
+          console.log("Success!: ", data)
+        })
+        .error(function (e) {
+          console.log(e);
+        });
     }
 
-    function createNewWidget(len, columns) {
-      var newWidget = {
-        icon: widgetIcon,
-        url: widgetUrl,
-        row: Math.floor(len / columns),
-        col: (len % columns) + 1
+    $scope.createWidget = function () {
+      var widgetUrl = $scope.widgetUrl;
+      var widgetWeight = $scope.widgetWeight;
+      var widgetIcon = $scope.selectedIcon;
+      console.log(widgetIcon);
+
+      var defaultIcon = "img/_blank.png";
+      // Form validation
+      if (!widgetUrl && widgetIcon === defaultIcon) {
+        window.alert("Please Enter URL and Select an Icon");
+        return;
+      } else if (!widgetUrl) {
+        window.alert("Please Enter URL");
+        return;
+      } else if (widgetIcon === defaultIcon) {
+        window.alert("Please Select an Icon");
+        return;
       }
-      return newWidget;
+
+      $scope.widgetTemplate = '/dashboard/widgetTemplates/link-widget.template.html';
+      $scope.getWidgetTemplate = function () {
+        return '/dashboard/widgetTemplates/link-widget.template.html';
+      };
+
+      function pushNewWidget(size) {
+        if (size === 'lg') {
+          var len = $dshBrd.widgetsLg.length;
+          var columns = 7;
+          var newWidget = createNewWidget(len, columns);
+          $dshBrd.widgetsLg.push(newWidget);
+        } else if (size === 'sm') {
+          var len = $dshBrd.widgetsSm.length;
+          var columns = 3;
+          var newWidget = createNewWidget(len, columns);
+          $dshBrd.widgetsSm.push(newWidget);
+        }
+      }
+
+      function createNewWidget(len, columns) {
+        var newWidget = {
+          icon: widgetIcon,
+          url: widgetUrl,
+          row: Math.floor(len / columns),
+          col: (len % columns) + 1
+        }
+        return newWidget;
+      }
+
+      pushNewWidget('lg');
+      pushNewWidget('sm');
+
+      $dshBrd.saveWidgets();
+      $location.path('dashboard.view');
     }
-
-    pushNewWidget('lg');
-    pushNewWidget('sm');
-
-    $dshBrd.saveWidgets();
-    $location.path('dashboard.view');
-  }
 
 
     $scope.importWidgets = function () {
@@ -214,6 +215,7 @@
       apiData.getIcons()
         .success(function (icons) {
           $dshBrd.icons = icons;
+          console.log("icons",$dshBrd.icons);
         })
         .finally(function () {
           $dshBrd.allIcons = [];
@@ -231,20 +233,22 @@
     }
 
     $scope.loadAllIcons = function () {
-      var shownLen = $scope.shownIcons.length;
-      var totalIcons = $dshBrd.allIcons.length;
-      var iconsRemaining = totalIcons - shownLen - 1;
+      var allIcons = [];
+      var totalIcons = $dshBrd.allIcons.length - 1;
       $scope.areIconsLoaded = true;
-      for (var i = shownLen; i <= iconsRemaining; i++) {
-        var newIco = $dshBrd.allIcons[shownLen + i]
-        $scope.shownIcons.push(newIco);
+      console.log($dshBrd.allIcons);
+
+      for (var i = 0; i <= totalIcons; i++) {
+        var newIco = $dshBrd.allIcons[i]
+        allIcons.push(newIco);
       }
+      $scope.shownIcons = allIcons;
+      console.log('shown: ', $scope.shownIcons);
     }
 
     $scope.loadSomeIcons = function () {
-      var shownLen = $scope.shownIcons.length;
-      for (var i = 1; i <= 24; i++) {
-        var newIco = $dshBrd.allIcons[shownLen + i]
+      for (var i = 0; i <= 24; i++) {
+        var newIco = $dshBrd.allIcons[i]
         $scope.shownIcons.push(newIco);
       }
     }
