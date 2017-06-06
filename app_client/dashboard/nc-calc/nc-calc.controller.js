@@ -4,41 +4,36 @@
     .module('nerveCenter')
     .controller('ncCalcCtrl', ncCalcCtrl);
 
-  function ncCalcCtrl($scope, $window, ncCalcButtons) {
-
-    $scope.calcGridOptions = calcGridOptions;
+  function ncCalcCtrl() {
+    $scope.out = '';
     $scope.result = 0;
-    $scope.out = '0';
-    updateCalcKeyHeight();
 
     $scope.display = function (number) {
 
       if ($scope.out != 'undefined'
-        && number != '='
-        && number != 'c'
-        && number != '<') {
-        $scope.out = 
-          $scope.out === '0' 
-          ? number
-          : $scope.out + number;
+           && number != '='
+           && number != 'c'
+           && number != '<-') {
+        $scope.out = $scope.out+number;
       }
 
-      if ($scope.calcInput != '') {
+      if ($scope.calinput != '') {
         switch (number) {
 
           case 'c':
-            //reset display
-            $scope.out = '0';
+            //Cancel
+            //resets display
+            $scope.out = '';
             break;
 
-          case '<':
-            //backspace
-            $scope.out = $scope.out.slice(0, -1);
+          case '<-':
+            //Backspace
+            $scope.out =  $scope.out.slice(0, -1);
             break;
 
           case '=':
-            //calculate
-            if ($scope.checksymbol($scope.out)) {
+            //Calculate
+            if($scope.checksymbol($scope.out)){
               $scope.out = eval($scope.out).toString();
             }
             break;
@@ -49,8 +44,12 @@
       }
     }
 
+    /* 
+    Check whether the string contains a restricted charater
+    in first or last postion
+    @param string number
+    */
     $scope.checksymbol = function (number) {
-      // check if string contains a restricted charater
       var notallow = ['+','-','/','*','.',''];
       if (notallow.indexOf(number.slice(-1))> -1 || notallow.indexOf(number.slice(0,1))>-1) {
         return false;
@@ -58,31 +57,9 @@
       return true;
     }
 
-    $scope.allCalcKeys = ncCalcButtons.digits();
-    $scope.type = true;
+    //Set the keyboard values using the factory method.  
+    $scope.mykeys = ncCalcButtons.digits();
 
-    function updateCalcKeyHeight() {
-      var divHeight = angular.element('#widget-icon').height()
-      var calcRowHeight = divHeight / 4.25;
-      var calcKeyFontHeight = divHeight / 10;
-      var calcDisplayFontHeight = divHeight / 6;
-      $scope.calcGridOptions.rowHeight = calcRowHeight;
-
-      var calcDisplay = document.getElementsByClassName('calc-key');
-      calcDisplay = angular.element(calcDisplay);
-      calcDisplay.css('height', calcRowHeight);
-      calcDisplay.css('font-size', calcKeyFontHeight);
-
-      var calcDisplayFont = document.getElementsByClassName('display-inner');
-      calcDisplayFont = angular.element(calcDisplayFont);
-      calcDisplayFont.css('font-size', calcDisplayFontHeight);
-    }
-
-    angular.element($window).bind('resize', function ($scope) {
-      setTimeout(updateCalcKeyHeight, 250);
-    });
-
-  };
-
+  }
 })();
 

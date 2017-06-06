@@ -2,14 +2,14 @@
 
   angular
     .module('nerveCenter')
-    .directive('ncCalc', ncCalc);
+    .directive('nc-calc', ncCalc);
 
   function ncCalc() {
     return {
-      restrict: 'AEC',
+      restrict: 'E',
       controller: 'ncCalcCtrl',
       templateUrl: '/dashboard/nc-calc/nc-calc.template.html'
+      }
     }
-  }
 })();
 
