@@ -6,10 +6,10 @@
 
   function ncCalc() {
     return {
-      restrict: 'E',
+      restrict: 'AEC',
       controller: 'ncCalcCtrl',
       templateUrl: '/dashboard/nc-calc/nc-calc.template.html'
-      }
     }
+  }
 })();
 

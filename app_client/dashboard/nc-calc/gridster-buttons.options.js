@@ -1,12 +1,12 @@
-var gridOptions = {
-  columns: 7,
+var calcGridOptions = {
+  columns: 6,
   pushing: true,
   floating: true,
   swapping: true,
   width: 'auto',
   colWidth: 'auto',
   rowHeight: 'match',
-  margins: [10, 10],
+  margins: [0, 0],
   outerMargin: true,
   sparse: false,
   isMobile: false,
