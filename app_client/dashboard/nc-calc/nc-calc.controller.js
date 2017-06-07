@@ -4,9 +4,10 @@
     .module('nerveCenter')
     .controller('ncCalcCtrl', ncCalcCtrl);
 
-  function ncCalcCtrl() {
+  function ncCalcCtrl($scope, ncCalcButtons) {
     $scope.out = '';
     $scope.result = 0;
+    $scope.calcGridOptions = calcGridOptions;
 
     $scope.display = function (number) {
 

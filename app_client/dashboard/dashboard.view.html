@@ -20,6 +20,7 @@
                                        width="{{toolIconSize}}">
     </ng-click>
 </div>
+
 <div id="grid-container" gridster="gridOptions">
   <ul>
     <li>
@@ -32,7 +33,7 @@
         <div ng-switch="widget.type">
           <div ng-switch-when="link-widget" render-widget type="link-widget"></div>
           <div ng-switch-when="clock-widget" render-widget type="clock-widget"></div>
-          <div ng-switch-when="ng-calc-widget" render-widget type="ng-calc-widget"></div>
+          <div ng-switch-when="nc-calc-widget" render-widget type="nc-calc-widget"></div>
         </div>
       </div>
     </li>
