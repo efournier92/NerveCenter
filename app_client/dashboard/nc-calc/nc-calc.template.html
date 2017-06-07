@@ -4,7 +4,14 @@
   </div>
 
   <div id="grid-container" gridster="gridOptions">
-    <button ng-repeat="calkey in mykeys track by $index">
+    <button ng-repeat="calkey in mykeys track by $index"
+            ng-click="display(calkey)" 
+            ng-class="{\'u2\': calkey == \'0\' || calkey == \'<-\', \'button-blue\' : calkey == \'=\' , \'button-red\' : calkey == \'c\' }">
+            <!-- class="u1 button button-gray" -->
+            <!-- style="height:25%"> -->
+            123
+            <!-- <div ng-if="calkey!=\'<-\'">{{calkey}}</div> -->
+            <!-- <div ng-if="calkey==\'<-\'">B</div> -->
     </button>
   </div>
 </div>

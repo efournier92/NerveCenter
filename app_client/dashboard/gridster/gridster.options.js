@@ -1,5 +1,5 @@
-var calcGridOptions = {
-  columns: 6,
+var gridOptions = {
+  columns: 7,
   pushing: true,
   floating: true,
   swapping: true,
