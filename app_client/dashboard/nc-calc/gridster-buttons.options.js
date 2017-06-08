@@ -5,7 +5,7 @@ var calcGridOptions = {
   swapping: true,
   width: 'auto',
   colWidth: 'auto',
-  rowHeight: '25%',
+  rowHeight: 'match',
   margins: [9, 9],
   outerMargin: true,
   sparse: false,

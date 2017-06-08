@@ -6,10 +6,9 @@
   "engines": {
     "node": "4.4.5"
   },
-  "repository" :
-  { 
-    "type" : "git",
-    "url" : "https://github.com/efournier92/nervecenter.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/efournier92/nervecenter.git"
   },
   "dependencies": {
     "angular-gridster": "^0.13.14",
@@ -28,6 +27,7 @@
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.12",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-ng-annotate": "^1.1.0",

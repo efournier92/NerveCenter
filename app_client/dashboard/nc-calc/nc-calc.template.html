@@ -3,15 +3,16 @@
     <div class="display-inner">{{out}}</div>
   </div>
 
-  <div id="grid-container" gridster="gridOptions">
-    <button ng-repeat="calkey in mykeys track by $index"
-            ng-click="display(calkey)" 
-            ng-class="{\'u2\': calkey == \'0\' || calkey == \'<-\', \'button-blue\' : calkey == \'=\' , \'button-red\' : calkey == \'c\' }">
-            <!-- class="u1 button button-gray" -->
-            <!-- style="height:25%"> -->
-            123
-            <!-- <div ng-if="calkey!=\'<-\'">{{calkey}}</div> -->
-            <!-- <div ng-if="calkey==\'<-\'">B</div> -->
-    </button>
+  <div gridster="calcGridOptions"style="margin-top:28px">
+    <ul>
+      <li>
+        <button gridster-item ng-model="calkey" class="calkey" ng-repeat="calkey in mykeys track by $index" size-x="calkey.sizeX">
+                          <!-- ng-click="display(calkey)"> -->
+          {{calkey.key}} 
+        </button>
+        </li>
+        <!-- <div ng-if="calkey!=\'<-\'">{{calkey}}</div> -->
+        <!-- <div ng-if="calkey==\'<-\'">B</div> -->
+    </ul>
   </div>
 </div>

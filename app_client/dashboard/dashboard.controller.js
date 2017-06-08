@@ -239,6 +239,7 @@
         var newIco = $dshBrd.allIcons[shownLen + i]
         $scope.shownIcons.push(newIco);
       }
+      console.log($scope.shownIcons);
     }
 
     $scope.loadSomeIcons = function () {
