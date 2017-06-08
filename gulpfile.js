@@ -9,6 +9,9 @@ var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
 var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
+var del = require('del');
+var runSequence = require('run-sequence');
 
 gulp.task('bundle', function () {
   gulp.src(['./app_client/**/*.js', '!./app_client/app.min.js'])
@@ -44,8 +47,9 @@ gulp.task('useref', function(){
 });
 
 gulp.task('images', function(){
-  return gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
-  .pipe(imagemin())
+  return gulp.src('./public/img/ico/*.png')
+  // Caching images that ran through imagemin
+  .pipe(cache(imagemin()))
   .pipe(gulp.dest('dist/images'))
 });
 
@@ -56,6 +60,10 @@ gulp.task('browserSync', function() {
     },
   })
 })
+
+// gulp.task('clean', function() {
+//   return del.sync('dist');
+// })
 
 gulp.task('default', ['bundle', 'watch']);
 
