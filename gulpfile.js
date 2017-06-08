@@ -65,5 +65,9 @@ gulp.task('browserSync', function() {
 //   return del.sync('dist');
 // })
 
+// gulp.task('task-name', function(callback) {
+//   runSequence('task-one', 'task-two', 'task-three', callback);
+// });
+
 gulp.task('default', ['bundle', 'watch']);
 
