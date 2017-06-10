@@ -4,7 +4,7 @@
     .module('nerveCenter')
     .controller('ncCalcCtrl', ncCalcCtrl);
 
-  function ncCalcCtrl($scope, ncCalcButtons) {
+  function ncCalcCtrl($scope, $window, ncCalcButtons) {
     $scope.out = '';
     $scope.result = 0;
     $scope.calcGridOptions = calcGridOptions;
@@ -61,6 +61,29 @@
     //Set the keyboard values using the factory method.  
     $scope.mykeys = ncCalcButtons.digits();
 
-  }
+    function updateCalKeyHeight() {
+      var divHeight = angular.element('#widget-icon').height()
+      $scope.calcGridOptions.rowHeight = divHeight / 5;
+    }
+
+    angular.element($window).bind('resize', function ($scope) {
+      var calKey = document.getElementsByClassName("cal-key")[0];
+      x = angular.element(calKey);
+      updateCalKeyHeight();
+      console.log("CALKEY!")
+      // var oldWidth = $dshBrd.currentWidth;
+      // var oldSize = $dshBrd.lastScreenSize;
+      // var newWidth = $window.outerWidth;
+      // var newSize = inputScreenSize(newWidth);
+
+      // if (oldSize !== newSize) {
+      //   $location.path('dashboard.view');
+      // }
+
+      // $dshBrd.lastScreenSize = newSize;
+    });
+
+  };
+
 })();
 
