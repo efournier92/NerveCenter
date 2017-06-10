@@ -4,13 +4,6 @@ var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
-var useref = require('gulp-useref');
-var uglify = require('gulp-uglify');
-var gulpIf = require('gulp-if');
-var cssnano = require('gulp-cssnano');
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-var del = require('del');
 
 gulp.task('bundle', function () {
   gulp.src(['./app_client/**/*.js', '!./app_client/app.min.js'])
@@ -31,25 +24,10 @@ gulp.task('bundle', function () {
 // });
 
 gulp.task('watch', ['browserSync', 'sass'], function () {
-  gulp.watch(['./app_client/**/*.js', '!./app_client/app.min.js']);
-  gulp.watch('./app_client/*.html');
-  gulp.watch('./app_client/**/*.scss');
-});
-
-gulp.task('useref', function(){
-  return gulp.src('./app_client/*.html')
-    .pipe(useref())
-    // Minifies only if it's a JavaScript file
-    .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'))
-});
-
-gulp.task('images', function(){
-  return gulp.src('./public/img/ico/*.png')
-  // Caching images that ran through imagemin
-  .pipe(cache(imagemin()))
-  .pipe(gulp.dest('dist/images'))
+  gulp.watch(['./app_client/**/*.js', '!./app_client/app.min.js'], function () {
+  gulp.watch('./app_client/*.html', function () {
+  gulp.watch('./app_client/**/*.scss', function () {
+  });
 });
 
 gulp.task('browserSync', function() {
@@ -59,10 +37,6 @@ gulp.task('browserSync', function() {
     },
   })
 })
-
-// gulp.task('clean', function() {
-//   return del.sync('dist');
-// })
 
 gulp.task('default', ['bundle', 'watch']);
 
