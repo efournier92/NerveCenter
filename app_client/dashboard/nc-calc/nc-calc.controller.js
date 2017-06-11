@@ -63,7 +63,12 @@
 
     function updateCalKeyHeight() {
       var divHeight = angular.element('#widget-icon').height()
-      $scope.calcGridOptions.rowHeight = divHeight / 5;
+      var calcRowHeight = divHeight / 4;
+      $scope.calcGridOptions.rowHeight = calcRowHeight;
+      var calcDisplay = document.getElementsByClassName('u4');
+      calcDisplay = angular.element(calcDisplay);
+      calcRowHeight = calcRowHeight + 'px';
+      calcDisplay.css('height', calcRowHeight);
     }
 
     angular.element($window).bind('resize', function ($scope) {
