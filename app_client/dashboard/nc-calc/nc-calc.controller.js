@@ -9,6 +9,7 @@
     $scope.result = 0;
     $scope.calcGridOptions = calcGridOptions;
 
+      updateCalKeyHeight();
     $scope.display = function (number) {
 
       if ($scope.out != 'undefined'
@@ -63,7 +64,7 @@
 
     function updateCalKeyHeight() {
       var divHeight = angular.element('#widget-icon').height()
-      var calcRowHeight = divHeight / 4;
+      var calcRowHeight = divHeight / 4.25;
       $scope.calcGridOptions.rowHeight = calcRowHeight;
       var calcDisplay = document.getElementsByClassName('u4');
       calcDisplay = angular.element(calcDisplay);
@@ -72,20 +73,7 @@
     }
 
     angular.element($window).bind('resize', function ($scope) {
-      var calKey = document.getElementsByClassName("cal-key")[0];
-      x = angular.element(calKey);
-      updateCalKeyHeight();
-      console.log("CALKEY!")
-      // var oldWidth = $dshBrd.currentWidth;
-      // var oldSize = $dshBrd.lastScreenSize;
-      // var newWidth = $window.outerWidth;
-      // var newSize = inputScreenSize(newWidth);
-
-      // if (oldSize !== newSize) {
-      //   $location.path('dashboard.view');
-      // }
-
-      // $dshBrd.lastScreenSize = newSize;
+      setTimeout(updateCalKeyHeight, 250);
     });
 
   };

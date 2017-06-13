@@ -1,5 +1,5 @@
 ﻿/*  ######################### 
- *	### Calculator styles ###
+ *	###  nc-calc  styles  ###
  *  ######################### */
 
 /* Grid units */
@@ -7,48 +7,47 @@
 .u2,
 .u3,
 .u4 {
-    float: left;
-    /* margin: 3px; */
+  /* float: left; */
+  /* margin: 3px; */
 }
 .u1 {
-   /* width: 40px;*/
-    width: 16.66%;
-    height: 28%;
+  width: 16.66%;
+  height: 28%;
 }
 .u2 {
-    width: 16.66%;
-    height: 50%;
-    /* width: 103px; */
+  width: 16.66%;
+  height: 50%;
+  /* width: 103px; */
 }
 .u3 {
-    width: 132px;
+  width: 132px;
 }
 .u4 {
-    /*width: 178px;*/
-    width : 213px;
+  /*width: 178px;*/
+  width : 213px;
 }
 
 .calculator {
-	background-color: #5F5F5F;
-	width: 100%;
-	height: 100%;
+  background-color: #5F5F5F;
+  width: 100%;
+  height: 100%;
 }
 
 .display {
-	background-color: #fff;
+  background-color: #fff;
   padding-right: 6px;
-	border: 1px solid #181A20;
-	text-align: right;
-	height: 30px;
-	width: 100%; 
+  border: 1px solid #181A20;
+  text-align: right;
+  height: 25%;
+  width: 100%; 
 }
 
 .display-text {
-	color: #fff;
-	font-size: 22px;
-	line-height: 42px;
-	overflow: hidden;
-	unicode-bidi: embed;
+  color: #fff;
+  font-size: 22px;
+  line-height: 42px;
+  overflow: hidden;
+  unicode-bidi: embed;
   width: 1000px;
   float: right;
 }
