@@ -29,11 +29,7 @@
 }
 
 .calculator {
-	/*background-color: #3C4150;*/
 	background-color: #5F5F5F;
-	border: 1px solid #181A20;
-	float: left;
-	/*width: 184px;*/
 	width: 100%;
 	height: 100%;
 }
