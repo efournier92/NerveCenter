@@ -33,3 +33,10 @@
   min-height: 20px;
 }
 
+.calc-key {
+  text-align: center;
+  background-color: #e0e0e0;
+  border: 1px;
+  border-color: black;
+}
+

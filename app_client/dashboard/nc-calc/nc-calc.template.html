@@ -7,10 +7,10 @@
     <div gridster="calcGridOptions">
       <ul>
         <li>
-          <button gridster-item ng-model="calkey" class="calkey" ng-repeat="calkey in mykeys track by $index" size-x="calkey.sizeX">
+          <gridster-item ng-model="calkey" class="calc-key" ng-repeat="calkey in mykeys track by $index" size-x="calkey.sizeX">
             <!-- ng-click="display(calkey)"> -->
             {{calkey.key}} 
-          </button>
+          </gridster-item>
         </li>
         <!-- <div ng-if="calkey!=\'<-\'">{{calkey}}</div> -->
         <!-- <div ng-if="calkey==\'<-\'">B</div> -->
