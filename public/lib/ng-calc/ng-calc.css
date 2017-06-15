@@ -2,33 +2,7 @@
  *	###  nc-calc  styles  ###
  *  ######################### */
 
-/* Grid units */
-.u1,
-.u2,
-.u3,
-.u4 {
-  /* float: left; */
-  /* margin: 3px; */
-}
-.u1 {
-  width: 16.66%;
-  height: 28%;
-}
-.u2 {
-  width: 16.66%;
-  height: 50%;
-  /* width: 103px; */
-}
-.u3 {
-  width: 132px;
-}
-.u4 {
-  /*width: 178px;*/
-  width : 213px;
-}
-
 .calculator {
-  background-color: #5F5F5F;
   width: 100%;
   height: 100%;
 }
