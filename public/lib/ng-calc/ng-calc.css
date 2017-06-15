@@ -36,7 +36,6 @@
 .calc-key {
   text-align: center;
   background-color: #e0e0e0;
-  border: 1px;
-  border-color: black;
+  border: 0.2px solid black;
 }
 
