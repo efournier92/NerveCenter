@@ -9,29 +9,29 @@
 
     factory.digits = function () {
       var buttonKeys = [ 
-        '7','8','9','0','c','<-',
+        '7','8','9','0','c','<',
         '4','5','6','.','-','+',
         '1','2','3','=','/','*'
       ];
 
-      var len = buttonKeys.length - 1;
-
-      var i;
+      var isSpecialKey = new RegExp("[c|<]");
+      var isOperatorKey = new RegExp("([+|=|/|-])");
       var buttons = [];
-
-      var isDigitKey = new RegExp("[0-9]");
-      var isOperatorKey = new RegExp("[0-9]");
-      var isSpecialKey = new RegExp("[0-9]");
+      var len = buttonKeys.length - 1;
+      var i;
 
       for (i = 0; i <= len; i++) {
         newObj = {};
         newObj.key = buttonKeys[i];
-        newObj.col = Math.floor((i+1)/6);
+        newObj.col = Math.floor((i + 1) / 6);
         newObj.row = i - (6 * newObj.col);
 
-
-        if (buttonKeys[i] === ) {
-
+        if (isSpecialKey(newObj.key)) {
+          newObj.type = 'specialKey';
+        } else if (isOperatorKey(newObj.key)) {
+          newObj.type = 'operatorKey';
+        } else {
+          newObj.type = 'digitKey';
         }
 
         buttons.push(newObj);
