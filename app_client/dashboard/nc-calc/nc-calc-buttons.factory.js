@@ -21,20 +21,20 @@
       var i;
 
       for (i = 0; i <= len; i++) {
-        newObj = {};
-        newObj.key = buttonKeys[i];
-        newObj.col = Math.floor((i + 1) / 6);
-        newObj.row = i - (6 * newObj.col);
+        var keyObj = {};
+        keyObj.key = buttonKeys[i];
+        keyObj.col = Math.floor((i + 1) / 6);
+        keyObj.row = i - (6 * keyObj.col);
 
-        if (isSpecialKey(newObj.key)) {
-          newObj.type = 'specialKey';
-        } else if (isOperatorKey(newObj.key)) {
-          newObj.type = 'operatorKey';
+        if (isSpecialKey(keyObj.key)) {
+          keyObj.type = 'specialKey';
+        } else if (isOperatorKey(keyObj.key)) {
+          keyObj.type = 'operatorKey';
         } else {
-          newObj.type = 'digitKey';
+          keyObj.type = 'digitKey';
         }
 
-        buttons.push(newObj);
+        buttons.push(keyObj);
       }
 
       return buttons;
