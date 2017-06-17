@@ -61,6 +61,7 @@
 
     //Set the keyboard values using the factory method.  
     $scope.allCalcKeys = ncCalcButtons.digits();
+    $scope.type = true;
 
     function updateCalKeyHeight() {
       var divHeight = angular.element('#widget-icon').height()
