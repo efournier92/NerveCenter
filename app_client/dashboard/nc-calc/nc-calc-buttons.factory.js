@@ -26,9 +26,9 @@
         keyObj.col = Math.floor((i + 1) / 6);
         keyObj.row = i - (6 * keyObj.col);
 
-        if (isSpecialKey(keyObj.key)) {
+        if (isSpecialKey.test(keyObj.key)) {
           keyObj.type = 'specialKey';
-        } else if (isOperatorKey(keyObj.key)) {
+        } else if (isOperatorKey.test(keyObj.key)) {
           keyObj.type = 'operatorKey';
         } else {
           keyObj.type = 'digitKey';
@@ -36,6 +36,8 @@
 
         buttons.push(keyObj);
       }
+
+      console.log(buttons);
 
       return buttons;
     }

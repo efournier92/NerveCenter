@@ -7,9 +7,11 @@
     <div gridster="calcGridOptions">
       <ul>
         <li>
-          <gridster-item ng-model="calkey" class="calc-key" ng-repeat="calkey in mykeys track by $index" size-x="calkey.sizeX">
+          <gridster-item class="calc-key"
+                         ng-repeat="calcKey in allCalcKeys"
+                         ng-class="{ digit-key: calcKey.type === 'digitKey' }">
             <!-- ng-click="display(calkey)"> -->
-            {{calkey.key}} 
+            {{calcKey.key}} 
           </gridster-item>
         </li>
         <!-- <div ng-if="calkey!=\'<-\'">{{calkey}}</div> -->
