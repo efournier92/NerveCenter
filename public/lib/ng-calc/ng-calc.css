@@ -43,7 +43,10 @@
   background-color: green;
 }
 
-.-key {
-  background-color: green;
+.operator-key {
+  background-color: red;
 }
 
+.special-key {
+  background-color: blue;
+}

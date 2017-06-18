@@ -15,7 +15,7 @@
       ];
 
       var isSpecialKey = new RegExp("[c|<]");
-      var isOperatorKey = new RegExp("([+|=|/|-])");
+      var isOperatorKey = new RegExp("([=|*|/|+|-])");
       var buttons = [];
       var len = buttonKeys.length - 1;
       var i;
