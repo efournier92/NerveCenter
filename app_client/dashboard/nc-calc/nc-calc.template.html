@@ -9,7 +9,9 @@
         <li>
           <gridster-item class="calc-key"
                          ng-repeat="calcKey in allCalcKeys"
-                         ng-class="{ 'digit-key': calcKey.type === 'digitKey' }">
+                         ng-class="{ 'digit-key': calcKey.type === 'digitKey',
+                                     'operator-key': calcKey.type === 'operatorKey',
+                                     'special-key': calcKey.type === 'specialKey' }">
                          <!-- ng-class="{ digitkey: true }"> -->
             <!-- ng-click="display(calkey)"> -->
             {{calcKey.key}} 
