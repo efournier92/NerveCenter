@@ -9,6 +9,7 @@
 
 .display {
   background-color: #4c4c4c;
+  border-radius: 5px 5px 0 0;
   padding-right: 6px;
   border: 1px solid #181A20;
   text-align: right;
@@ -48,5 +49,6 @@
 }
 
 .special-key {
-  background-color: #d6d6d6;
+  background-color: #b6b6b6;
 }
+
