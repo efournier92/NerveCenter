@@ -20,16 +20,6 @@
   width: 100%; 
 }
 
-.display-text {
-  color: #fff;
-  font-size: 32px;
-  line-height: 42px;
-  overflow: hidden;
-  unicode-bidi: embed;
-  width: 1000px;
-  float: right;
-}
-
 .display-inner {
   overflow: hidden;
   height: 100%;
