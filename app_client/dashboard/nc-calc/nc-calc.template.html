@@ -11,7 +11,8 @@
                          ng-repeat="calcKey in allCalcKeys"
                          ng-class="{ 'digit-key': calcKey.type === 'digitKey',
                                      'operator-key': calcKey.type === 'operatorKey',
-                                     'special-key': calcKey.type === 'specialKey' }">
+                                     'special-key': calcKey.type === 'specialKey' }"
+                         ng-click="display(calcKey.key)">
                          <!-- ng-class="{ digitkey: true }"> -->
             <!-- ng-click="display(calkey)"> -->
             {{calcKey.key}} 
