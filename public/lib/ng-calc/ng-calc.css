@@ -38,9 +38,11 @@
 
 .operator-key {
   background-color: #ff9100;
+  padding-top: 1%;
 }
 
 .special-key {
   background-color: #b6b6b6;
+  padding-top: 1%;
 }
 
