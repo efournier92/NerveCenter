@@ -31,7 +31,7 @@
             $scope.out = '0';
             break;
 
-          case '<-':
+          case '<':
             //backspace
             $scope.out = $scope.out.slice(0, -1);
             break;

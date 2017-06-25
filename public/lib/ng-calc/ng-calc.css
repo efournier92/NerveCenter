@@ -30,8 +30,13 @@
   text-align: center;
   background-color: #e0e0e0;
   border: 0.2px solid black;
+  user-select: none;
+  cursor: default;
 }
 
+.calc-key:active {
+  opacity: 0.8;
+}
 .digit-key {
   background-color: #e0e0e0;
 }
