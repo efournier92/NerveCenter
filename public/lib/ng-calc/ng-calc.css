@@ -9,10 +9,9 @@
 
 .display {
   background-color: #4c4c4c;
+  border-radius: 5px 5px 0 0;
   width: 100%; 
   height: 25%;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid #181A20;
   color: white;
   text-align: right;
   font-weight: 100;
@@ -23,13 +22,14 @@
   overflow: hidden;
   height: 100%;
   padding-right: 3%;
+  padding-top: 1%;
   font-size: 22px;
 }
 
 .calc-key {
   text-align: center;
   background-color: #e0e0e0;
-  border: 0.2px solid black;
+  border: 1px solid black;
   user-select: none;
   cursor: default;
 }
@@ -37,6 +37,7 @@
 .calc-key:active {
   opacity: 0.8;
 }
+
 .digit-key {
   background-color: #e0e0e0;
 }
