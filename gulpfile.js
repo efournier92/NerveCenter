@@ -12,6 +12,7 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('run-sequence');
+var babel = require('gulp-babel');
 
 gulp.task('concat', function () {
   gulp.src(['./app_client/**/*.js', '!./app_client/app.min.js'])
@@ -22,15 +23,29 @@ gulp.task('concat', function () {
     .pipe(gulp.dest('app_client'));
 });
 
-gulp.task('babel', function(){
+gulp.task('babel', () =>
+	gulp.src('./app_client/app.min.js')
+  .pipe(babel(
+    // {
+    //   'presets': ['es2015']
+    // }
+  ))
+  .pipe(gulp.dest('dist'))
+);
 
-}
+// gulp.task('babel', function() {
+//   gulp.src('./app_client/app.min.js')
+//     .pipe(babel({
+//       presets: ['env']
+//     })))
+//     .pipe(gulp.dest('dist'))
+// };
 
 gulp.task('sass', function(){
   return gulp.src('app/scss/styles.scss')
     .pipe(sass())
     .pipe(browserSync.reload({
-      stream: true;
+      stream: true
     }))
     .pipe(gulp.dest('app/css'))
 });
@@ -55,7 +70,7 @@ gulp.task('images', function(){
     .pipe(gulp.dest('dist/images'))
 });
 
-gulp.task('browserSync', function() {
+gulp.task('browserSync', function () {
   browserSync.init({
     server: {
       baseDir: 'app'
@@ -67,9 +82,9 @@ gulp.task('browserSync', function() {
 //   return del.sync('dist');
 // })
 
-// gulp.task('task-name', function(callback) {
-//   runSequence('task-one', ['tasks','to','run','in','parallel'], 'task-three', callback);
-// });
+gulp.task('default', function (callback) {
+  runSequence('concat', 'babel', callback);
+});
 
-gulp.task('default', ['bundle', 'watch']);
+// gulp.task('default', ['concat', 'watch']);
 
