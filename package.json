@@ -1,7 +1,7 @@
 {
   "name": "NerveCenter",
   "description": "Metro-style grid-based new tab app.",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "main": "app.js",
   "engines": {
     "node": "4.4.5"
@@ -26,6 +26,7 @@
     "morgan": "~1.5.1",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
+    "requirejs": "^2.3.3",
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "gulp-if": "^2.0.2",
     "gulp-ng-annotate": "^1.1.0",
     "gulp-ng-html2js": "^0.2.0",
+    "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.5.4",
     "gulp-useref": "^3.1.2",

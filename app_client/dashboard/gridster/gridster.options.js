@@ -18,11 +18,6 @@ var gridOptions = {
     enabled: false,
   },
   draggable: {
-    enabled: false,
-    stop: function(event, $element, widget) {
-      console.log($element.scope().gridster.grid);
-      // console.log($element.scope().gridster.grid);
-    }
+    enabled: false
   }
 };
-

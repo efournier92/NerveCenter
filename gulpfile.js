@@ -3,7 +3,7 @@ var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var babel = require('gulp-babel');
 var del = require('del');
-var runSequence = require('run-sequence');
+var gulpSequence = require('gulp-sequence')
 var watch = require('gulp-watch');
 // uglify dependencies
 var uglify = require('gulp-uglify');
@@ -19,18 +19,21 @@ gulp.task('concat', function () {
     .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
     .pipe(sourcemaps.write(''))
-    .pipe(gulp.dest('public/dist'));
+    .pipe(gulp.dest('app_client'));
 });
 
 gulp.task('babel', function () {
-  gulp.src('public/dist/app.min.js')
+  gulp.src('app_client/app.min.js')
   // .pipe(sourcemaps.init())
   // .pipe(babel(''))
     .pipe(babel({
-      presets: ['es2015'],
-      minified: true,
-      comments: false,
-      babelrc: false 
+      presets: ['es2015']
+      // minified: true,
+      // comments: false,
+      // babelrc: false
+      // inputSourceMap: 'public/dist/app.min.js.map',
+      // sourceMaps: false
+      // sourceMapTarget: 'public/dist/app.bun.js.map'
     }))
   // .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('public/dist'))
@@ -66,23 +69,17 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('watch', ['browserSync', 'sass'], function () {
-  gulp.watch(['./app_client/**/*.js', '!./app_client/app.min.js']);
-  gulp.watch('./app_client/*.html');
-  gulp.watch('./app_client/**/*.scss');
-});
-
 gulp.task('clean', function () {
-  return del.sync('dist');
+  return del.sync('public/dist');
 })
 
-gulp.task('default', ['dev'])
+gulp.task('default', ['dev']);
 
 gulp.task('dev', function (callback) {
-  runSequence('concat', 'babel', callback);
+  gulpSequence('concat', 'babel', callback);
 });
 
 gulp.task('prod', function (callback) {
-  runSequence('concat', 'babel', ['uglify', 'sass', 'images'], ['watch'], callback);
+  gulpSequence('concat', 'babel', ['uglify', 'sass', 'images'], ['watch'], callback);
 });
 

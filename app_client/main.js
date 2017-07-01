@@ -1,10 +1,9 @@
-import './dashboard/dashboard.controller';
-let eric = 'tooMuch';
 (function () {
 
   angular.module('nerveCenter',
     ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap',
      'gridster', 'infinite-scroll', 'ds.clock']);
+
   function config($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
