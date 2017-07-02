@@ -65,7 +65,7 @@ gulp.task('images', function () {
 gulp.task('watch', function () {
   watch(['./app_client/**/*.(js|html)',
     '!./app_client/app.min.js'], function () {
-      gulp.start('dev');
+      gulp.start('default');
     });
 });
 
@@ -73,7 +73,7 @@ gulp.task('clean', function () {
   return del.sync('public/dist');
 })
 
-gulp.task('default', ['dev']);
+gulp.task('default', ['concat', 'watch']);
 
 gulp.task('dev', function (callback) {
   gulpSequence('concat', 'babel', callback);
