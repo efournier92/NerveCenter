@@ -1,36 +1,36 @@
 var defaultArray = [
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
+  {"type": "link-widget", "row": 0, "col": 0,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 1,
+  {"type": "link-widget", "row": 0, "col": 1,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 2,
+  {"type": "link-widget", "row": 0, "col": 2,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 3,
+  {"type": "link-widget", "row": 0, "col": 3,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 4,
+  {"type": "link-widget", "row": 0, "col": 4,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 5,
+  {"type": "link-widget", "row": 0, "col": 5,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 0,
+  {"type": "link-widget", "row": 1, "col": 0,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 1,
+  {"type": "link-widget", "row": 1, "col": 1,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 2,
+  {"type": "link-widget", "row": 1, "col": 2,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 3,
+  {"type": "link-widget", "row": 1, "col": 3,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
-  {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 4,
+  {"type": "link-widget", "row": 1, "col": 4,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"}
 
 ];
