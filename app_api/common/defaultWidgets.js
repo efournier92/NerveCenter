@@ -127,36 +127,6 @@ var defaultArray = [
     "type": "nc-calc-widget",
     "sizeX": 2,
     "sizeY": 1,
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://www.nytimes.com/",
-    "icon": "img/ico/A021_NyTimes.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://www.walmart.com/",
-    "icon": "img/ico/A022_Walmart.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "http://www.news.google.com/",
-    "icon": "img/ico/A023_News.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://trends.google.com/trends/",
-    "icon": "img/ico/A024_Gtrends.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://www.cnn.com/",
-    "icon": "img/ico/A026_Cnn.png"
   }
 ];
 // {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
