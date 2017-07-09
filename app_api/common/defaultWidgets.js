@@ -109,6 +109,62 @@ var defaultArray = [
     "col": 6,
     "url": "https://www.twitch.tv/",
     "icon": "img/ico/A013_Twitch.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 0,
+    "url": "https://www.apple.com/",
+    "icon": "img/ico/A014_Apple.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 1,
+    "url": "https://www.imdb.com/",
+    "icon": "img/ico/A015_Imdb.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 2,
+    "url": "https://www.github.com/",
+    "icon": "img/ico/A016_GitHub.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 3,
+    "url": "https://www.pinterest.com/",
+    "icon": "img/ico/A017_Pinterest.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 4,
+    "url": "https://www.paypal.com/",
+    "icon": "img/ico/A018_PayPal.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 5,
+    "url": "https://www.whatsapp.com/",
+    "icon": "img/ico/A019_WhatsApp.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 2,
+    "col": 6,
+    "url": "https://www.craigslist.com/",
+    "icon": "img/ico/A020_CraigsList.png"
   }
 ];
 // {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
