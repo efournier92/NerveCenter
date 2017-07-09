@@ -37,6 +37,7 @@ module.exports.register = function (req, res) {
 
 module.exports.login = function (req, res) {
   if (!req.body.email || !req.body.password) {
+    console.log("LOGIN_ERROR: ", req, res)
     sendJSONresponse(res, 400, {
       "message": "All fields required"
     });
@@ -46,6 +47,7 @@ module.exports.login = function (req, res) {
   passport.authenticate('local', function (err, user, info) {
     var token;
 
+    console.log("TOKEN: ", token, err, user, info);
     // If Passport throws an error
     if (err) {
       res.status(404).json(err);
@@ -57,12 +59,14 @@ module.exports.login = function (req, res) {
     if (user) {
       token = user.generateJwt();
       res.status(200);
+      console.log("NEWE_TOKEN: ", token);
       res.json({
         "token" : token
       });
     } else {
       // If user isn't found
       res.status(401).json(info);
+      console.log("USER_NOT_FOUND: ", info);
     }
   })(req, res);
 };
