@@ -67,5 +67,5 @@ var defaultArray = [
   // {"type" : "link-widget", "url" : "https://www.baidu.com/", "icon" : "img/ico/A028_Baidu.png, "sizeX" : 1, "sizeY" : 1, "row" : 0, "col" : 0"}
 // ];
 
-// module.exports.widgetString = JSON.stringify(defaultArray);
+module.exports.widgetString = JSON.stringify(defaultArray);
 
