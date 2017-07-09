@@ -208,13 +208,13 @@ var defaultArray = [
     "icon": "img/ico/A020_CraigsList.png"
   },
 
-  {
-    "type": "nc-calc-widget",
-    "sizeX": 2,
-    "sizeY": 1,
-    "row": 3,
-    "col": 0
-  },
+  // {
+  //   "type": "nc-calc-widget",
+  //   "sizeX": 2,
+  //   "sizeY": 1,
+  //   "row": 3,
+  //   "col": 0
+  // },
 
   {
     "type": "link-widget",
@@ -256,15 +256,15 @@ var defaultArray = [
     "icon": "img/ico/A024_Gtrends.png"
   },
 
-  {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 6,
-    "url": "https://www.cnn.com/",
-    "icon": "img/ico/A026_Cnn.png"
-  }
+  // {
+  //   "type": "link-widget",
+  //   "sizeX": 1,
+  //   "sizeY": 1,
+  //   "row": 3,
+  //   "col": 6,
+  //   "url": "https://www.cnn.com/",
+  //   "icon": "img/ico/A026_Cnn.png"
+  // }
 
 ];
 
