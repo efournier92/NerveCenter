@@ -133,24 +133,6 @@ var defaultArray = [
     "sizeY": 1,
     "url": "https://www.apple.com/",
     "icon": "img/ico/A014_Apple.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://www.imdb.com/",
-    "icon": "img/ico/A015_Imdb.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://www.github.com/",
-    "icon": "img/ico/A016_GitHub.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "url": "https://www.pinterest.com/",
-    "icon": "img/ico/A017_Pinterest.png"
   }
 ];
 // {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
