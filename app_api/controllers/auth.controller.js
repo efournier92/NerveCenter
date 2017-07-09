@@ -27,7 +27,6 @@ module.exports.register = function (req, res) {
   user.save(function (err) {
     var token;
     token = user.generateJwt();
-    console.log("NEW_USER_ERRROR", err || "No Error")
     res.status(200);
     res.json({
       "token" : token
