@@ -33,7 +33,7 @@ var defaultArray = [
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
   {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 5,
-   "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"}
+   "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
 
   {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 1, "col": 6,
    "url": "https://www.google.com/", "icon": "img/ico/A001_Google.png"},
