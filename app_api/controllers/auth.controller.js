@@ -22,8 +22,6 @@ module.exports.register = function (req, res) {
 
   user.setPassword(req.body.password);
 
-  console.log("NEW_USER: ", user)
-
   user.save(function (err) {
     var token;
     token = user.generateJwt();
@@ -48,7 +46,6 @@ module.exports.login = function (req, res) {
     // If Passport throws an error
     if (err) {
       res.status(404).json(err);
-      console.log("AUTH_ERROR: ", err);
       return;
     }
 
