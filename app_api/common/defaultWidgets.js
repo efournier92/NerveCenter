@@ -171,54 +171,8 @@ var defaultArray = [
     "sizeY": 1,
     "row": 3,
     "col": 0,
-    "url": "https://www.google.com/",
-    "icon": "img/ico/A001_Google.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 1,
-    "url": "https://www.youtube.com/",
-    "icon": "img/ico/A002_YouTube.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 2,
-    "url": "https://www.facebook.com/",
-    "icon": "img/ico/A003_Facebook.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 3,
-    "url": "https://www.wikipedia.org/",
-    "icon": "img/ico/A004_Wikipedia.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 4,
-    "url": "https://www.reddit.com/",
-    "icon": "img/ico/A005_Reddit.png"
-  }, {
-    "type": "link-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 5,
-    "url": "https://www.amazon.com/",
-    "icon": "img/ico/A006_Amazon.png"
-  }, {
-    "type": "clock-widget",
-    "sizeX": 1,
-    "sizeY": 1,
-    "row": 3,
-    "col": 6
+    "url": "https://www.craigslist.com/",
+    "icon": "img/ico/A020_CraigsList.png"
   }
 ];
 // {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
