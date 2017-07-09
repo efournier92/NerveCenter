@@ -171,56 +171,54 @@ var defaultArray = [
     "sizeY": 1,
     "row": 3,
     "col": 0,
-    "url": "https://www.nytimes.com/",
-    "icon": "img/ico/A021_NyTimes.png"
+    "url": "https://www.google.com/",
+    "icon": "img/ico/A001_Google.png"
   }, {
     "type": "link-widget",
     "sizeX": 1,
     "sizeY": 1,
     "row": 3,
     "col": 1,
-    "url": "https://www.nytimes.com/",
-    "icon": "img/ico/A021_NyTimes.png"
+    "url": "https://www.youtube.com/",
+    "icon": "img/ico/A002_YouTube.png"
   }, {
     "type": "link-widget",
     "sizeX": 1,
     "sizeY": 1,
     "row": 3,
     "col": 2,
-    "url": "https://www.nytimes.com/",
-    "icon": "img/ico/A021_NyTimes.png"
+    "url": "https://www.facebook.com/",
+    "icon": "img/ico/A003_Facebook.png"
   }, {
     "type": "link-widget",
     "sizeX": 1,
     "sizeY": 1,
     "row": 3,
     "col": 3,
-    "url": "https://www.walmart.com/",
-    "icon": "img/ico/A022_Walmart.png"
+    "url": "https://www.wikipedia.org/",
+    "icon": "img/ico/A004_Wikipedia.png"
   }, {
     "type": "link-widget",
     "sizeX": 1,
     "sizeY": 1,
     "row": 3,
     "col": 4,
-    "url": "http://www.news.google.com/",
-    "icon": "img/ico/A023_News.png"
+    "url": "https://www.reddit.com/",
+    "icon": "img/ico/A005_Reddit.png"
   }, {
     "type": "link-widget",
     "sizeX": 1,
     "sizeY": 1,
     "row": 3,
     "col": 5,
-    "url": "https://trends.google.com/trends/",
-    "icon": "img/ico/A024_Gtrends.png"
+    "url": "https://www.amazon.com/",
+    "icon": "img/ico/A006_Amazon.png"
   }, {
-    "type": "link-widget",
+    "type": "clock-widget",
     "sizeX": 1,
     "sizeY": 1,
     "row": 3,
-    "col": 6,
-    "url": "https://www.cnn.com/",
-    "icon": "img/ico/A026_Cnn.png"
+    "col": 6
   }
 ];
 // {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
