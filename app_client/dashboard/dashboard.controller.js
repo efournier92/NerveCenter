@@ -129,6 +129,8 @@
         function createNewWidget(len, columns) {
           var newWidget = {
             type: 'link-widget',
+            sizeX: 1,
+            sizeY: 1,
             icon: widgetIcon,
             url: widgetUrl,
             row: Math.floor(len / columns),
