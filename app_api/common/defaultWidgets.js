@@ -165,6 +165,62 @@ var defaultArray = [
     "col": 6,
     "url": "https://www.craigslist.com/",
     "icon": "img/ico/A020_CraigsList.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 0,
+    "url": "https://www.nytimes.com/",
+    "icon": "img/ico/A021_NyTimes.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 1,
+    "url": "https://www.nytimes.com/",
+    "icon": "img/ico/A021_NyTimes.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 2,
+    "url": "https://www.nytimes.com/",
+    "icon": "img/ico/A021_NyTimes.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 3,
+    "url": "https://www.walmart.com/",
+    "icon": "img/ico/A022_Walmart.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 4,
+    "url": "http://www.news.google.com/",
+    "icon": "img/ico/A023_News.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 5,
+    "url": "https://trends.google.com/trends/",
+    "icon": "img/ico/A024_Gtrends.png"
+  }, {
+    "type": "link-widget",
+    "sizeX": 1,
+    "sizeY": 1,
+    "row": 3,
+    "col": 6,
+    "url": "https://www.cnn.com/",
+    "icon": "img/ico/A026_Cnn.png"
   }
 ];
 // {"type": "link-widget", "sizeX": 1, "sizeY": 1, "row": 0, "col": 0,
