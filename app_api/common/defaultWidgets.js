@@ -244,7 +244,6 @@ var defaultArray = [
     "sizeX": 1,
     "sizeY": 1,
     "url": "https://www.apple.com/",
-    "icon": "img/ico/A014_Apple.png"
     "icon": "img/ico/A017_Pinterest.png"
   }
 ];
