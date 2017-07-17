@@ -10,7 +10,6 @@ module.exports.profileRead = function (req, res) {
     });
   } else {
     User.findById(req.payload._id)
-    console.log("PAYLOAD_ID: ", req.payload._id)
       .exec(function (err, user) {
         res.status(200).json(user);
       });
