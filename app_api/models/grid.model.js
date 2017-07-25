@@ -1,15 +1,20 @@
 var mongoose = require( 'mongoose' );
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
+var defaultWidgets = require('../common/defaultGrid');
 
-var userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true
+var gridSchema = new mongoose.Schema({
+  _owner: {
+    type: Number,
+    ref: 'User'
   },
-  hash: String,
-  salt: String
+  name: {
+    type: String
+  },
+  contents: {
+    type: String,
+    default: defaultWidgets.widgetString
+  }
 });
 
 userSchema.methods.setPassword = function (password){
@@ -29,6 +34,8 @@ userSchema.methods.generateJwt = function () {
   return jwt.sign({
     _id: this._id,
     email: this.email,
+    widgetsLg: this.widgetsLg,
+    widgetsSm: this.widgetsSm,
     exp: parseInt(expiry.getTime() / 1000)
   }, process.env.JWT_SECRET);
 };

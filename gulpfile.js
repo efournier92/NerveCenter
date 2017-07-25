@@ -24,18 +24,18 @@ gulp.task('concat', function () {
 
 gulp.task('babel', function () {
   gulp.src('app_client/app.min.js')
-  // .pipe(sourcemaps.init())
-  // .pipe(babel(''))
+  .pipe(sourcemaps.init())
+  .pipe(babel(''))
     .pipe(babel({
       presets: ['es2015']
       // minified: true,
       // comments: false,
-      // babelrc: false
+      // babelrc: false,
       // inputSourceMap: 'public/dist/app.min.js.map',
-      // sourceMaps: false
+      // sourceMaps: false,
       // sourceMapTarget: 'public/dist/app.bun.js.map'
     }))
-  // .pipe(sourcemaps.write(''))
+  .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('public/dist'))
 });
 
@@ -63,7 +63,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('watch', function () {
-  watch(['./app_client/**/*.(js|html)',
+  watch(['./app_client/**/*.(js|html|css)',
     '!./app_client/app.min.js'], function () {
       gulp.start('default');
     });
@@ -73,7 +73,7 @@ gulp.task('clean', function () {
   return del.sync('public/dist');
 })
 
-gulp.task('default', ['concat', 'watch']);
+gulp.task('default', ['dev', 'watch']);
 
 gulp.task('dev', function (callback) {
   gulpSequence('concat', 'babel', callback);
