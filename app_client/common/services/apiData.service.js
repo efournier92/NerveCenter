@@ -1,46 +1,52 @@
-const apiData = angular.module('nerveCenter').service('apiData', apiDataService);
-apiData.$inject = ['$http', 'auth'];
-export { apiData };
+(function () {
 
-function apiDataService($http, auth) {
-  const getProfile = () => {
-    return $http.get('/api/user', {
-      headers: {
-        Authorization: 'Bearer '+ auth.getToken()
-      }
-    });
-  };
+  angular
+    .module('nerveCenter')
+    .service('apiData', apiData);
 
-  const updateWidgets = (data) => {
-    return $http.put('/api/user', data, {
-      headers: {
-        Authorization: 'Bearer '+ auth.getToken()
-      }
-    });
-  };
+  apiData.$inject = ['$http', 'auth'];
+  function apiData($http, auth) {
 
-  const getIcons = (data) => {
-    return $http.get('/api/ico', data, {
-      headers: {
-        Authorization: 'Bearer '+ auth.getToken()
-      }
-    });
-  };
+    var getProfile = function () {
+      return $http.get('/api/user', {
+        headers: {
+          Authorization: 'Bearer '+ auth.getToken()
+        }
+      });
+    };
 
-  const getDefaultGrid = (data) => {
-    return $http.get('/api/defaultgrid', data, {
-      headers: {
-        Authorization: 'Bearer '+ auth.getToken()
-      }
-    });
-  };
+    var updateWidgets = function (data) {
+      return $http.put('/api/user', data, {
+        headers: {
+          Authorization: 'Bearer '+ auth.getToken()
+        }
+      });
+    };
 
-  return {
-    getProfile : getProfile,
-    updateWidgets: updateWidgets,
-    getIcons: getIcons,
-    getDefaultGrid: getDefaultGrid
-  };
+    var getIcons = function (data) {
+      return $http.get('/api/ico', data, {
+        headers: {
+          Authorization: 'Bearer '+ auth.getToken()
+        }
+      });
+    };
 
-}
+    var getDefaultGrid = function (data) {
+      return $http.get('/api/defaultgrid', data, {
+        headers: {
+          Authorization: 'Bearer '+ auth.getToken()
+        }
+      });
+    };
+
+    return {
+      getProfile : getProfile,
+      updateWidgets: updateWidgets,
+      getIcons: getIcons,
+      getDefaultGrid: getDefaultGrid
+    };
+
+  }
+
+})();
 

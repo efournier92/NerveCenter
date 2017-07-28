@@ -1,12 +1,21 @@
 var mongoose = require( 'mongoose' );
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
+var defaultWidgets = require('../common/defaultWidgets');
 
 var userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
     required: true
+  },
+  widgetsLg: {
+    type: String,
+    default: defaultWidgets.widgetString
+  },
+  widgetsSm: {
+    type: String,
+    default: defaultWidgets.widgetString
   },
   hash: String,
   salt: String
@@ -29,6 +38,8 @@ userSchema.methods.generateJwt = function () {
   return jwt.sign({
     _id: this._id,
     email: this.email,
+    widgetsLg: this.widgetsLg,
+    widgetsSm: this.widgetsSm,
     exp: parseInt(expiry.getTime() / 1000)
   }, process.env.JWT_SECRET);
 };
