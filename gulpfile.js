@@ -14,12 +14,41 @@ var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
+var rollup = require('rollup-stream');
+var source = require('vinyl-source-stream');
+
+var webpack = require('gulp-webpack');
+
+gulp.task('babelll', function () {
+  return gulp.src('./app_client/app.min.js')
+    .pipe(babel())
+    .pipe(gulp.dest('./app_client/dist'));
+});
+
+gulp.task('webpack', function() {
+    return gulp.src('app_client/main.js')
+      .pipe(webpack())
+      .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('rollup', function() {
+  return rollup({
+      entry: './app_client/main.js'
+    })
+
+    // output file
+    .pipe(source('app.js'))
+
+    // output folder
+    .pipe(gulp.dest('./app_client'));
+});
+
 gulp.task('concat', function () {
-  gulp.src('app_client/**/*.js')
+  gulp.src('./app_client/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
-    .pipe(sourcemaps.write(''))
-    .pipe(gulp.dest('app_client'));
+    // .pipe(sourcemaps.write(''))
+    .pipe(gulp.dest('./app_client'));
 });
 
 gulp.task('babel', function () {
