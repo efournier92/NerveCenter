@@ -1,12 +1,21 @@
 var mongoose = require( 'mongoose' );
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
+var defaultWidgets = require('../common/defaultGrid');
 
 var userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
     required: true
+  },
+  widgetsLg: {
+    type: String,
+    default: defaultWidgets.widgetString
+  },
+  widgetsSm: {
+    type: String,
+    default: defaultWidgets.widgetString
   },
   hash: String,
   salt: String
