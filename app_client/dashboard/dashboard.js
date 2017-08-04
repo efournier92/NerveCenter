@@ -2,7 +2,6 @@
 
 import gridster from 'angular-gridster';
 import apiData from './common/services/apiData.service';
-import apiData from './common/services/apiData.service';
 import { dashboardCtrl } from './dashboard/dashboard.controller';
 
 const dashboard = angular.module('nerveCenter.dashboard', 

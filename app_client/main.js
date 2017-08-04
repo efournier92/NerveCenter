@@ -1,6 +1,7 @@
 'use strict';
 
 import './dashboard/dashboard';
+import auth as './dashboard/dashboard';
 
 angular
   .module('nerveCenter', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap',

@@ -14,6 +14,21 @@ var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
+var rollup = require('rollup-stream');
+var source = require('vinyl-source-stream');
+
+gulp.task('rollup', function() {
+  return rollup({
+      entry: './app_client/main.js'
+    })
+
+    // output file
+    .pipe(source('app.js'))
+
+    // output folder
+    .pipe(gulp.dest('./app_client'));
+});
+
 gulp.task('concat', function () {
   gulp.src('app_client/**/*.js')
     .pipe(sourcemaps.init())
