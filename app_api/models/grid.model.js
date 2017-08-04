@@ -3,22 +3,18 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 var defaultWidgets = require('../common/defaultGrid');
 
-var userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true
+var gridSchema = new mongoose.Schema({
+  _owner: {
+    type: Number,
+    ref: 'User'
   },
-  widgetsLg: {
-    type: String,
-    default: defaultWidgets.widgetString
+  name: {
+    type: String
   },
-  widgetsSm: {
+  contents: {
     type: String,
     default: defaultWidgets.widgetString
-  },
-  hash: String,
-  salt: String
+  }
 });
 
 userSchema.methods.setPassword = function (password){
