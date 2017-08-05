@@ -2,7 +2,9 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 module.exports.profileRead = function (req, res) {
+    console.log("PROFILE_READ: ", req, res)
   if (!req.payload._id) {
+    console.log("READ_ERROR: ", req, res)
     res.status(401).json({
       "message" : "Unauthorized: Private Profile"
     });
@@ -33,4 +35,3 @@ module.exports.updateWidgets = function (req, res) {
     });
   };
 };
-

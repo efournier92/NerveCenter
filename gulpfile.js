@@ -14,21 +14,6 @@ var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
-var rollup = require('rollup-stream');
-var source = require('vinyl-source-stream');
-
-gulp.task('rollup', function() {
-  return rollup({
-      entry: './app_client/main.js'
-    })
-
-    // output file
-    .pipe(source('app.js'))
-
-    // output folder
-    .pipe(gulp.dest('./app_client'));
-});
-
 gulp.task('concat', function () {
   gulp.src('app_client/**/*.js')
     .pipe(sourcemaps.init())
@@ -39,18 +24,18 @@ gulp.task('concat', function () {
 
 gulp.task('babel', function () {
   gulp.src('app_client/app.min.js')
-  .pipe(sourcemaps.init())
-  .pipe(babel(''))
+  // .pipe(sourcemaps.init())
+  // .pipe(babel(''))
     .pipe(babel({
       presets: ['es2015']
       // minified: true,
       // comments: false,
-      // babelrc: false,
+      // babelrc: false
       // inputSourceMap: 'public/dist/app.min.js.map',
-      // sourceMaps: false,
+      // sourceMaps: false
       // sourceMapTarget: 'public/dist/app.bun.js.map'
     }))
-  .pipe(sourcemaps.write(''))
+  // .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('public/dist'))
 });
 
@@ -78,7 +63,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('watch', function () {
-  watch(['./app_client/**/*.(js|html|css)',
+  watch(['./app_client/**/*.(js|html)',
     '!./app_client/app.min.js'], function () {
       gulp.start('default');
     });
@@ -88,7 +73,7 @@ gulp.task('clean', function () {
   return del.sync('public/dist');
 })
 
-gulp.task('default', ['dev', 'watch']);
+gulp.task('default', ['concat', 'watch']);
 
 gulp.task('dev', function (callback) {
   gulpSequence('concat', 'babel', callback);
