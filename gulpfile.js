@@ -14,6 +14,15 @@ var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
+var eslint = require('gulp-eslint');
+
+gulp.task('lint', function () {
+  return gulp.src(['**/*.js','!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
 gulp.task('concat', function () {
   gulp.src('app_client/**/*.js')
     .pipe(sourcemaps.init())
