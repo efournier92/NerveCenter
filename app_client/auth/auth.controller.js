@@ -23,7 +23,7 @@
           $location.path('../dashboard/dashboard.view');
         });
     };
-    
+
     $auth.user = {};
 
     $auth.onLogin = function () {

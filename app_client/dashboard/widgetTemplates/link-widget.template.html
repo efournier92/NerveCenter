@@ -1,5 +1,5 @@
 <a ng-href="{{urlsEnabled ? widget.url : ''}}" ng-disabled="urlsEnabled">
-  <img class="widget-icon" src={{widget.icon}}>
+  <img id="widget-icon" src={{widget.icon}}>
   <img id="x-delete" ng-show="deleteEnabled" 
                      ng-click="deleteWidget(widget)"
                      src="img/_xDelete.png"
