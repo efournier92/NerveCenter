@@ -15,7 +15,7 @@
       });
     };
 
-    var updateWidgets = function (data) {
+    var updateWidgets = function(data) {
       return $http.put('/api/user', data, {
         headers: {
           Authorization: 'Bearer '+ auth.getToken()
@@ -23,7 +23,7 @@
       });
     };
 
-    var getIcons = function (data) {
+    var getIcons = function(data) {
       return $http.get('/api/ico', data, {
         headers: {
           Authorization: 'Bearer '+ auth.getToken()

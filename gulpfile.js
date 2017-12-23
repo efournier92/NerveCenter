@@ -5,29 +5,18 @@ var babel = require('gulp-babel');
 var del = require('del');
 var gulpSequence = require('gulp-sequence')
 var watch = require('gulp-watch');
-// uglify dependencies
 var uglify = require('gulp-uglify');
 var useref = require('gulp-useref');
 var gulpIf = require('gulp-if');
 var cssnano = require('gulp-cssnano');
-// images dependencies
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
-var eslint = require('gulp-eslint');
-
-gulp.task('lint', function () {
-  return gulp.src(['**/*.js','!node_modules/**'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
-
 gulp.task('concat', function () {
   gulp.src('app_client/**/*.js')
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
-    .pipe(sourcemaps.write(''))
+    // .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('app_client'));
 });
 
@@ -74,7 +63,7 @@ gulp.task('images', function () {
 gulp.task('watch', function () {
   watch(['./app_client/**/*.(js|html)',
     '!./app_client/app.min.js'], function () {
-      gulp.start('default');
+      gulp.start('dev');
     });
 });
 
@@ -82,7 +71,7 @@ gulp.task('clean', function () {
   return del.sync('public/dist');
 })
 
-gulp.task('default', ['concat', 'watch']);
+gulp.task('default', ['dev']);
 
 gulp.task('dev', function (callback) {
   gulpSequence('concat', 'babel', callback);

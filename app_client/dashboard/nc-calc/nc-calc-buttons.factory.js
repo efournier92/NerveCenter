@@ -8,7 +8,7 @@
     var factory = {};
 
     factory.digits = function () {
-      var buttonKeys = [
+      var buttonKeys = [ 
         '7','8','9','.','+','-',
         '4','5','6','=','*','/',
         '1','2','3','0','<','c'
@@ -37,9 +37,12 @@
         buttons.push(keyObj);
       }
 
+      console.log(buttons);
+
       return buttons;
     }
     return factory;
   }
 
 })();
+
