@@ -28,7 +28,7 @@ body {
   padding-top: 40px;
 }
 
-#widget-icon {
+.widget-icon {
   position: absolute;
   z-index: 0;
   width: 100%;
