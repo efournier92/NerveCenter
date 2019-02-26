@@ -1,4 +1,4 @@
-# ![NerveCenter Logo]()
+# ![NerveCenter](https://github.com/efournier92/nervecenter/blob/master/public/img/logo/NerveCenter_Logo.png?raw=true)
 
 ## Table of Contents
 - [Overview](#overview)
