@@ -8,7 +8,6 @@
 - [Stack](#stack)
 - [Configuration](#configuration)
 - [Building](#building)
-- [Testing](#testing)
 - [Contributing](#contributing)
 - [Licensing](#licensing)
 - [Features To Do](#features-to-do)
@@ -26,11 +25,19 @@ I built this with ease-of-use first and foremost in my mind. I've seen similar l
 
 ## Stack
 
+
 ## Configuration
 
-## Building
+### `/.env`
+```
+JWT_SECRET=YOUR_JWT_SECRET
+MONGODB_URI=YOUR_MONGODB_URI
+```
 
-## Testing
+## Building
+1. `npm install --save`
+2. `gulp`
+3. `nodemon app.js`
 
 ## Contributing
 If you have feature suggestions, please contact me here or at efournier92@gmail.com. If you'd like to submit a pull request, please feel free and I'll review and merge it at my earliest convenience!
