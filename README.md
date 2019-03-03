@@ -109,7 +109,7 @@ If you have feature suggestions, please contact me here or at efournier92@gmail.
 This project is provided under the `MIT` licence and I hereby grant rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without limitation, provided the resulting software also carries the same open-source licensing statement.
 
 ## Features To Do
-* [~] Change widgets to grids
+* [ ] Change widgets to grids
 * [ ] Amazon Fresh Icon
 * [ ] Better Google News Icon
 * [ ] Deletes both when same URL
