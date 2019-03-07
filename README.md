@@ -1,69 +1,66 @@
-# ![NerveCenter](https://github.com/efournier92/NerveCenter/blob/master/public/img/logo/NerveCenter_Logo.png?raw=true)
+# ![NerveCenter](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/logo/NerveCenter_Logo.png)
 
 ## Table of Contents
 - [Overview](#overview)
 - [Demo](#demo)
-- [Features](#features)
 - [Development Philosophy](#development-philosophy)
 - [Stack](#stack)
+- [Use As `New Tab` Page](#use-as-new-tab-page)
 - [Configuration](#configuration)
-  - [Configure As New Tab Page](#configure-as-new-tab-page)
 - [Building](#building)
 - [Contributing](#contributing)
 - [Licensing](#licensing)
+- [Features](#features)
 - [Features To Do](#features-to-do)
 
 ## Overview
-This project is meant to serve as a personalized landing page for any browser. It renders a grid of icons, each of which can be configured with an image and a URL. A user can sign in to define a custom grid of icons. Custom grids can be backed up via JSON export, and imported if necessary.
+This project is meant to serve as a personalized landing page for any browser. It renders a grid of icons, each of which can be configured with an image and a URL. A user can sign-in to define a custom grid of icons, and grid configurations can be backed-up via [JSON](https://www.json.org/) export, then imported later. The project is built using [AngularJS](https://angular-ui.github.io/bootstrap/), according to standard paradigms for that framework. It was build such that the controls are intuitive to the point where no documentation is required for regular use-cases. The back-end features a thin [NodeJS](https://nodejs.org/en/) API back-end, which persists data to a [MongoDB](https://www.mongodb.com/), then supplies it to the client-side as serialized [JSON](https://www.json.org/) objects. This application is still live, but is not being actively maintained at the moment.
 
 ## Demo
-[NerveCenter.xyz](http://www.NerveCenter.xyz)
-
-## Features
-
-### Authentication
-![Authentication Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Authentication.png?raw=true)
-
-### View dashboard with clickable link icons
-![View Dashboard Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/View_Dashboard.png?raw=true)
-
-### Delete icons from dashboard
-![Delete Icons](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Delete_Icons.png?raw=true)
-
-### Unlock dashboard to drag icons
-![Unlock To Drag Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Unlock_To_Drag.png?raw=true)
-
-### Calculator Widget
-![Calculator Widget Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Calculator_Widget.png?raw=true)
-
-### Settings
-
-#### Add a new icon
-![Add New Icons Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Settings_Add_New_Icon.png?raw=true)
-
-#### Export configuration data
-![Export Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Settings_Export.png?raw=true)
-
-#### Import configuration data
-![Import Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Settings_Import.png?raw=true)
-
-#### Extra settings
-![Extra Settings Screen](https://github.com/efournier92/NerveCenter/blob/master/public/img/screenshots/Settings_Extra.png?raw=true)
+[NerveCenter.xyz](http://www.nervecenter.xyz)
 
 ## Development Philosophy
-I built this with ease-of-use first and foremost in my mind. I've seen similar landing page projects in the past, but they tend to be built as add-ons for a specific browser. My goal was to take a browser-agnostic approach, such that it can be used on any device with virtually any browser. The project is built using Angular 1.5, according to standard framework paradigms. It was build such that the controls options are so intuitive, no require no documentation for regular use-cases.
+I built this as a browser-agnostic new-tab page, for use on any device, in virtually any browser. I've seen similar landing-page projects in the past, but they're typically built as add-ons for specific browser software. I wanted to remedy this constraint, and to keep it simply to use and nice to look at. I went with a metro-style layout, leveraging [angular-gridster](https://github.com/ManifestWebDesign/angular-gridster) to maintain the grid structure. I refrained from bloating it with a ton of options and features: rather, it's meant to perform the simple function of linking-out to other websites. It's built such that utility widgets can be added easily; currently calculator and clock widgets are available. This was my first side-project built in [AngularJS](https://angularjs.org/) using [ES6](https://es6.io/), and it served as a playground for me to learn the framework. I learned a lot building this app in 2016, and hope it can be useful to others!
 
 ## Stack
-- NodeJS
-- ExpressJS
-- MongoDB
-- AngularJS
-- ES6 (JavaScript)
-- Gulp
-- Babel
-- WebPack
-- angular-gridster
-- angular-ui-bootstrap
+- Server
+  - [NodeJS](https://nodejs.org/en/)
+  - [ExpressJS](https://expressjs.com/)
+  - [MongoDB](https://www.mongodb.com/)
+  - [Passport](http://www.passportjs.org/)
+- Client
+  - [AngularJS](https://angularjs.org/)
+  - [ES6](https://es6.io/)
+  - [Bootstrap](https://getbootstrap.com/)
+  - [gulp.js](https://gulpjs.com/)
+  - [Babel](https://babeljs.io/)
+  - [webpack](https://webpack.js.org/)
+  - [angular-gridster](https://github.com/ManifestWebDesign/angular-gridster)
+  - [angular-ui-bootstrap](https://angular-ui.github.io/bootstrap/)
+
+## Use As `New Tab` Page
+
+### Chrome
+1. Download extension [Fast New Tab Redirect](https://chrome.google.com/webstore/detail/fast-new-tab-redirect/ohnfdmfkceojnmepofncbddpdicdjcoi?hl=en)
+2. In extension settings, configure redirect-page URL as `http://nervecenter.herokuapp.com`
+
+### Firefox
+1. Download add-on [New Tab Override](https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/)
+2. In extension settings, configure redirect-page URL as `http://nervecenter.herokuapp.com`
+
+### Safari
+1. Open Safari
+2. Select `Preferences` from the menu bar
+3. General
+4. Set homepage as `http://nervecenter.herokuapp.com`
+
+### Edge
+1. Open Edge
+2. Input `about:flags` into URL bar
+3. Check the box next to `Enable extension developer features`
+4. Download extension [Breeze](https://drive.google.com/file/d/1YupLKhTwgGsbQC362mI3643f3og8nmih/view)
+5. Install the downloaded extension
+6. Configure new tab page as `http://nervecenter.herokuapp.com`
 
 ## Configuration
 
@@ -72,30 +69,6 @@ I built this with ease-of-use first and foremost in my mind. I've seen similar l
 JWT_SECRET=YOUR_JWT_SECRET
 MONGODB_URI=YOUR_MONGODB_URI
 ```
-
-### Configure As New Tab Page
-
-#### Chrome
-1. Download extension [Fast New Tab Redirect](https://chrome.google.com/webstore/detail/fast-new-tab-redirect/ohnfdmfkceojnmepofncbddpdicdjcoi?hl=en)
-2. In extension settings, configure URL for redirect page as `http://nervecenter.herokuapp.com`
-
-#### Firefox
-1. Download add-on [New Tab Override](https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/)
-2. In extension settings, configure URL for redirect page as `http://nervecenter.herokuapp.com`
-
-#### Safari
-1. Open Safari
-2. Select `Preferences` from the menu bar
-3. General
-4. Set homepage as `http://nervecenter.herokuapp.com`
-
-#### Edge
-1. Open Edge
-2. Enter `about:flags` into URL bar
-3. Check the box next to `Enable extension developer features`
-4. Download extension [Breeze](https://drive.google.com/file/d/1YupLKhTwgGsbQC362mI3643f3og8nmih/view)
-5. Install the downloaded extension
-6. Configure new tab page as `http://nervecenter.herokuapp.com`
 
 ## Building
 1. `npm install --save`
@@ -107,6 +80,36 @@ If you have feature suggestions, please contact me here or at efournier92@gmail.
 
 ## Licensing
 This project is provided under the `MIT` licence and I hereby grant rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without limitation, provided the resulting software also carries the same open-source licensing statement.
+
+## Features
+
+### Authentication
+![Authentication Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Authentication.png)
+
+### View dashboard with clickable link icons
+![View Dashboard Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/View_Dashboard.png)
+
+### Delete icons from dashboard
+![Delete Icons](
+https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Delete_Icons.png)
+
+### Unlock dashboard to drag icons
+![Unlock To Drag Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Unlock_To_Drag.png)
+
+### Calculator Widget
+![Calculator Widget Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Calculator_Widget.png)
+
+### Add a new icon
+![Add New Icons Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Add_New_Icon.png)
+
+### Export configuration data
+![Export Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Export.png)
+
+### Import configuration data
+![Import Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Import.png)
+
+### Extra settings
+![Extra Settings Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Extra.png)
 
 ## Features To Do
 * [ ] Change widgets to grids
