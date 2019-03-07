@@ -1,4 +1,4 @@
-# ![NerveCenter](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/logo/NerveCenter_Logo.png)
+# ![NerveCenter](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/logo/NerveCenter_Logo.png)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -84,32 +84,31 @@ This project is provided under the `MIT` licence and I hereby grant rights to us
 ## Features
 
 ### Authentication
-![Authentication Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Authentication.png)
+![Authentication Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Authentication.png)
 
 ### View dashboard with clickable link icons
-![View Dashboard Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/View_Dashboard.png)
+![View Dashboard Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/View_Dashboard.png)
 
 ### Delete icons from dashboard
-![Delete Icons](
-https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Delete_Icons.png)
+![Delete Icons](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Delete_Icons.png)
 
 ### Unlock dashboard to drag icons
-![Unlock To Drag Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Unlock_To_Drag.png)
+![Unlock To Drag Screen]( https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Unlock_To_Drag.png)
 
 ### Calculator Widget
-![Calculator Widget Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Calculator_Widget.png)
+![Calculator Widget Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Calculator_Widget.png)
 
 ### Add a new icon
-![Add New Icons Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Add_New_Icon.png)
+![Add New Icons Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Settings_Add_New_Icon.png)
 
 ### Export configuration data
-![Export Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Export.png)
+![Export Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Settings_Export.png)
 
 ### Import configuration data
-![Import Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Import.png)
+![Import Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Settings_Import.png)
 
 ### Extra settings
-![Extra Settings Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/src/assets/img/screenshots/Settings_Extra.png)
+![Extra Settings Screen](https://raw.githubusercontent.com/efournier92/NerveCenter/master/public/img/screenshots/Settings_Extra.png)
 
 ## Features To Do
 * [ ] Change widgets to grids
