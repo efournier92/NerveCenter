@@ -23,20 +23,22 @@ This project is meant to serve as a personalized landing page for any browser. I
 I built this as a browser-agnostic new-tab page, for use on any device, in virtually any browser. I've seen similar landing-page projects in the past, but they're typically built as add-ons for specific browser software. I wanted to remedy this constraint, and to keep it simply to use and nice to look at. I went with a metro-style layout, leveraging [angular-gridster](https://github.com/ManifestWebDesign/angular-gridster) to maintain the grid structure. I refrained from bloating it with a ton of options and features: rather, it's meant to perform the simple function of linking-out to other websites. It's built such that utility widgets can be added easily; currently calculator and clock widgets are available. This was my first side-project built in [AngularJS](https://angularjs.org/) using [ES6](https://es6.io/), and it served as a playground for me to learn the framework. I learned a lot building this app in 2016, and hope it can be useful to others!
 
 ## Stack
-- Server
-  - [NodeJS](https://nodejs.org/en/)
-  - [ExpressJS](https://expressjs.com/)
-  - [MongoDB](https://www.mongodb.com/)
-  - [Passport](http://www.passportjs.org/)
-- Client
-  - [AngularJS](https://angularjs.org/)
-  - [ES6](https://es6.io/)
-  - [Bootstrap](https://getbootstrap.com/)
-  - [gulp.js](https://gulpjs.com/)
-  - [Babel](https://babeljs.io/)
-  - [webpack](https://webpack.js.org/)
-  - [angular-gridster](https://github.com/ManifestWebDesign/angular-gridster)
-  - [angular-ui-bootstrap](https://angular-ui.github.io/bootstrap/)
+
+### Server
+- [NodeJS](https://nodejs.org/en/)
+- [ExpressJS](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Passport](http://www.passportjs.org/)
+
+### Client
+- [AngularJS](https://angularjs.org/)
+- [ES6](https://es6.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [gulp.js](https://gulpjs.com/)
+- [Babel](https://babeljs.io/)
+- [webpack](https://webpack.js.org/)
+- [angular-gridster](https://github.com/ManifestWebDesign/angular-gridster)
+- [angular-ui-bootstrap](https://angular-ui.github.io/bootstrap/)
 
 ## Use As `New Tab` Page
 
@@ -79,7 +81,7 @@ MONGODB_URI=YOUR_MONGODB_URI
 If you have feature suggestions, please contact me here or at efournier92@gmail.com. If you'd like to submit a pull request, please feel free and I'll review and merge it at my earliest convenience!
 
 ## Licensing
-This project is provided under the `MIT` licence and I hereby grant rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without limitation, provided the resulting software also carries the same open-source licensing statement.
+This project is provided under the [`MIT`](https://opensource.org/licenses/MIT) licence and I hereby grant rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without limitation, provided the resulting software also carries the same open-source licensing statement.
 
 ## Features
 
