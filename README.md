@@ -6,10 +6,10 @@
 - [Development Philosophy](#development-philosophy)
 - [Stack](#stack)
 - [Use As `New Tab` Page](#use-as-new-tab-page)
-- [Configuration](#configuration)
-- [Building](#building)
-- [Contributing](#contributing)
-- [Licensing](#licensing)
+- [Configure](#configure)
+- [Build](#build)
+- [Contribute](#contribute)
+- [License](#license)
 - [Features](#features)
 - [Features To Do](#features-to-do)
 
@@ -64,7 +64,7 @@ I built this as a browser-agnostic new-tab page, for use on any device, in virtu
 5. Install the downloaded extension
 6. Configure new tab page as `http://nervecenter.herokuapp.com`
 
-## Configuration
+## Configure
 
 ### `/.env`
 ```
@@ -72,15 +72,15 @@ JWT_SECRET=YOUR_JWT_SECRET
 MONGODB_URI=YOUR_MONGODB_URI
 ```
 
-## Building
+## Build
 1. `npm install --save`
 2. `gulp`
 3. `nodemon app.js`
 
-## Contributing
+## Contribute
 If you have feature suggestions, please contact me here or at efournier92@gmail.com. If you'd like to submit a pull request, please feel free and I'll review and merge it at my earliest convenience!
 
-## Licensing
+## License
 This project is provided under the [`MIT`](https://opensource.org/licenses/MIT) licence and I hereby grant rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without limitation, provided the resulting software also carries the same open-source licensing statement.
 
 ## Features
